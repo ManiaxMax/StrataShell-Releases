@@ -23,13 +23,9 @@ Windows remains underneath for application compatibility, drivers, security, and
 
 ## Screenshots
 
-| Light composition | Top rail |
+| Dark composition | Light composition |
 |---|---|
-| ![StrataShell light composition](docs/screenshots/strata-light.png) | ![StrataShell top rail](docs/screenshots/top-rail.png) |
-
-| Live system-audio spectrum |
-|---|
-| ![Live system audio spectrum](docs/screenshots/audio-spectrum.png) |
+| ![StrataShell dark composition](docs/screenshots/strata-dark.png) | ![StrataShell light composition](docs/screenshots/strata-light.png) |
 
 The repository includes a curated set of 40 full 4K wallpapers (20 Light, 20 Dark) located under `wallpapers/`, plus the original fallback image under `assets/wallpapers`.
 
