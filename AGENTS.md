@@ -212,7 +212,7 @@ Hidden surfaces must restore immediately when the occluder dies, closes, hides, 
 
 `ShellCoordinator.BuildBindings()` is the runtime authority. `docs/KEYBINDS.md` and the searchable `Super + K` view must match it.
 
-The code enforces 94 unique bindings and rejects retired duplicates. Do not add, remove, or remap a chord unless the user explicitly requests it. Never add an app-local system-wide hotkey for an action the shell already owns.
+The code enforces 88 unique bindings and rejects retired duplicates. Do not add, remove, or remap a chord unless the user explicitly requests it. Never add an app-local system-wide hotkey for an action the shell already owns.
 
 Canonical bindings that must remain unique:
 
@@ -223,10 +223,7 @@ Canonical bindings that must remain unique:
 | Strata Files | `Super + F` |
 | Settings | `Super + S` |
 | Strata Terminal | `Super + Enter` |
-| External PowerShell | `Super + Ctrl + Enter` |
 | Strata Snip | `Super + Ctrl + S` |
-| Start screensaver | `Super + Shift + S` |
-| ChatGPT / Codex | `Super + C` |
 | Transparency | `Super + T` |
 | Tiled/floating workspace | `Super + W` |
 | Per-monitor desktop view | `Super + D` |

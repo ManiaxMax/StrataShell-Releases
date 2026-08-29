@@ -133,16 +133,12 @@ The picker provides search, pagination, thumbnails, and a full preview. Its **Br
 |---|---|
 | `Super + Space` | Command launcher |
 | `Super + Enter` | Strata Terminal |
-| `Super + Ctrl + Enter` | PowerShell |
 | `Super + Ctrl + S` | Strata Snip |
 | `Super + B` | New browser window |
 | `Super + F` | Strata Files |
 | `Super + S` | Settings |
-| `Super + Shift + S` | Start the Strata screensaver immediately |
 | `Super + -` | Remove the highest workspace when it is empty (minimum 1) |
 | `Super + +` | Add a workspace (maximum 10) |
-| `Super + A` | Antigravity |
-| `Super + C` | ChatGPT / Codex |
 | `Super + K` | Searchable keybind list |
 | `Super + T` | Toggle transparency for the active third-party or Strata window |
 | `Super + W` | Toggle every app on the active workspace between tiled and floating |
@@ -154,7 +150,7 @@ The picker provides search, pagination, thumbnails, and a full preview. Its **Br
 | `Super + 1…0` | Switch workspace 1…10 |
 | `Ctrl + Alt + Shift + Delete` | Exit preview or restore Explorer from shell mode |
 
-The exact 94-binding policy is documented in [Keybindings](docs/KEYBINDS.md).
+The exact 88-binding policy is documented in [Keybindings](docs/KEYBINDS.md).
 
 ## Default-shell installation
 

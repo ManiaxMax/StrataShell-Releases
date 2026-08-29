@@ -1,6 +1,6 @@
 # Keybindings
 
-`Super` means the Windows-logo key. The current policy contains 94 unique bindings: 64 shell/application/window/media/monitor/recovery bindings plus 30 direct workspace bindings.
+`Super` means the Windows-logo key. The current policy contains 88 unique bindings: 58 shell/application/window/media/monitor/recovery bindings plus 30 direct workspace bindings.
 
 Press `Super + K` inside Strata for the searchable live list. The live list also reports any registration failures.
 
@@ -10,30 +10,17 @@ Press `Super + K` inside Strata for the searchable live list. The live list also
 |---|---|
 | `Super + Space` | Toggle the command menu |
 | `Super + Alt + Space` | Toggle the application-only launcher |
-| `Super + A` | Open Antigravity |
 | `Super + Enter` | Open Strata Terminal |
-| `Super + Ctrl + Enter` | Open PowerShell |
 | `Super + Ctrl + S` | Open Strata Snip |
 | `Super + B` | Open a new browser window |
 | `Super + F` | Open Strata Files |
 | `Super + S` | Open Strata Settings |
-| `Super + Shift + S` | Start the Strata screensaver immediately |
 | `Super + -` | Remove the highest workspace when it has no open window; stop at 1 |
 | `Super + +` | Add one workspace; stop at 10 |
-| `Super + C` | Activate ChatGPT / Codex |
 | `Super + K` | Open the searchable keybinding list |
 | `Super + Escape` | Open the power/session panel |
 
 The launcher and keybind window place keyboard focus in their search field on every activation. Typing can begin immediately; Down selects the first result and Enter activates it.
-
-## Clipboard
-
-| Shortcut | Action |
-|---|---|
-| `Super + V` | Universal paste |
-| `Super + X` | Universal cut |
-
-These forward the ordinary clipboard action to the currently focused application.
 
 ## Center Stage windows
 
