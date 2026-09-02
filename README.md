@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ManiaxMax/StrataShell/main/assets/branding/strata-logo.png" alt="STRATA Shell" width="640" />
+  <img src="https://raw.githubusercontent.com/ManiaxMax/StrataShell-Releases/main/assets/branding/strata-logo.png" alt="STRATA Shell" width="640" />
 </p>
 
 # STRATA Shell
