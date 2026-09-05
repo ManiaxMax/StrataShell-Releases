@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="260" viewBox="0 0 1000 260" role="img" aria-labelledby="title description">
+  <title id="title">STRATA Shell</title>
+  <desc id="description">The STRATA three-stripe mark and wordmark on a transparent background.</desc>
+  <style>
+    .wordmark { fill: #008095; }
+    .caption { fill: #526d78; }
+    @media (prefers-color-scheme: dark) {
+      .wordmark { fill: #00d9ed; }
+      .caption { fill: #91a8b2; }
+    }
+  </style>
+  <g transform="translate(415 28) scale(1.25)">
+    <polygon points="18,4 136,4 118,20 0,20" fill="#00d9ed"/>
+    <polygon points="0,27 118,27 136,43 18,43" fill="#8245ff"/>
+    <polygon points="18,50 136,50 118,66 0,66" fill="#ff9900"/>
+  </g>
+  <text class="wordmark" x="500" y="173" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="44" font-weight="600">STRATA</text>
+  <text class="caption" x="500" y="204" text-anchor="middle" font-family="Consolas,monospace" font-size="12" font-weight="600">WINDOWS SHELL ENVIRONMENT</text>
+</svg>

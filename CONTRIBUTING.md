@@ -1,6 +1,6 @@
 # Contributing to StrataShell
 
-StrataShell is experimental alpha software and a login-critical Windows component when installed as the default shell. Changes should preserve the Center Stage product model and recovery guarantees.
+StrataShell is experimental alpha software and a login-critical Windows component when installed as the default shell. Changes should preserve Floating and Tiled behavior and recovery guarantees.
 
 ## Before opening a change
 
