@@ -4,13 +4,13 @@ This is the design contract for StrataShell. For the exact behavior implemented 
 
 ## North star
 
-Strata should feel like a purpose-built technical environment: calm at rest, fast under the keyboard, spatially coherent, and vividly alive when it moves. It must not resemble a reskinned Windows taskbar, Start menu, Explorer, or Settings app.
+STRATA Shell should feel like a purpose-built technical environment: calm at rest, fast under the keyboard, spatially coherent, and vividly alive when it moves. It must not resemble a reskinned Windows taskbar, Start menu, Explorer, or Settings app.
 
-Windows remains underneath for application compatibility, drivers, security boundaries, and hardware APIs. The user-facing desktop belongs to Strata.
+Windows remains underneath for application compatibility, drivers, security boundaries, and hardware APIs. The user-facing desktop belongs to STRATA Shell.
 
 ## Product principles
 
-1. **Center Stage, not window clutter.** Applications occupy one predictable center lane. A workspace has one full-height app or two top/bottom apps—never a pile.
+1. **Two deliberate environments.** Floating permits overlapping, freely resizable applications and uses a STRATA-themed bottom dock. It is the Phase 5 fresh-release-install default. Tiled mode uses one predictable center lane with one or two applications per workspace. `Super + Shift + W` switches environments while preserving open work; tiled-only rules below apply to Tiled mode. Updates and shell startup retain existing choices.
 2. **Wallpaper is live state.** Every wallpaper change can change palette, light/dark mode, focus color, glass, widgets, consoles, and compatible application preferences.
 3. **Keyboard first, pointer complete.** Frequent actions have a stable `Super` chord, while every visible shell control remains clickable.
 4. **Spatial continuity.** Workspace changes move laterally, top/bottom exchanges move vertically, and edge controls expand from their origin.
@@ -21,10 +21,10 @@ Windows remains underneath for application compatibility, drivers, security boun
 ## Design language
 
 - **Continuous surround:** a thin, wallpaper-colored perimeter turns the display into one visual instrument.
-- **Phosphor glass:** translucent dark or mineral-light surfaces, precise hairlines, compact status type, adjustable vibrancy, and restrained CRT bloom.
+- **Phosphor glass:** translucent dark or mineral-light surfaces, precise hairlines, compact status type, adjustable vibrancy, and restrained bloom.
 - **Riced composition:** wallpaper, palette, widgets, gaps, rail, and Center Stage behave as one composition rather than separate skins.
 - **Technical density:** useful live information is welcome; visual hierarchy comes from alignment, rhythm, and contrast rather than nested cards.
-- **Opposite of Windows:** familiar security and compatibility remain underneath, but the visible navigation model is Strata's own.
+- **Opposite of Windows:** familiar security and compatibility remain underneath, but the visible navigation model is STRATA's own.
 
 ## Interaction contract
 
@@ -57,7 +57,7 @@ The theme engine has Dark, Light, and Auto modes. Auto evaluates wallpaper lumin
 User controls remain independent:
 
 - vibrancy;
-- glass opacity;
+- glass transparency;
 - blur strength;
 - bloom strength;
 - surround intensity and thickness;
@@ -90,7 +90,7 @@ Measured benchmark results should be published only with hardware, display mode,
 - Recovery tools live outside the versioned application folder.
 - At least one ChatGPT/terminal path and the Explorer recovery path do not depend on Explorer.
 - Repeated early crashes restore Explorer rather than forming a login loop.
-- Strata never replaces UAC, sign-in, `Ctrl + Alt + Delete`, or Windows Recovery.
+- STRATA Shell never replaces UAC, sign-in, `Ctrl + Alt + Delete`, or Windows Recovery.
 
 ## Release gates
 
