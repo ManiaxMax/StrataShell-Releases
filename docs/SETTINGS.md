@@ -34,7 +34,7 @@ The Interface pane is organized into focused thematic subjects:
 #### Graphics & Performance
 - Select **Performance Mode**: `High`, `Balanced`, `Low`, or `Custom`. `High` preserves full visual fidelity; `Balanced` keeps full-motion, monitor-aware animation and high-quality wallpaper scaling while disabling bloom, frost backdrops and shadows; `Low` also reduces motion, uses linear wallpaper scaling and caps frame rate at 60.
 - Set **Max Animation Frame Rate**: `Native / Uncapped`, `60 FPS Cap`, or `30 FPS Cap`.
-- Toggle **Auto Low Effects on Battery** to automatically reduce GPU fill-rate and effects workload when operating on battery.
+- Toggle **Automatic Low Quality** to temporarily reduce rendering workload during Energy Saver, Best power efficiency, or at 20% battery and below. Low battery clears on external power or at 25%; all saving conditions must end before saved quality returns. Preferences are never replaced with a Low preset.
 - Percentage controls place `50%` at their physical midpoint, and neutral scale/speed controls place `1.00×` at their midpoint even when the safety range is asymmetric.
 
 #### Display & Scale
@@ -188,7 +188,7 @@ Each compatibility tweak is saved independently and is designed to be reversible
 ## Power + Session
 
 - Adjust separate plugged-in and battery screen-off/sleep timeouts for the active Windows power plan. Managed settings and unsupported options report their limitation.
-- View battery charge, available capacity/health and charge/discharge rate. Configure the automatic Energy Saver battery threshold where supported. Instantaneous Energy Saver switching and historical per-app battery usage are not exposed by this implementation.
+- The battery/power bar button opens charge, charging/on-battery status and native Windows power modes. Choose separate plugged-in/on-battery efficiency, Balanced or performance modes where available, or an installed power plan. Configure the automatic Energy Saver threshold, inspect capacity/rate, and read active battery/plugged-in usage history from Windows. The immediate Energy Saver switch uses Windows Settings; the history report has no per-app attribution.
 - Use the aligned two-column icon grid for clear session and power actions.
 - Lock immediately.
 - Sleep or hibernate.
@@ -206,7 +206,7 @@ Actions that end or replace the current session—including Explorer Session—r
 
 ## Native settings boundaries
 
-Routine settings no longer offer Start/Stop Explorer or external Windows Settings links. Windows Update offers an on-demand native availability check and history; update installation, pause/restart scheduling, protected sign-in policy, HDR/Night Light, language/IME and vendor-specific hardware controls remain outside this pass. This does not remove the deliberate temporary Explorer Session recovery action.
+Windows Update offers native availability/history plus **Open Windows Update** for installation and restart scheduling. **Start Explorer for Updates** keeps STRATA running and leaves default-shell policy unchanged; **Stop Temporary Explorer** closes only the Explorer session that bridge started. Existing Explorer sessions are preserved. Windows DPI and immediate Energy Saver also have explicit Windows Settings routes; ordinary device controls remain native. The separate Power + Session recovery action still closes STRATA for the current login.
 
 ## Screensaver
 
@@ -226,7 +226,7 @@ The screensaver uses the active wallpaper theme—including a contrast-preservin
 - The running shell is not replaced in place. An activated installation begins using the new release at the next sign-in, preserving the existing Explorer recovery path.
 - Update Control reports **Running Build** and **Installed Release** separately. When they differ, Settings states whether the installed release is ready for the next sign-in or is present but not active.
 - Preview packages are lightweight and framework-dependent; they omit the .NET runtime, full Setup executable, wallpaper library, and Stable-only extras. Full self-contained packaging is reserved for an approved Stable promotion.
-- The same page can query native Windows software-update availability and recent history without Explorer. Windows Update installation, pause and restart scheduling remain outside this implementation.
+- The same page queries native Windows software-update availability and recent history. Open Windows Update handles installation, pause and restart scheduling in Windows Settings, with the explicit temporary Explorer bridge if needed.
 
 Downloaded archives must use the `StrataShell-*.zip` naming policy. Hardened clients require GitHub's SHA-256 digest and a release-bound manifest signed by the trusted STRATA update key. STRATA enforces compressed/expanded limits, rejects traversal paths, checks the complete payload and runs its self-test before installation. Windows publisher signing is separate and remains deferred.
 
@@ -242,7 +242,7 @@ Downloaded archives must use the `StrataShell-*.zip` naming policy. Hardened cli
 
 ## Phase 2 performance behavior (local candidate)
 
-Automatic low effects now reads actual battery/energy-saver state and temporarily disables bloom and surface/widget frost without overwriting the saved values. Manual High overrides automatic low effects. Selected frame caps apply to dispatcher-driven workspace/slot transitions as well as worker-driven animation. Sustained missed budgets can lower subsequent optional animation cadence to 60 Hz outside High mode. See [current validation and limitations](STATUS.md).
+Automatic Low Quality uses Energy Saver, Best power efficiency and low-charge state to reduce effects, scaling cost and frame rate without changing saved values. It also applies over a saved High preference; disabling Automatic Low Quality opts out. Selected frame caps apply to workspace/slot transitions and other animations. Sustained missed frame budgets can lower subsequent optional animation cadence outside High mode. See [current validation and limitations](STATUS.md).
 
 ## Phase 4 app controls
 

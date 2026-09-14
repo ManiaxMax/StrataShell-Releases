@@ -3,8 +3,8 @@
 ## Toolchain
 
 - Windows 11 x64
-- .NET 9 SDK
-- WPF targeting `net9.0-windows10.0.26100.0`
+- .NET 10 SDK (10.0.400 or a later compatible .NET 10 feature band; see the source global.json)
+- WPF targeting `net10.0-windows10.0.26100.0`
 - x64 runtime identifier
 - Microsoft Edge WebView2 Runtime
 
@@ -46,7 +46,7 @@ Do not run `--shell`, `--critical-ui-test`, or UI automation over somebody's act
 Build first, then run:
 
 ```powershell
-.\src\StrataShell\bin\Release\net9.0-windows10.0.26100.0\win-x64\StrataShell.exe --self-test --quiet
+.\src\StrataShell\bin\Release\net10.0-windows10.0.26100.0\win-x64\StrataShell.exe --self-test --quiet
 ```
 
 The suite reports its live check count in `%LOCALAPPDATA%\StrataShell\Recovery\self-test.json`; do not hard-code an older count. Coverage includes:

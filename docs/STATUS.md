@@ -1,46 +1,34 @@
 # Release and testing status
 
-Updated September 5, 2026. Documentation describes current Preview development; the source `main` branch and published Stable packages can predate it.
+Updated September 5, 2026. This describes current local development. Published packages retain the features and runtime identified in their own release notes.
 
-## Published packages and current work
+## Current implementation
 
-- The latest published Stable package checked for this documentation pass was **1.0.12**. Always consult the [release feed](https://github.com/ManiaxMax/StrataShell-Releases/releases) for newer packages and their actual contents.
-- **Phase 5** covers code review, installer defaults, documentation, repository branding and the reported normal-maximize regression. Updating a README does not publish application binaries or install a new shell.
-- The preceding tray, sound, widget, first-party app and native-settings work exists in Preview source. Automated checks and physical acceptance are separate; not every hardware or desktop interaction has been observed.
-- Fresh-install Phase 5 defaults apply only to the first release that packages the updated template. Older packages retain their own defaults.
+Phase 5 defaults, documentation and normal-maximize changes reached installed Preview `20260905-135348` on .NET 9.0.19. A later local candidate now targets **.NET 10** across Shell, Launcher, Maintenance and Setup, with updated runtime checks and packaging scripts. It has not been published or installed in this pass. Stable 1.0.12 was the last published Stable checked; consult the [release feed](https://github.com/ManiaxMax/StrataShell-Releases/releases) for actual downloads.
 
-Normal maximization is being corrected at the native per-monitor work-area level for Explorer-free shell sessions. Custom-chrome maximized apps stay separate from true fullscreen games. The running pre-Phase-5 release does not include this change; physical acceptance on the updated candidate remains pending.
+The later candidate adds native AC/battery power modes and plan selection, a battery tray menu, automatic temporary Low effects during power saving, 14-day battery/AC usage history, hardware inventory, aligned System Info cards, settings scroll retention, YouTube startup restoration, read-only-cache uninstall cleanup, the tray recovery correction and a wallpaper-hang mitigation.
 
-## Fresh installations versus updates
+**Stable bundles the .NET 10 Desktop runtime. Preview stays lightweight.** A .NET 10 Preview needs a compatible registered Desktop runtime or an exact compatible Stable runtime bridge. An older .NET 9 installation cannot supply that bridge.
 
-New release installs without an existing settings file receive Balanced quality, Floating mode and the [approved widget layout](SHIPPED_DEFAULTS.md). Clock/Time and YouTube start locked expanded. Setup and portable installation preserve an existing profile, including older and partially populated profiles. Shell startup does not apply the release template. Reset Settings remains an explicit user action.
+## Fresh installations and existing preferences
 
-## Evidence and remaining acceptance
+Fresh release installations receive Balanced quality, Floating mode and the [approved widget layout](SHIPPED_DEFAULTS.md), with Clock and YouTube locked expanded. Existing profiles are preserved on update, repair and startup. The new automatic Low quality option defaults to enabled when absent; it temporarily changes effective rendering without overwriting the user's saved quality settings.
 
-The latest local candidate passed 555 desktop checks, 327 application checks, 144 self-tests and 22 fresh-install/preservation checks. These are source-build results, not proof of installed behavior.
+## Verification and installed acceptance
 
-The development checks cover settings migration/preservation, first-party document lifetimes, picker ownership, display rollback, sound controls, notification-icon callbacks, widget expansion and window/workspace policies. They use isolated Windows desktops and test profiles where appropriate.
+The local candidate passed 339 application checks, 556 desktop/widget checks, 144 self-tests, 22 default/profile-preservation checks, 11 maintenance checks and 9 isolated runtime/install/uninstall lifecycle checks. The final hardware/native-settings/card-resize run passed 83 checks. These reports overlap in coverage and are not a unique test total. They establish local and isolated behavior, not deployment or universal hardware acceptance.
 
-Live Sound Settings output selection, master volume and mute/unmute have been exercised, with the original visible configuration restored. Additional sound dropdown/focus corrections were subsequently made in source.
+The owner reports the existing Bluetooth, audio/microphone, Wi-Fi, display and supported input/power controls work as intended. The new power-mode/low-battery transitions, temporary Explorer workflow, YouTube startup fix and exact reported hang sequence still need the new candidate installed. Ordinary maximize/bar boundaries, tray activation, widgets, compositor previews and animations remain subject to physical acceptance on the candidate being tested. Still images do not establish animation smoothness.
 
-Still awaiting complete physical acceptance:
-
-- Antigravity/Tailscale Open behavior, including closed-window and native-menu paths;
-- both locked widgets visibly expanded before first hover after startup;
-- the reported Text/Snip close, picker outline, Task Manager overlap/transparency, Floating maximize and multi-monitor workspace sequences on the exact candidate;
-- microphone operation, per-app audio changes, real Bluetooth pairing and Wi-Fi connection/radio changes;
-- display rollback/hotplug, supported touchpad controls, startup selections and power/time changes on representative hardware;
-- compositor previews, minimize/workspace animations and synchronized High Quality wallpaper/frost transitions.
-
-The live capture tool failed during the latest check, so animation appearance and the shell bar were not marked verified from automated screenshots. Smoothness is not guaranteed across all machines or workloads.
+The latest reported hang was recorded by Windows as AppHangB1 during a wallpaper/theme change; no blocking stack was available. The new candidate avoids a broad settings rebuild in that path and records the current theme operation if another stall occurs. This is a mitigation pending installed reproduction, not a proven root-cause diagnosis.
 
 ## Capability limits
 
-- Windows per-monitor DPI is read-only. STRATA's own interface scale is separately adjustable.
-- Vendor-only display/input controls, historical battery usage, immediate Energy Saver switching and Windows Update installation/scheduling are outside the implemented controls.
-- Tray publishers choose their own actions. Open restores a tracked window; otherwise STRATA requests native controls, with a guarded activation fallback. A closed application may require its own menu's Open command.
-- Windows owns UAC, sign-in, protected consent, drivers and secure surfaces. Hardware support depends on those interfaces.
-- Windows publisher/Authenticode signing is deferred. STRATA's signed update inventory is a separate existing integrity mechanism.
-- The previously named laptop-specific investigations remain outside the active scope.
+- Per-monitor Windows DPI changes and immediate Energy Saver toggling use direct Windows Settings routes; STRATA's own scale and native Windows power modes are separate controls.
+- Native Windows Update availability/history is implemented. Installation and scheduling use Windows Update Settings, with an optional tracked temporary Explorer session that preserves the chosen next-login shell.
+- Battery history covers total active AC/battery time, not per-app energy attribution.
+- Motherboard/BIOS/RAM/cache inventory is available independently of sensor software. CPU temperature still requires an already-running supported sensor provider; no additional sensor driver is installed. NVIDIA temperatures use the installed driver's NVML interface.
+- Vendor-only controls, protected Windows security surfaces and application-defined tray behaviors retain their platform limitations.
+- Publisher/Authenticode signing is deferred. The retired laptop investigations remain outside the active scope.
 
-Detailed developer evidence is maintained in the private source repository. Published release notes remain the authority for an individual download.
+Developer evidence stays in the private source repository. Updating documentation does not publish an application binary.

@@ -1,6 +1,6 @@
 # Architecture
 
-STRATA Shell is a .NET 9 WPF process that replaces Explorer's visible desktop shell for one user while continuing to use Windows for DWM composition, application hosting, drivers, security surfaces, packaged-app activation, and hardware APIs.
+STRATA Shell is a .NET 10 WPF process that replaces Explorer's visible desktop shell for one user while continuing to use Windows for DWM composition, application hosting, drivers, security surfaces, packaged-app activation, and hardware APIs.
 
 ## Process modes
 

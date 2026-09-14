@@ -1,6 +1,6 @@
 # Shipped STRATA Shell defaults and privacy scrub
 
-The next release containing Phase 5 seeds `installer/Defaults/settings.safe.json` only for a brand-new installation without an existing settings file. The profile uses **Balanced quality** and **Floating mode**, with Browser and Files pinned. Setup and portable installation preserve existing profiles; neither updates nor shell startup apply this new layout. Explicit Reset Settings is a separate user action. The schema remains 40 because this is an installer-template change, not a new preference or migration.
+The next release containing Phase 5 seeds `installer/Defaults/settings.safe.json` only for a brand-new installation without an existing settings file. The profile uses **Balanced quality** and **Floating mode**, with Browser and Files pinned. Setup and portable installation preserve existing profiles; neither updates nor shell startup apply this new layout. Explicit Reset Settings is a separate user action. The widget-layout schema remains 40; no layout migration runs at startup. The separate automatic Low quality preference defaults to enabled when absent and never overwrites the saved rendering preset.
 
 | Slot | Left column | Right column |
 |---|---|---|
