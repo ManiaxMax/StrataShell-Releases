@@ -1,20 +1,29 @@
 # STRATA Shell keybindings
 
-STRATA application title bars can also be dragged without modifiers. In Tiled mode this releases that app into its per-window floating presentation; `Super + Ctrl + right-click` returns it to its tile. Clicking a running dock icon in the full Floating environment always activates and restores it.
+In Floating mode, STRATA application title bars and window edges can be dragged without modifiers to move and resize them. In Tiled mode, hold `Super + Ctrl` and left-click/drag inside a window to float and move it, drag window edges to resize, and `Super + Ctrl + right-click` to restore it to tiled Center Stage layout. Clicking a running dock icon in the full Floating environment always activates and restores it.
 
-`Super` means the Windows-logo key. The default catalog contains 74 unique bindings, with **72 active in Tiled mode** and **64 active in Floating mode**. The live list and editor filter mode-specific actions; saved remaps remain available when their mode returns.
+`Super` means the Windows-logo key. The default catalog contains 76 unique bindings, with **73 active in Tiled mode** and **71 active in Floating mode**. The live list filters mode-specific actions. The editor includes the complete catalog in either mode; mode-specific shortcuts take effect when their mode is active. Tables below show the defaults.
 
 | Mode shortcut | Action |
 |---|---|
-| `Super + Shift + W` | Switch the entire shell between Tiled and Floating |
+| `Super + Ctrl + D` | Desktop Mode: toggle between Floating and Tiled |
+| `Super + Ctrl + S` | Strata Sphere: toggle Sphered mode on or off |
 | `Alt + Tab` / `Alt + Shift + Tab` | Floating: select next/previous open app; release Alt to activate, Escape to cancel |
-| `Super + Shift + D` | Floating: Show Widgets / Hide Widgets; Tiled: existing three desktop views |
+| `Super + Ctrl + W` | Window Mode/Widgets: Floating: Show Widgets / Hide Widgets; Tiled: existing three desktop views; Sphered: toggle active group split orientation |
 
-Floating mode disables spatial focus/movement arrows, expansion cycling, and gap toggling. Workspace switching, `Super + Shift + number` moves, monitor routes, app launching, transparency, close, and recovery remain active. Title bars and window edges work without modifiers. Bottom-bar panels and dock context menus open upward. The Center Stage instructions below describe Tiled mode.
+Floating mode enables Super + Arrow to focus the nearest visible window in that direction, and Super + \ to enter or leave fullscreen while restoring its previous bounds. Tiled slot movement arrows and gap toggling remain tiled-only. Workspace switching, `Super + Shift + number` moves, monitor routes, app launching, transparency, close, and recovery remain active. Title bars and window edges work without modifiers. Bottom-bar panels and dock context menus open upward. The Center Stage instructions below describe Tiled mode.
 
-Press `Super + K` inside STRATA Shell for the searchable live list. The list renders a code-native Windows-logo icon in place of the word `Super`, without depending on an installed icon font, groups related focus/movement/layout/workspace/monitor actions together, places custom shortcuts in a final **Custom Keybinds** section, and reports any registration failures. The three self-explanatory physical volume keys remain active but are intentionally omitted from the list and editor.
+Press `Super + K` inside STRATA Shell for the searchable live list. The list renders a code-native Windows-logo icon in place of the word `Super`, without depending on an installed icon font, groups related focus/movement/layout/workspace/monitor actions together, places custom shortcuts in a final **Custom Keybinds** section, and reports any registration failures. The three physical volume keys are omitted from the viewer while on their defaults; they always appear in the editor.
 
-Press `Super + Ctrl + K` for the editor. Built-in actions can be remapped and individually reset with their own **Default** button. User-created shortcuts can be added, edited, or deleted. The action picker uses the searchable STRATA Command catalog, including shell commands and discovered applications. Type either `SUPER` or `WIN` to specify the Windows-logo key while editing. STRATA Shell rejects a requested chord when another active binding already owns it, and the editor plus recovery chords are permanently protected so the editor cannot lock itself out.
+Press `Super + Alt + K` for the editor, or open it through Settings or STRATA Command. Every STRATA binding can be remapped and individually reset with its own **Default** button, including editor access, recovery, locking, app switching and volume controls. User-created shortcuts can be added, edited, or deleted. The action picker uses the searchable STRATA Command catalog, including shell commands and discovered applications. Type either `SUPER` or `WIN` to specify the Windows-logo key while editing. The window header follows the saved viewer/editor shortcut.
+
+Saving or resetting rejects a combination already assigned to another shortcut, including actions in the other desktop mode and physical aliases of the workspace `+` key. Saving a shortcut with its own unchanged combination is allowed. Remapping an action releases its old combination for reuse. Application shortcuts cannot be replaced by a conflicting custom shortcut, including legacy saved replacements. Windows-owned combinations (`Ctrl + Alt + Delete`, `Ctrl + Shift + Escape`, and `Alt + F4`) remain unavailable because Windows already uses them. The app switcher follows the held modifiers of its remapped shortcut; a shortcut without modifiers selects an app immediately.
+
+Catalog selections save the actual launch target and arguments, independently of the displayed app name. If an older custom shortcut saved only a friendly name (for example, Microsoft Edge or Control Panel), reselect the app in the action picker and save after updating to a build with this fix.
+
+The built-in application shortcuts (browser, file manager, terminal, Snip, Settings and Task Manager) also expose the application picker and optional arguments. Choose a different application while keeping the default chord, or change both. Leave the application blank to retain STRATA's default; Default resets both the chord and application override. Other built-in shell actions keep their original behavior.
+
+Choose **Record keys** in the shortcut editor, press the combination, and release all its keys. STRATA consumes the recording before its normal shortcut handlers, then displays the captured chord for review. Escape cancels recording; closing or leaving the editor also stops it. Save still rejects occupied and Windows-reserved combinations. Typing a chord remains available.
 
 ## Launch and shell
 
@@ -26,11 +35,12 @@ Press `Super + Ctrl + K` for the editor. Built-in actions can be remapped and in
 | `Super + S` | Open STRATA Snip |
 | `Super + B` | Open a new browser window |
 | `Super + F` | Open STRATA Files |
-| `Super + Ctrl + S` | Open STRATA Settings |
+| `Super + Alt + S` | Open STRATA Settings |
+| `Super + Ctrl + S` | Toggle Strata Sphere (Enable / Disable) |
 | `Super + -` | Remove the highest workspace when it has no open window; stop at 1 |
 | `Super + +` | Add one workspace; stop at 10 |
 | `Super + K` | Open the Keybinding list |
-| `Super + Ctrl + K` | Open the Keybinding Editor (unmodifiable permanent shortcut) |
+| `Super + Alt + K` | Open the Keybinding Editor |
 
 The dock STRATA icon opens Applications. Power/session options remain available from the always-visible power button; Super + Escape is no longer a built-in shortcut.
 
@@ -41,13 +51,15 @@ The launcher and both keybind modes place keyboard focus in their search field o
 | Shortcut | Action |
 |---|---|
 | `Super + Q` | Close active window |
-| `Super + Shift + T` | Toggle transparency for the active third-party or STRATA window |
-| `Super + Shift + D` | Cycle Center Stage → wide side-by-side → wide top/bottom |
-| `Super + Shift + \` | Cycle window expansion: glass-expanded → true fullscreen → Center Stage |
+| `Super + D` | Show desktop in Floating mode: minimize apps on visible workspaces, including fullscreen games; restore through the dock or Alt + Tab |
+| `Super + Ctrl + D` | Desktop Mode: Toggle between Tiled and Floating modes |
+| `Super + Ctrl + W` | Window Mode/Widgets: Cycle Center Stage → wide side-by-side → wide top/bottom |
+| `Super + T` | Toggle transparency for the active third-party or STRATA window |
+| `Super + \` | Tiled: glass-expanded → true fullscreen → Center Stage. Floating: fullscreen ↔ previous window bounds |
 | `Super + Arrow` | Focus the next existing window in that spatial direction |
 | `Super + Shift + Arrow` | Move the active window one spatial position, filling or swapping as needed |
 
-If the destination slot is occupied, STRATA Shell exchanges the displaced application with the source slot. Wide desktop views hide widgets while windows smoothly expand into their space. Floating mode allows individual windows to be freely moved and resized outside the tiler while keeping tiled windows organized in Center Stage. Hold `Super + Ctrl` and left-click/left-drag anywhere inside a window to float and move it, or drag along its borders/corners to resize. Hold `Super + Ctrl` and right-click a floating window to restore it to tiled Center Stage mode. A floating window gives visual precedence over only the app windows or widget cards it physically overlaps. `Super + Shift + \` smoothly cycles between glass-expanded mode (which retains theme transparency and the top rail), true opaque fullscreen (which suspends transparency and hides the rail), and regular Center Stage. Both expanded modes hide the sibling app on that workspace until Center Stage returns. The rail also ducks if any managed window physically crosses it and returns when clear.
+If the destination slot is occupied, STRATA Shell exchanges the displaced application with the source slot. Wide desktop views hide widgets while windows smoothly expand into their space. Floating mode allows individual windows to be freely moved and resized outside the tiler while keeping tiled windows organized in Center Stage. Hold `Super + Ctrl` and left-click/left-drag anywhere inside a window to float and move it, or drag along its borders/corners to resize. Hold `Super + Ctrl` and right-click a floating window to restore it to tiled Center Stage mode. A floating window gives visual precedence over only the app windows or widget cards it physically overlaps. `Super + \` smoothly cycles between glass-expanded mode (which retains theme transparency and the top rail), true opaque fullscreen (which suspends transparency and hides the rail), and regular Center Stage. Both expanded modes hide the sibling app on that workspace until Center Stage returns. The rail also ducks if any managed window physically crosses it and returns when clear.
 
 ### Directional routing rules
 
@@ -110,8 +122,8 @@ Every monitor has its own top rail, workspace selection, and active-app context.
 
 | Shortcut | Action |
 |---|---|
-| `Super + Ctrl + T` | Open Task Manager |
-| `Super + Ctrl + L` | Lock the system |
+| `Super + Alt + T` | Open Task Manager |
+| `Super + L` | Lock the system |
 
 ## Media keys
 
@@ -123,7 +135,7 @@ Every monitor has its own top rail, workspace selection, and active-app context.
 
 Additional play/pause, previous/next, output-device, and microphone controls are available through the audio panel and spectrum widget.
 
-These physical volume controls remain registered at runtime but are intentionally omitted from the searchable keybind list and editor.
+All three volume controls can be remapped in the editor. Remapped volume shortcuts also appear in the searchable viewer.
 
 ## Recovery chords
 
@@ -131,7 +143,9 @@ These physical volume controls remain registered at runtime but are intentionall
 |---|---|---|
 | `Ctrl + Alt + Shift + Delete` | Exit STRATA Preview | Request permanent Explorer restoration and exit |
 
-These chords intentionally do not contain `Super`, so they remain available if the Windows-key state or the ordinary shell hotkey path becomes unreliable.
+The default recovery chord intentionally does not contain `Super`, so it remains available if the Windows-key state becomes unreliable. It can be remapped and reset like other STRATA bindings; the separate Explorer recovery shortcut and Settings recovery actions remain available.
+
+Show desktop is a one-way minimize action and does not depend on the desktop-click setting. Source build and 144 self-checks pass; installed fullscreen-game keyboard acceptance remains pending.
 
 ## Retired bindings
 
@@ -145,11 +159,15 @@ Super + Ctrl + Shift + F
 Super + Shift + Enter
 Super + Shift + B
 Super + Shift + F
+Super + Shift + W
+Super + Shift + D
+Super + Shift + T
+Super + Shift + \
+Super + Ctrl + T
+Super + Ctrl + K
+Super + Ctrl + L
 Super + Ctrl + O
 Super + W
-Super + D
-Super + T
-Super + \
 Super + A
 Super + C
 Super + Shift + S
@@ -160,18 +178,22 @@ Super + Ctrl + Q
 Super + Ctrl + A
 Super + Ctrl + Alt + D
 Super + Ctrl + B
-Super + Ctrl + D
 Super + Ctrl + H
 Super + Ctrl + P
-Super + Ctrl + W
 Super + Ctrl + Shift + Space
 Super + Ctrl + 1…4
 Super + Ctrl + Shift + 1…4
 Super + Shift + Alt + 0…9
 ```
 
-The current assignments are authoritative: `Super + Shift + T` controls transparency, `Super + Shift + D` cycles the active mode's desktop views, and `Super + Shift + W` switches the entire environment. In Tiled mode, `Super + Shift + \` cycles expansion and the held `Super + Ctrl` pointer gesture still floats an individual window.
+The current assignments are authoritative: `Super + T` controls transparency, `Super + Ctrl + W` cycles the active mode's desktop views, `Super + Ctrl + D` toggles Desktop Mode (Floating / Tiled), and `Super + Ctrl + S` toggles Strata Sphere. In Tiled mode, `Super + \` cycles expansion and the held `Super + Ctrl` pointer gesture still floats an individual window.
 
 ## Registration notes
 
 STRATA Shell uses a low-level keyboard path plus explicit binding validation. A chord can still be unavailable if another elevated application, driver utility, accessibility tool, or global-hotkey program consumes it first. Open `Super + K` to inspect registration failures and compare privilege levels before diagnosing the layout manager.
+
+In **Sphered** mode, Super + Shift + Arrow moves the active tab within its pair; Super + Alt + Shift + monitor number transfers it to that monitor. Alt + Tab cycles local tabs and Super + Q closes the active tab. Numbered workspace routes and gap toggling are inactive. Right-click → Group with… offers a searchable partner list; Ctrl-click pairs two ungrouped tabs. See [Sphered mode](SPHERED.md).
+
+### Sphered shortcuts
+
+While Sphered is active, Super+Tab and Super+Right select the next tab, Super+Left selects the previous tab, and Super++ opens a new main tab. Super+Shift+Tab selects the previous tab too. Super+T toggles only the active tab's transparency. Super+\ (expansion) is disabled. The list and editor refresh these mode-specific labels and hide unavailable desktop actions, while keeping remap/reset identities and conflict checking intact. Tiled and Floating retain their existing workspace and spatial-focus shortcuts.

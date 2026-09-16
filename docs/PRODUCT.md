@@ -10,7 +10,7 @@ Windows remains underneath for application compatibility, drivers, security boun
 
 ## Product principles
 
-1. **Two deliberate environments.** Floating permits overlapping, freely resizable applications and uses a STRATA-themed bottom dock. It is the Phase 5 fresh-release-install default. Tiled mode uses one predictable center lane with one or two applications per workspace. `Super + Shift + W` switches environments while preserving open work; tiled-only rules below apply to Tiled mode. Updates and shell startup retain existing choices.
+1. **Two deliberate environments.** Floating permits overlapping, freely resizable applications and uses a STRATA-themed bottom dock. It is the Phase 5 fresh-release-install default. Tiled mode uses one predictable center lane with one or two applications per workspace. `Super + Ctrl + D` switches environments while preserving open work; tiled-only rules below apply to Tiled mode. Updates and shell startup retain existing choices.
 2. **Wallpaper is live state.** Every wallpaper change can change palette, light/dark mode, focus color, glass, widgets, consoles, and compatible application preferences.
 3. **Keyboard first, pointer complete.** Frequent actions have a stable `Super` chord, while every visible shell control remains clickable.
 4. **Spatial continuity.** Workspace changes move laterally, top/bottom exchanges move vertically, and edge controls expand from their origin.

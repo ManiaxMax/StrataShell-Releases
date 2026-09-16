@@ -6,7 +6,7 @@
 
 A wallpaper-driven Windows shell with its own desktop, widgets, application bar, workspaces and native settings.
 
-STRATA provides two environments: **Floating** for freely movable, overlapping windows and **Tiled / Center Stage** for one or two arranged applications per workspace. Switch with `Super + Shift + W`. Both share the same applications, wallpaper-derived colors, controls and recovery system.
+STRATA provides two environments: **Floating** for freely movable, overlapping windows and **Tiled / Center Stage** for one or two arranged applications per workspace. Switch with `Super + Ctrl + D`. Both share the same applications, wallpaper-derived colors, controls and recovery system.
 
 **Development status:** Phase 5 covers code review, fresh-install defaults and documentation. The later local follow-up adds .NET 10, native power modes and battery history, hardware inventory, and stability/installer fixes; it has not been published in this pass. These pages describe current Preview development; published Stable packages may contain an earlier feature set. See [release and testing status](docs/STATUS.md) and each package's [release notes](https://github.com/ManiaxMax/StrataShell-Releases/releases). Documentation updates do not publish or install a new binary.
 
@@ -46,9 +46,11 @@ Browser and Files are pinned initially. Five workspaces are configured, adjustab
 | Applications and tray | App discovery, multi-window STRATA document apps and native publisher tray menus; Open restores existing windows or exposes the publisher's controls |
 | Recovery and updates | Immutable releases, validated update archives, Stable/Preview channels, bootstrap watchdog and independent Explorer recovery |
 
-Hardware support depends on Windows, drivers and devices. Native Windows power modes and total AC/battery usage history are available. Windows per-monitor DPI and immediate Energy Saver toggling use explicit Windows Settings routes; Windows Update installation/scheduling has a Settings route and optional temporary Explorer bridge. There is no universal tray command that creates every application's missing window. See [features and limitations](docs/FEATURES.md).
+Hardware support depends on Windows, drivers and devices. Native Windows power modes and aggregate battery history are available in current development. Per-monitor DPI changes, the immediate Energy Saver switch and Windows Update installation/scheduling use explicit Windows Settings routes; Updates also offers a temporary Explorer bridge. CPU temperature requires an available supported sensor provider. There is no universal tray command that creates every application's missing window. See [features and limitations](docs/FEATURES.md).
 
 ## STRATA applications
+
+**STRATA Sphere** is a new separate native app in local development: unified app/settings/web search, persistent content tabs, compatible native-window hosting and launcher-child tabs. See [Sphere behavior and compatibility limits](docs/SPHERE.md). A future Sphere desktop mode is not part of this candidate.
 
 Browser, Files, Terminal, Text, Snip, Paint, Image Viewer, Media Player and Task Manager share STRATA's visual controls and theme. Browser, Files, Text, Paint, Images, Terminal and Media support independent document windows. Utility surfaces such as Settings remain single-instance tools. [Application guide](docs/FIRST_PARTY_APPS.md).
 
@@ -63,19 +65,24 @@ The screenshot illustrates the Tiled composition. Fresh-install Floating default
 | Shortcut | Action |
 |---|---|
 | `Super + Space` | STRATA Command |
-| `Super + Shift + W` | Switch Floating / Tiled |
+| `Super + Ctrl + D` | Desktop Mode (Switch Floating / Tiled) |
+| `Super + Ctrl + S` | Toggle Strata Sphere |
 | `Super + Enter` | Terminal |
 | `Super + B` / `Super + F` | Browser / Files |
 | `Super + S` | Snip |
-| `Super + Ctrl + S` | Settings |
-| `Super + K` / `Super + Ctrl + K` | Keybind viewer / editor |
-| `Super + Shift + T` | Active-window transparency |
+| `Super + Alt + S` | Settings |
+| `Super + K` / `Super + Alt + K` | Keybind viewer / editor |
+| `Super + T` | Active-window transparency |
+| `Super + Q` / `Super + Arrow` | Close active app / directional focus in both modes |
+| `Super + \` | Floating fullscreen toggle; Tiled expansion cycle |
 | `Super + 1…0` | Workspace selection |
-| `Super + Shift + D` | Floating: show/hide widgets; Tiled: change layout view |
+| `Super + Ctrl + W` | Window Mode/Widgets (Floating: show/hide widgets; Tiled: change layout view) |
+| `Super + D` | Floating: minimize apps to show desktop |
+| `Super + L` | Lock system |
 | `Alt + Tab` | Floating app switcher |
 | `Ctrl + Alt + Shift + Delete` | Emergency Explorer recovery / exit Preview |
 
-[Complete keybindings](docs/KEYBINDS.md). The STRATA dock icon opens Applications; Super + Escape is retired. Power remains available in the bar.
+[Complete keybindings](docs/KEYBINDS.md). Every STRATA shortcut can be edited; saving or resetting blocks combinations already assigned elsewhere. The STRATA dock icon opens Applications; Super + Escape is retired. Power remains available in the bar.
 
 ## Documentation
 
@@ -91,7 +98,7 @@ The screenshot illustrates the Tiled composition. Fresh-install Floating default
 
 Source is maintained privately in `ManiaxMax/StrataShell`. The public `ManiaxMax/StrataShell-Releases` repository contains distribution assets and documentation, not application source. Contributors need access to the private repository.
 
-From an authorized source checkout, install the .NET 10 SDK (10.0.400 or a later compatible .NET 10 feature band) and build:
+From an authorized source checkout, install the .NET 10 SDK and build:
 
 ```powershell
 dotnet restore .\src\StrataShell\StrataShell.csproj

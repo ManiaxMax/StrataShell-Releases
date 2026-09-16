@@ -2,8 +2,10 @@
 
 ## Toolchain
 
+Installer profile-routing regression: `scripts/Test-StrataInstallerProfileRouting.ps1` executes the portable installer's actual path assignments and seeding call in a temporary profile, without running activation, registry or process operations. It accepts `-InstallerPath` to validate the scripts copied into a Preview bundle. Preview publication runs that check with Windows PowerShell; CI also runs the source check.
+
 - Windows 11 x64
-- .NET 10 SDK (10.0.400 or a later compatible .NET 10 feature band; see the source global.json)
+- .NET 10 SDK (10.0.400 or a later stable .NET 10 feature band; see `global.json`)
 - WPF targeting `net10.0-windows10.0.26100.0`
 - x64 runtime identifier
 - Microsoft Edge WebView2 Runtime
@@ -29,7 +31,7 @@ For targeted floating-mode acceptance, run `scripts/Test-StrataDesktopMode.ps1` 
 
 | Arguments | Purpose |
 |---|---|
-| none or `--preview` | Safe interactive preview; does not change the configured Windows shell |
+| none or `--preview` | Interactive shell preview; does not change the configured Windows shell; requires no competing shell/preview instance |
 | `--shell` | Full shell behavior used by the installed bootstrap |
 | `--no-desktop` | Start the coordinator without the desktop surface |
 | `--bootstrap` | Recovery watchdog that owns the installed shell child process |
@@ -55,7 +57,7 @@ The suite reports its live check count in `%LOCALAPPDATA%\StrataShell\Recovery\s
 - settings parsing and persistence;
 - wallpaper libraries and fallback assets;
 - packaged ChatGPT discovery;
-- keybinding uniqueness, protected routes, remap/reset/conflict policy, and viewer/editor XAML construction;
+- keybinding uniqueness, remapping every STRATA route, Windows-reserved combinations, remap/reset/conflict policy, and viewer/editor XAML construction;
 - one/two-app Center Stage geometry;
 - widget-column and vertical-envelope calculations;
 - frame compensation and chrome policy;
@@ -67,6 +69,8 @@ The suite reports its live check count in `%LOCALAPPDATA%\StrataShell\Recovery\s
 - recovery configuration consistency.
 
 The report is written to `%LOCALAPPDATA%\StrataShell\Recovery\self-test.json`. A test that depends on local wallpaper folders or installed applications may fail on a clean development machine; document the machine dependency instead of weakening the installed-shell gate.
+
+For targeted keybinding editor acceptance, set `STRATA_APP_TEST_FILTER=keybindings` for the test process and run `scripts/Test-StrataAppPolish.ps1 -OutputDirectory artifacts/keybinding-editor-acceptance`. Its private desktop and isolated settings exercise all 75 real catalog actions through editor save, unchanged-save, duplicate rejection and reset, verify the runtime map and persisted settings, and capture the editor in Light and Dark. This does not replace physical global-hotkey acceptance in an installed build.
 
 ## Visual acceptance checklist
 
@@ -135,7 +139,24 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\Install-Strata
 
 See [Installation and recovery](INSTALLATION.md) for activation. Never point Shell Launcher at a mutable development build.
 
-## Default owner testing procedure
+## Local testing before an update
+
+For Browser workspace investigations, build the local Release source and run the quiet self-test, then use the private-desktop runners below. They exercise the source window manager and render app previews without signing, publishing, installing, switching the input desktop, or replacing the running shell. Reports and screenshots stay under ignored `artifacts` directories.
+
+```powershell
+$env:STRATA_APP_TEST_FILTER = 'browser,terminal,text,files'
+$env:PSModulePath = @("$env:WINDIR\System32\WindowsPowerShell\v1.0\Modules", "$env:ProgramFiles\WindowsPowerShell\Modules") -join [IO.Path]::PathSeparator
+.\scripts\Test-StrataAppPolish.ps1 -OutputDirectory .\artifacts\browser-workspace-local -TimeoutSeconds 150
+.\scripts\Test-StrataDesktopMode.ps1 -OutputDirectory .\artifacts\browser-workspace-desktop-local
+```
+
+Browser checks include native child focus retention, visibility throughout directional/direct/adjacent moves, both connected monitors, Tiled/Floating, Reduced Motion, and workspace leave/return. A bounded delayed native focus-loss fixture detects synchronous focus resets without deliberately hanging the active shell.
+
+Use `STRATA_APP_TEST_FILTER=browser-close` with the same private app runner for repeated close/reopen, native-controller lifetime at owner destruction and visual detachment, close cancellation, multiple tabs, successor focus, Tiled/Floating, Reduced Motion and close during renderer initialization. It runs before the normal app fixtures so the first Browser renderer starts cold. Timing results on this private desktop do not reproduce or certify the active laptop session's intermittent close hang.
+
+`--browser-only` is a standalone app route, but currently shares the normal user profile and does not run the candidate workspace manager. It is not an isolated workspace acceptance route. `--preview` composes a shell and shares the normal single-instance lock; coordinate a session change before interactive shell testing. Private-desktop passes do not certify physical hotkeys, installed focus, or the laptop's long stall.
+
+## Publishing an update when requested
 
 1. Build the private source checkout on `preview` and run the quiet self-test.
 2. Privacy-scan and commit the exact tested source, push it to `ManiaxMax/StrataShell` on `preview`, and verify the remote commit matches.
@@ -162,7 +183,7 @@ The full suite renders all first-party app surfaces plus Files and Settings in L
 
 App acceptance also saves native browser/terminal captures, verifies Light/Dark text contrast, exercises all compact Task Manager destinations, and records real CPU clock/disk/GPU counters in `task-hardware.json`. Its live-hardware check requires those providers on the test host; an unsupported driver can fail that acceptance even when the app correctly reports Unavailable. Private desktop regression covers Up/Down monitor selection followed by repeated workspace Left/Right/Tab commands in Tiled and Floating modes, with empty/occupied destinations and a deliberately delayed prior focus request.
 
-The final Phase 4 evidence is linked in [current validation and limitations](STATUS.md). The desktop runner allows ninety seconds for the expanded sequence. A private comparison copy with the old focus-routing behavior restored fails those sequences; it is a diagnostic comparison, not an installable candidate. Temperature coverage on this host verifies NVIDIA readings and an honest missing CPU-provider state; it does not validate physical CPU sensors on other machines.
+The final Phase 4 evidence is linked in [the acceptance record](BATCH_4_APP_POLISH_ACCEPTANCE.md). The desktop runner allows ninety seconds for the expanded sequence. A private comparison copy with the old focus-routing behavior restored fails those sequences; it is a diagnostic comparison, not an installable candidate. Temperature coverage on this host verifies NVIDIA readings and an honest missing CPU-provider state; it does not validate physical CPU sensors on other machines.
 
 ## Phase 5 preservation and maximize regression
 
@@ -171,3 +192,7 @@ After building Maintenance and Shell in Release, run `scripts/Test-StrataRelease
 Run `scripts/Test-StrataDesktopMode.ps1` for native per-monitor work-area publication, repeated maximization, custom chrome, high-DPI-sized bar reservations, normal restore bounds and fullscreen separation. Its owned work-area probes run only on a noninteractive desktop and release their reservations in `finally`/`using` cleanup. Normal app tests still disable global theme and hardware mutations. Physical ChatGPT and other toolkit checks on the installed candidate remain required before claiming the reported maximize issue is resolved for the owner.
 
 The full app suite includes stale deferred tray activation cancellation. Build with warnings as errors, keep reports outside Git, and use [release status](STATUS.md) to distinguish source validation from installation and visible acceptance.
+
+## Requested improvements acceptance
+
+Run scripts/Test-StrataRequestedImprovements.ps1 after a Release build. The --improvements-test entry point requires a StrataModeTest private desktop, uses isolated settings, and exercises settings/search, fullscreen restoration, capture scoping, terminal process isolation, GPU module rendering and multi-monitor widget drops. It does not run CLI installers, bypass permissions for a request, write the shared clipboard, activate a shell or change Windows theme settings. Physical fullscreen games, global chords and installation remain separate acceptance.

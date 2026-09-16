@@ -4,7 +4,9 @@ This document describes current Preview development. Published Stable releases m
 
 ## Floating environment
 
-`Super + Shift + W` switches the full environment. Floating mode offers native title-bar movement and edge resize without modifiers, STRATA/native window controls, minimized-app recovery, grouped persistent dock pins, and an Alt + Tab selector. Workspace and monitor moves remain available without a two-window limit. The bottom bar replaces center context text with the launcher and dock; launcher, tray, power, audio and network panels open upward. Show Widgets / Hide Widgets replace the three tiled desktop views until Tiled mode returns. [Behavior, verification and limits](FLOATING_MODE.md).
+The local STRATA Sphere candidate adds a separate app with unified search and tabs for web pages, settings, terminal commands and compatible native applications. Contained windows share Sphere's dock entry. Launcher-child adoption is verified with isolated processes, not certified for every Steam/game combination. [Sphere scope and acceptance](SPHERE.md).
+
+`Super + Ctrl + D` switches the desktop environment (Desktop Mode: Tiled / Floating). Floating mode offers native title-bar movement and edge resize without modifiers, STRATA/native window controls, minimized-app recovery, grouped persistent dock pins, and an Alt + Tab selector. Workspace and monitor moves remain available without a two-window limit. The bottom bar replaces center context text with the launcher and dock; launcher, tray, power, audio and network panels open upward. Show Widgets / Hide Widgets replace the three tiled desktop views until Tiled mode returns. [Behavior, verification and limits](FLOATING_MODE.md).
 
 ## Center Stage window management
 
@@ -16,10 +18,10 @@ This document describes current Preview development. Published Stable releases m
 - Moving an application into an occupied slot exchanges the displaced application back to the source workspace.
 - `Super + Arrow` follows the next existing app in the active monitor's bounded spatial path, adapting to top/bottom or side-by-side view. At a monitor edge it continues through the next monitor's currently visible workspace and updates focus, active-border, rail, and workspace ownership together.
 - `Super + Shift + Arrow` moves or swaps the active application with animated transitions. A half-filled destination preserves the incoming app's TOP/BOTTOM slot (or the current left/right spatial boundary), while a full destination exchanges the matching slot. At a monitor edge it fills or swaps within that destination monitor's currently visible workspace. Directional focus and movement continue repeating while the modifiers remain physically held; monitor/workspace moves do not require releasing and pressing `Super + Shift` again.
-- `Super + Shift + \` cycles the active application through glass-expanded mode (retaining transparency/effects and the rail while hiding the workspace sibling and overlapped widgets), true edge-to-edge fullscreen (temporarily disabling that app's transparency and auto-hiding the rail), and standard Center Stage.
-- `Super + Shift + T` independently toggles whole-window alpha for a third-party app and native material transparency for active STRATA windows such as Settings, Files, the wallpaper chooser, and the keybind viewer.
+- `Super + \` cycles the active application through glass-expanded mode (retaining transparency/effects and the rail while hiding the workspace sibling and overlapped widgets), true edge-to-edge fullscreen (temporarily disabling that app's transparency and auto-hiding the rail), and standard Center Stage.
+- `Super + T` independently toggles whole-window alpha for a third-party app and native material transparency for active STRATA windows such as Settings, Files, the wallpaper chooser, and the keybind viewer.
 - Floating mode allows individual windows to be freely moved and resized outside the tiler. Hold `Super + Ctrl` and left-click/left-drag anywhere inside a window to float and move it, or drag along its borders/corners to resize. Pointer samples are collapsed into one latest-position commit per composed frame; STRATA frost and bloom pause only during the gesture and resume after an 85 ms settle, without replacing live content with a stretched snapshot. Hold `Super + Ctrl` and right-click a floating window to restore it to tiled Center Stage layout. The active floating window hides only the app windows and widget cards its rectangle covers; moving it away restores them.
-- The top rail fades and becomes pointer-transparent whenever a managed window crosses its bounds. Touching the top screen edge temporarily reveals the rail only for ordinary overlap; native and STRATA true-fullscreen applications keep the active-window border, rail, dock, launcher, and quick panels fully suppressed until fullscreen ends.
+- The top rail fades and becomes pointer-transparent whenever a managed window crosses its bounds. Touching the top edge (Tiled) or bottom edge (Floating) temporarily reveals the rail/dock, including during fullscreen. Super + Space can open the command launcher over fullscreen; passive borders, widgets and quick panels remain suppressed.
 - Invisible DWM resize-frame clearance prevents top/bottom and side overlap between Center Stage slots, preserving the theme-colored active-application border.
 - Compatible browser and native DWM borders follow the current dark/light wallpaper theme instead of retaining an unrelated light frame.
 
@@ -32,7 +34,7 @@ STRATA Shell tracks top-level application windows through Win32/DWM. Dialogs, ow
 - Applications can be moved while following them; direct workspace and monitor routes retain the destination display's independent state.
 - Managed window movement keeps live application content and temporarily suspends expensive visual effects while geometry settles. Dispatcher-driven workspace and slot transitions honor the selected frame cap. Screen/DPI movement and visual fidelity require the hardware acceptance recorded for each candidate.
 - `Super + Tab` advances, `Super + Shift + Tab` goes back, and `Super + Ctrl + Tab` recalls the formerly active workspace.
-- Every connected monitor owns a dedicated top rail, current/previous workspace state, active-app context, desktop-view mode, and top reservation. The rail currently owning keyboard workspace routes shows **Active Monitor** after its workspace numbers. `Super + Alt + 1…4` selects a monitor and its first visible app; `Super + Alt + Shift + 1…4` moves the active app into that monitor's current workspace. Launchers and quick panels opened from a rail remain on its display. ScreenPad-style secondary displays remain widget-free by default but still show their own rail and workspace position.
+- Every connected monitor owns a dedicated top rail, current/previous workspace state, active-app context, desktop-view mode, and top reservation. Clicking a monitor's rail selects that monitor. The rail currently owning keyboard workspace routes shows **Active Monitor** after its workspace numbers. `Super + Alt + 1…4` selects a monitor and its first visible app; `Super + Alt + Shift + 1…4` moves the active app into that monitor's current workspace. Launchers and quick panels opened from a rail remain on its display. ScreenPad-style secondary displays remain widget-free by default but still show their own rail and workspace position.
 - Widgets and the desktop perimeter remain persistent while application workspaces change.
 - `Super + -` removes one empty highest workspace down to a minimum of 1; it refuses to remove a workspace that still contains an open app on any monitor. `Super + +` adds one up to 10. The rail and persisted Settings value update together.
 
@@ -44,9 +46,11 @@ These are logical STRATA workspaces, not Windows virtual desktops.
 - Dedicated appbar-reserving top rail on every monitor, so centered windows begin below the correct local rail.
 - Four-sided theme-colored surround with adjustable intensity and thickness.
 - Rofi-style searchable application launcher and command launcher.
-- Searchable read-only keybinding viewer on `Super + K` and a protected editor on `Super + Ctrl + K` for remapping/resetting built-ins and adding/editing/deleting conflict-checked command or application shortcuts. Related actions are grouped by function and custom shortcuts occupy a final **Custom Keybinds** section. Each built-in row has its own **Default** action, the action field opens a searchable STRATA Command catalog, and edit mode accepts either `SUPER` or `WIN` for the Windows-logo key.
+- Searchable read-only keybinding viewer on default `Super + K` and an editor on default `Super + Alt + K` for remapping/resetting every STRATA binding and adding/editing/deleting conflict-checked command or application shortcuts. The editor includes volume controls and both desktop modes; editor access and recovery are editable too. Occupied combinations cannot be overwritten. Related actions are grouped by function and custom shortcuts occupy a final **Custom Keybinds** section. Each built-in row has its own **Default** action, the action field opens a searchable STRATA Command catalog, and edit mode accepts either `SUPER` or `WIN` for the Windows-logo key.
 - Quick panels and on-screen displays for shell and hardware state.
-- First-party STRATA Settings, Files, Terminal, Text, Snip, Image Viewer, Media Player, Paint, Task Manager, and Browser windows using the same palette, opacity, independently targetable blur, bloom, shadow, and active-window systems.
+- First-party STRATA Settings, Files, Terminal, Text, Snip, Calendar, Image Viewer, Media Player, Paint, Task Manager, and Browser windows using the same palette, opacity, independently targetable blur, bloom, shadow, and active-window systems.
+- STRATA Calendar stores local appointments and all-day events, with editing, deletion, widget date popups and upcoming events in the widget/clock panel. Event markers follow the secondary palette color. Account connections and calendar syncing are excluded.
+- Applications in either launcher mode offer right-click Pin to dock / Unpin from dock. The keybind editor supports replacement application targets for built-in app shortcuts and a Record keys control, with duplicate/reserved-chord checks retained.
 - A capture button in the top rail enters rectangle selection immediately; `Super + S` opens the full STRATA Snip utility.
 
 ## STRATA screensaver
@@ -59,7 +63,7 @@ These are logical STRATA workspaces, not Windows virtual desktops.
 ## Window motion and lifecycle
 
 - New first-party windows remain transparent through first placement, then use an opacity-only reveal. No top-level STRATA app scales or translates into place.
-- Tiled workspace travel retains the directional slide and adds outgoing/incoming crossfades. Desktop-view geometry changes fade cached STRATA content completely away before resize and reveal the live settled surface near the destination, preventing temporary oversized text.
+- Browsing and moving apps between workspaces use directional slides and crossfades, respecting Reduced Motion and fullscreen. A carried app enters from the left when moved right, and from the right when moved left. STRATA surfaces retain wallpaper frost during movement; widgets keep their frost aligned while expanding or moving.
 - Closing a tiled compatible window fades exactly that HWND before the existing single-window close/focus handoff. Floating windows remain immediate and do not inherit tiled fades.
 - The active-window signal stays hidden while geometry changes and requires stable bounds for at least two composition frames and 70 ms before reappearing.
 - Defers automatic activation during presentation mode and full-screen Direct3D states without letting Windows' generic busy state block the idle timer forever. The Screensaver Settings pane and STRATA Command catalog provide manual preview routes.
@@ -87,21 +91,21 @@ All first-party widgets inherit the live wallpaper palette, opacity, vibrancy, o
 - Weather with location search, Fahrenheit/Celsius choice, themed or normal icon styles, and expanded forecast details.
 - Local time with calendar expansion and a long-form date such as `Sunday, August 30, 2026`.
 - Focus timer with configurable duration, progress signal, remaining percentage, pause/reset, quick `+5 min`, completion notification, and reminder text.
-- Performance telemetry with CPU/memory color keys matching their graph signals, network, process counts, expanded process management, and close/end-task actions.
+- Performance telemetry with four configurable Task Manager metric modules, including GPU and supported temperatures, a CPU/RAM history graph, expanded process management, and close/end-task actions.
 - WASAPI spectrum sourced from the active Windows output mix or default microphone, with band/mirror/level rendering, sensitivity control, and a compact previous/pause/play/next strip that directly controls the embedded YouTube player and falls back to system media transport.
 - AI CLI panel with one-click provider selection for Antigravity (`agy`), Codex, and Claude, streaming conversation output, stop/reset actions, and working-directory selection.
 - YouTube search/player hosted locally in WebView2 with concise status copy, centered playback, optional JPEG previews, autoplay/speed controls, browser account/home routes, and uninterrupted audio/video while the card yields space to another expanded widget.
 
 All widget title lines can be hidden globally without removing their controls or live status content. Widget columns use layout-aware scaling so 720p and 1080p displays keep the complete card stack inside the desktop instead of clipping lower content.
 
-The AI CLI executables are not bundled. YouTube account authentication stays in the default browser rather than the embedded player, and playback depends on YouTube's embeddable-player availability.
+AI CLI executables are not bundled; each provider's widget settings can install its official CLI and repair user PATH. Explicit model and permission options apply per provider. YouTube account authentication stays in the default browser rather than the embedded player, and playback depends on YouTube's embeddable-player availability.
 
 ## Application discovery and launch
 
 - Desktop and Start Menu shortcuts.
 - Registered executable applications.
 - Packaged/MSIX applications.
-- Direct launchers for STRATA Terminal, STRATA Text, STRATA Snip, external PowerShell, the default browser, STRATA Files, Settings, and ChatGPT.
+- Direct launchers for STRATA Terminal, STRATA Notepad, STRATA Snip, external PowerShell, the default browser, STRATA Files, and Settings. ChatGPT / Codex appears through installed application discovery rather than an unconditional launcher entry.
 - Browser launch requests force a new browser window rather than opening only a new tab.
 - Search results receive keyboard focus immediately; the first Down key selects the first result, Enter launches it, and a single click launches a result.
 - New application windows are focused and assigned to Center Stage as soon as their top-level window becomes manageable.
@@ -138,7 +142,7 @@ STRATA Files is intentionally still a focused file manager. Windows shell extens
 
 - Output and microphone selection, levels/mute, per-app audio session mixer and media transport, with shared compact sound tray controls.
 - Native display arrangement, resolution, refresh, orientation, primary/enabled outputs and Extend/Duplicate, protected by a separate timed rollback helper. DPI remains read-only; brightness is available when the hardware exposes a supported interface.
-- Native mouse/keyboard and supported Precision Touchpad settings; launcher-selected shell startup apps; AC/battery power modes, installed power plans, timeouts, battery information and 14-day usage history; timezone, clock synchronization/manual time and a tray clock/calendar. See [current validation and limitations](STATUS.md).
+- Native mouse/keyboard and supported Precision Touchpad settings; launcher-selected shell startup apps; AC/battery power modes, installed power plans, timeouts, battery information and 14-day usage history; timezone, clock synchronization/manual time and a tray clock/calendar. See [native controls and exact limits](NATIVE_SETTINGS_ACCEPTANCE.md).
 - Wi-Fi, wired-LAN, and offline link detection with distinct top-rail states.
 - Native Windows Wi-Fi lists, radio on/off, saved-profile removal, supported open/WPA2/WPA3 Personal/OWE connection, secret entry, cancellation and adapter-specific disconnect in the clickable network rail panel and Settings. Hidden/enterprise/unsupported enrollment uses Windows-managed profiles; permission denial is reported explicitly.
 - Streaming Bluetooth Classic/LE discovery cards, native custom pairing, connection requests, disconnect and removal in Settings and a dedicated Bluetooth rail button. Supported pairing ceremonies cover confirmation, keyboard PIN display, PIN entry and matching-code confirmation.
@@ -215,14 +219,26 @@ See [Installation and recovery](INSTALLATION.md) before enabling default-shell m
 
 ## Batch 1 safety and trust
 
-Signed update inventories, mandatory GitHub digests, verified CRX3 with native consent, an encrypted manual password vault with Windows Hello reveal/copy, safer files/archives, atomic image saves, correct display-rebuild close ownership, and honest missing-telemetry states are implemented in Preview source. See [current validation and limitations](STATUS.md).
+Signed update inventories, mandatory GitHub digests, verified CRX3 with native consent, an encrypted manual password vault with Windows Hello reveal/copy, safer files/archives, atomic image saves, correct display-rebuild close ownership, and honest missing-telemetry states are implemented in Preview source. See [evidence and pending installed acceptance](BATCH_1_SAFETY_ACCEPTANCE.md).
 
 ## Phase 2 local candidate
 
-Shared background metrics and spectrum capture, bounded wallpaper/frost caches and image decoding, compact Paint undo history, asynchronous image operations, inactive-tab memory targets, explicit browser failure recovery, and bounded asynchronous diagnostics are implemented. The [current validation and limitations](STATUS.md) separates local checks from pending laptop and native browser validation.
+Shared background metrics and spectrum capture, bounded wallpaper/frost caches and image decoding, compact Paint undo history, asynchronous image operations, inactive-tab memory targets, explicit browser failure recovery, and bounded asynchronous diagnostics are implemented. The [Phase 2 record](BATCH_2_PERFORMANCE_ACCEPTANCE.md) separates local checks from pending laptop and native browser validation.
 
 ## Phase 4 app polish (local candidate)
 
-Interactive ConPTY terminal with bounded VT rendering; cancellable file copies and archive extraction; asynchronous/conflict-aware Text saves; Snip snapshot processing and unsaved-change protection; orientation-correct image loading/export; real shared audio visualization; per-site browser permission review; live download progress/cancellation; process identity checks; and compact/live-theme/accessibility corrections. Open/Save dialogs no longer retain the covered app's active highlight. Implementation and test boundaries are tracked in [current validation and limitations](STATUS.md).
+Interactive ConPTY terminal with bounded VT rendering; cancellable file copies and archive extraction; asynchronous/conflict-aware Text saves; Snip snapshot processing and unsaved-change protection; orientation-correct image loading/export; real shared audio visualization; per-site browser permission review; live download progress/cancellation; process identity checks; and compact/live-theme/accessibility corrections. Open/Save dialogs no longer retain the covered app's active highlight. Implementation and test boundaries are tracked in [Phase 4 acceptance](BATCH_4_APP_POLISH_ACCEPTANCE.md).
 
 Repeated workspace shortcuts preserve the selected monitor after Up/Down monitor navigation, including empty destinations in tiling mode. Task Manager connects Windows CPU clock, disk activity/transfer rates and per-adapter GPU engine/memory counters. NVIDIA driver temperatures and optional running CPU sensor providers supply real temperatures with source labels. Unsupported measurements remain explicit; no additional sensor driver is installed.
+
+## September 7 tiled input and launcher follow-up (source candidate)
+
+Tiled windows reject native caption/edge pointer movement before the native move loop, and managed STRATA windows reject native move/size commands while tiled. Super + Ctrl gestures retain the float/move/resize route. Client clicks and native window control buttons are preserved. Elevated/custom-chrome applications still require installed pointer acceptance.
+
+Launcher catalogs warm after shell surfaces appear. Concurrent requests for the same icon mode share one scan, and desktop and packaged application discovery run concurrently off the UI thread. Cold-start and warm-launch timings still require installed measurement.
+
+Workspace changes and window transfers now show the destination number in the existing notification popup on the destination monitor. First-party app headers omit decorative numbers; STRATA Notepad replaces the Text display name while retaining saved command and dock identities. Dock and launcher app icons share crisp outlines with a 24% secondary-theme fill.
+
+## Sphered mode
+
+Sphered provides one Sphere space per monitor, multiple independent two-tab groups, monitor transfers, embedded live status controls and reversible docking. Native windows keep their own top-level handles and input queues; `SphereWindowRegistry` maps focus to the owning Sphere and excludes contained apps from outer layout/dock management. Web views retain their dedicated profile and no command bridge. See [behavior and compatibility](SPHERED.md).

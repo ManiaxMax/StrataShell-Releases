@@ -1,6 +1,6 @@
 # Shipped STRATA Shell defaults and privacy scrub
 
-The next release containing Phase 5 seeds `installer/Defaults/settings.safe.json` only for a brand-new installation without an existing settings file. The profile uses **Balanced quality** and **Floating mode**, with Browser and Files pinned. Setup and portable installation preserve existing profiles; neither updates nor shell startup apply this new layout. Explicit Reset Settings is a separate user action. The widget-layout schema remains 40; no layout migration runs at startup. The separate automatic Low quality preference defaults to enabled when absent and never overwrites the saved rendering preset.
+The next release containing Phase 5 seeds `installer/Defaults/settings.safe.json` only for a brand-new installation without an existing settings file. The profile uses **Balanced quality** and **Floating mode**, with Browser and Files pinned. Setup and portable installation preserve existing profiles; neither updates nor shell startup apply this new layout. Explicit Reset Settings is a separate user action. Schema 45 adds widget placements, module selection, AI controls and Snip auto-copy; the failed experimental live backdrop is withdrawn and saved opt-ins are cleared. Wallpaper animation selection remains unchanged and no layout migration runs at startup. The separate automatic Low quality preference defaults to enabled when absent and never overwrites the saved rendering preset.
 
 | Slot | Left column | Right column |
 |---|---|---|
@@ -9,6 +9,8 @@ The next release containing Phase 5 seeds `installer/Defaults/settings.safe.json
 | 2 | Focus Timer | Performance |
 | 3 | Notes | AI Command |
 | 4–7 | Unassigned | Unassigned |
+
+Fresh installs use 0% floating background transparency (`FloatingBackgroundOpacity = 1.0`), Snip auto-copy enabled, CPU/RAM/Network/Processes modules, empty display/model maps and permission bypass disabled. Existing customized opacity is preserved.
 
 All eight widgets are enabled; hover expansion and widget titles are enabled. Five workspaces are configured. Only portable layout and behavior are copied into the template: personal widget content and hardware identities are not included.
 
@@ -44,3 +46,5 @@ The packaged visual baseline follows the Balanced desktop profile: 40% glass tra
 No current `settings.json`, log, cache, session database, browser data, or recovery backup is embedded in the installer. The allowlisted template is `installer/Defaults/settings.safe.json`.
 
 Schema 40 ships no selected startup apps (StartupApplicationIds is empty). STRATA touchpad workspace swipes are enabled with a threshold of 180. Native display, input, sound, power and clock values are read from Windows; installing STRATA does not apply new hardware defaults.
+
+WallpaperAnimation defaults to 0 (Glow Sweep). Existing profiles missing this property retain the previous effect; saved alternatives are preserved.

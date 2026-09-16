@@ -4,6 +4,8 @@ STRATA Shell is a .NET 10 WPF process that replaces Explorer's visible desktop s
 
 ## Process modes
 
+`CalendarService` keeps local appointments in an atomic `calendar.json` store shared by the Calendar app, the clock widget and rail clock panel. It has no authentication or network path. Event saves notify every view; unreadable files are not overwritten. `KeybindingRecorder` consumes input through the existing shell keyboard hook only while its editor owns focus, drains held-key releases, and returns a chord for the normal conflict validation. Built-in application overrides use the existing custom-handler factory while retaining the binding's immutable default-chord identity.
+
 `App.xaml.cs` selects one of four important roles:
 
 1. **Preview:** composes the interactive shell without asserting installed-shell recovery behavior.
@@ -14,6 +16,8 @@ STRATA Shell is a .NET 10 WPF process that replaces Explorer's visible desktop s
 The edition-aware installer points either the current-user custom-shell policy (Home/Pro) or Windows Shell Launcher (supported Enterprise/Education/IoT editions) at `StrataShell.exe --bootstrap`, never at a mutable development build.
 
 ## Composition root
+
+`ShellCoordinator.Sphere` composes one Sphered display surface per monitor. `SphereSearchPolicy` routes the app catalog and Settings index; `SphereWindow` owns tab lifetimes. `SphereNativeHost` preserves top-level HWND/input ownership, bounds native mutations off the shell UI thread, and restores original chrome before releasing a tab. `SphereWindowRegistry` excludes contained apps from the outer manager. Web tabs use composed WebView2 surfaces for per-tab opacity. [Compatibility and acceptance](SPHERED.md).
 
 `ShellCoordinator` is the composition root. It owns the long-lived services and first-party windows, builds the authoritative keybinding list, routes launcher commands, and performs ordered shutdown.
 
@@ -51,7 +55,7 @@ Primary collaborators:
 | `TextEditorWindow` | Encoding-aware plain-text editing with atomic save and STRATA Files routing |
 | `ScreenshotWindow` | Multi-monitor rectangle/window/desktop capture, markup, clipboard, and export |
 | `WallpaperChooserWindow` | Search, thumbnails, pagination, and preview |
-| `KeybindWindow` | Searchable read-only `Super + K` policy plus protected `Super + Ctrl + K` remap/custom-shortcut editor mode |
+| `KeybindWindow` | Searchable read-only viewer (default `Super + K`) and complete remap/custom-shortcut editor (default `Super + Ctrl + K`); shares runtime conflict resolution through `KeybindingCustomizationPolicy` |
 | `OsdWindow` | Short-lived volume, wallpaper, workspace, and system signals |
 | `PromptWindow` | Themed confirmations/input |
 
@@ -80,6 +84,10 @@ workspace
 In Tiled mode, each workspace has a strict two-application capacity. Incoming movement to an occupied slot is an exchange. Floating mode allows ordinary overlapping windows and grouped dock access.
 
 ## Window discovery and focus
+
+Windows hosting native child content, including Browser and Terminal WebView2, declare `IStageWindowSurface.UsesNativeChildWindows` before renderer initialization. `ManagedWindowAnimationVisualPolicy` also detects other `HwndHost` children in the logical/visual tree. These windows retain their complete content opacity during opening, closing, workspace and layout motion: fading the WPF root cannot fade the native child and would expose a webpage without its controls. The window manager declines that fade lease rather than adding a layered-window workaround; existing geometry, effect suspension, material and fullscreen owners remain in control. See [browser workspace investigation](BROWSER_WORKSPACE_INVESTIGATION.md) for the isolated regression and outstanding installed stall investigation.
+
+Workspace movement preserves native keyboard focus. `ActivateStageWindow` leaves an already foreground window alone and otherwise requests foreground activation without attaching input queues or resetting focus to its outer HWND. The existing bounded focus-intent handoff observes acceptance or refusal. Normal tiling does not activate each sibling with `SW_RESTORE`; only minimized/maximized windows need restoration. Commands that move and follow an app refresh inventory before changing its workspace, then skip the intermediate refresh that would incorrectly hide the travelling window. Cross-monitor source reflow occurs when the destination transition settles. Ordinary workspace leave/return still hides/restores inactive apps.
 
 `WindowManagerService` observes eligible top-level windows, filters shell/owned/tool surfaces, assigns new windows to policy slots, applies visible-frame geometry, and focuses the selected HWND. Floating geometry survives leave/return workspace transitions. In the Tiled environment, per-window floating presentation uses separate normalization and capacity rules; it does not select the shell-wide Floating environment. The existing native move/resize routes preserve monitor and workspace ownership. The foreground floating window owns overlap precedence: covered peer windows are hidden and restored as geometry/focus changes, while the desktop consumes its bounds through `WidgetOcclusionPolicy`. The top rail independently consumes every visible workspace-window bound and ducks whenever one crosses the reserved edge. The active-window overlay owns its target HWND and synchronizes physical visible-frame geometry on WPF composition frames; `ShellCoordinator` suppresses that overlay for the complete screensaver lifecycle. Interrupted directional transitions commit their focus intent before the next held-key command resolves monitor ownership. Native-only motion retains the per-monitor high-resolution scheduler. Any transition containing a same-process STRATA WPF surface moves every native and managed frame as one synchronous deferred batch from `CompositionTarget.Rendering`; expensive first-party effects and frost alignment pause during geometry motion and resume after the exact final tile. This removes cross-thread/producer-queue lag without using queued `SWP_ASYNCWINDOWPOS`. Managed appearance is restored on shutdown through `WindowAppearanceRecoveryStore`.
 
@@ -183,13 +191,15 @@ This separation is intentional: replacing Explorer's experience must not weaken 
 
 BrowserMessagePolicy limits messages to token-bound start-page navigation/search; extension installation is native-only. CrxPackageVerifier verifies identity before bounded staging/consent. BrowserPasswordStore uses DPAPI CurrentUser with atomic migration and fail-preserved storage; BrowserCredentialConsent gates reveal/copy through Windows Hello.
 
-SafeArchivePath, AtomicFile, FileTransferRequest and FileTransferSafety share file/archive safety. DisplaySurfaceLifetime detaches the old primary rail before topology replacement. See [current validation and limitations](STATUS.md) and [signing lifecycle](RELEASE_SIGNING.md).
+SafeArchivePath, AtomicFile, FileTransferRequest and FileTransferSafety share file/archive safety. DisplaySurfaceLifetime detaches the old primary rail before topology replacement. See [Batch 1 acceptance](BATCH_1_SAFETY_ACCEPTANCE.md) and [signing lifecycle](RELEASE_SIGNING.md).
 
 ## Phase 2 responsiveness boundaries
 
 SystemTelemetry publishes immutable observations from separate single-flight background lanes; recurring rail/widget refreshes do not enumerate processes or audio devices. SharedAudioSpectrum owns one capture/FFT per source and desktops subscribe only while their visual is active. Wallpaper and frost caches are bounded by pixel bytes, with a common two-worker decode limit and a dedicated STA for frost composition. Paint stores bounded XOR tile deltas and guards document edits during background import/fill/save operations.
 
-Browser WebView2 objects remain on their owning UI thread. Window-creating/closing actions are deferred out of callbacks; background tabs request Low memory without suspending connections. The browser root no longer carries a WPF shader above native web content. DwmFlush runs through a single-flight worker after border retirement. Periodic full window reconciliation yields during active drags. Dispatcher monitoring and bounded logs provide stall evidence without adding a blocking graphics wait. See [current validation and limitations](STATUS.md).
+Browser WebView2 objects remain on their owning UI thread. Window-creating/closing actions are deferred out of callbacks; background tabs request Low memory without suspending connections. The browser root no longer carries a WPF shader above native web content. DwmFlush runs through a single-flight worker after border retirement. Periodic full window reconciliation yields during active drags. Dispatcher monitoring and bounded logs provide stall evidence without adding a blocking graphics wait. See [Phase 2 evidence and limits](BATCH_2_PERFORMANCE_ACCEPTANCE.md).
+
+Browser close cleanup runs after all `Closing` subscribers can cancel, before WPF destroys the owner HWND. Controller disposal precedes visual detachment for whole-window close, individual tab close and tab recreation, avoiding a live `HwndHost` reparent during teardown. `OnClosed` retains idempotent fallback cleanup for shutdown routes. Pending initialization cannot reattach a disposed view; native controller disposal and detachment have separate slow-operation timing. This lifecycle is privately tested; the laptop's installed close stall still needs live candidate acceptance.
 
 ## Phase 3 display reconciliation and fullscreen
 
@@ -197,7 +207,7 @@ Display topology is keyed by Windows monitor device-interface identity rather th
 
 The primary widget host follows the primary display without recreation. Secondary widget hosts are reused by identity and retained hidden while disconnected so timers, AI sessions and media intent survive. Gesture input rebinds to the replacement rail; widget occlusion and stage envelopes are per display. Retained secondary sessions last until reconnection or shell shutdown and can retain resources.
 
-Native fullscreen windows bypass tiling, opening fades, material transparency and background dimming. Any preexisting constant-alpha layer is held opaque while fullscreen and restored afterward. Fullscreen monitor assignment follows native geometry, and spanning windows suppress every covered display. Per-display surround, rail/dock and widget visuals are suppressed; launcher, quick panels, app switcher and ordinary OSDs are gated. Delayed panel builds cannot reopen over fullscreen. Minimized games no longer get forcibly restored by the tiler. External foreground fullscreen can suppress chrome even when the window cannot be adopted. Windows secure UI and explicitly requested emergency recovery remain available.
+Native fullscreen windows bypass tiling, opening fades, material transparency and background dimming. Any preexisting constant-alpha layer is held opaque while fullscreen and restored afterward. Fullscreen monitor assignment follows native geometry, and spanning windows suppress every covered display. Per-display surround and widgets remain suppressed. Rail/dock chrome is hidden until explicit edge reveal; the command/application launcher may open over fullscreen on request. Quick panels, app switcher and ordinary OSDs remain gated. Minimized games no longer get forcibly restored by the tiler. External foreground fullscreen can suppress chrome even when the window cannot be adopted. Windows secure UI and explicitly requested emergency recovery remain available.
 
 ## Phase 4 app lifetimes and rendering
 
@@ -226,3 +236,13 @@ Widget columns keep usable expanded card heights inside scrollable viewports. Re
 The dock's Applications event is separate from the tiled Command launcher event. Power visibility is mandatory. Tray rows bubble left-click input so embedded action buttons retain their clicks. Placement and publisher foreground permission are recorded before dismissing STRATA's panel; native callbacks run after WPF popup capture is released. Open restores a tracked window or requests its native menu; Menu always requests the menu. If no interactive surface appears after three 100 ms observations, Open delivers one default activation (single selection for modern publishers, legacy double-click otherwise). Native menu-mode flags and visible publisher popup windows prevent a second activation from cancelling Tailscale-style menus. New input, another panel action, or a vanished publisher cancels the pending fallback. There is no process restart or force-kill fallback.
 
 Explicit tray actions send deterministic single/double/right-click sequences with version-correct callback parameters. They do not infer gestures from the dependency's click timestamps. Native outline windows are owned by their target application and use its normal z-order band; the window manager additionally suppresses outlines covered by higher visible windows.
+
+## Requested usability improvements (schema 45)
+
+Screen capture uses a nested, disposable window-manager scope: it restores overlap-hidden apps, clears background dimming and defers tiling until capture completes, fails or is canceled. Terminal tabs own separate sessions, cancellation, renderers and bounded output queues; profile changes affect only the selected tab. Performance widget hardware sampling is demand-driven and shared by the shell, using Task Manager's telemetry service off the UI thread. Widget placement stores display identity and slot per widget with primary-monitor fallback.
+
+AI CLI installs run only from explicit provider buttons and use official Windows installers: [Codex](https://learn.chatgpt.com/docs/codex/cli), [Claude](https://code.claude.com/docs/en/setup), [Antigravity](https://www.antigravity.google/docs/cli/install/). No provider is installed or permission mode enabled at shell startup. Model IDs and bypass preferences are provider-specific; credentials and sign-in remain with the provider. Installer failures are shown, and PATH repair preserves existing entries.
+
+## Sphered mode
+
+Sphered provides one Sphere space per monitor, multiple independent two-tab groups, monitor transfers, embedded live status controls and reversible docking. Native windows keep their own top-level handles and input queues; `SphereWindowRegistry` maps focus to the owning Sphere and excludes contained apps from outer layout/dock management. Web views retain their dedicated profile and no command bridge. See [behavior and compatibility](SPHERED.md).

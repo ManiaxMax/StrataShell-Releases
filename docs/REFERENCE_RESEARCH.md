@@ -1,10 +1,10 @@
 # Reference research
 
-Research snapshot: 2026-08-25. Strata borrows principles, not protected assets, naming, layouts, or code.
+Research snapshot: 2026-08-25. STRATA Shell borrows principles, not protected assets, naming, layouts, or code.
 
 ## Evidence matrix
 
-| Finding | Evidence | Likely cause | Strata response | Validation |
+| Finding | Evidence | Likely cause | STRATA response | Validation |
 |---|---|---|---|---|
 | Hyprland feels immediate because layout, focus, workspace, opacity, border, blur, and animation are one coherent system. | [Hyprland window rules](https://wiki.hypr.land/Configuring/Window-Rules/) expose those states as compositor concepts. | A single authority owns placement and feedback. | One window registry and one layout transaction feed borders, animation, workspace state, and the bar. | Rapidly open/close/swap ten windows; no stale borders or layout jumps. |
 | Caelestia feels unified because panels morph out of a connected edge shell. | [Caelestia shell](https://github.com/caelestia-dots/shell) describes a fluid, morphing Quickshell shell. | Shared geometry, origin-aware motion, and one popout coordinator. | Continuous perimeter, connected corners, edge-relative popouts, one active primary popout per monitor. | Record every popout at 60 FPS; origin and dismissal must remain spatially consistent. |
@@ -16,7 +16,7 @@ Research snapshot: 2026-08-25. Strata borrows principles, not protected assets, 
 
 ### Preserve principle
 
-- Hyprland: coherent window state, fast directional control, and visible active state. Strata deliberately rejects free floating in favor of its fixed center stage.
+- Hyprland: coherent window state, fast directional control, and visible active state. STRATA Shell deliberately rejects free floating in favor of its fixed center stage.
 - Stable mnemonic `Super` grammar and discoverability.
 - riced Linux: personal expression, wallpaper-led palettes, compact status language.
 

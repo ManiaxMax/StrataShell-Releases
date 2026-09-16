@@ -32,3 +32,5 @@ The latest reported hang was recorded by Windows as AppHangB1 during a wallpaper
 - Publisher/Authenticode signing is deferred. The retired laptop investigations remain outside the active scope.
 
 Developer evidence stays in the private source repository. Updating documentation does not publish an application binary.
+
+See [the detailed implementation and remaining-work report](POWER_RUNTIME_FOLLOWUP.md).
