@@ -1,0 +1,38 @@
+# .NET / Visual Studio
+**/bin/
+**/obj/
+.vs/
+.idea/
+.vscode/
+TestResults/
+coverage/
+*.user
+*.suo
+*.pdb
+
+# Generated releases, diagnostics, and acceptance captures
+artifacts/
+publish/
+releases/
+*.log
+*.tmp
+*.new
+
+# Personal wallpaper libraries can be several gigabytes and may contain
+# third-party art. Keep only the documented folder placeholders in Git.
+wallpapers/WallpapersDark/**
+!wallpapers/WallpapersDark/STRATA_LOGO_DARK.jpg
+wallpapers/WallpapersLight/**
+!wallpapers/WallpapersLight/STRATA_LOGO_LIGHT.jpg
+
+# Local operating-system and shell state lives outside the repository, but
+# ignore defensive copies if somebody places them here while debugging.
+settings.json
+installation.json
+shell-backup.json
+shell-launcher.json
+self-test.json
+
+# Exclude agent chat logs
+docs/agent-conversations/
+
