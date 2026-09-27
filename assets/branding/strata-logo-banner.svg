@@ -15,5 +15,5 @@
     <polygon points="18,50 136,50 118,66 0,66" fill="#ff9900" />
   </g>
   <text class="wordmark" x="480" y="267" text-anchor="middle" font-family="Bahnschrift,Segoe UI,Arial,sans-serif" font-size="112" font-weight="600">STRATA</text>
-  <text class="descriptor" x="480" y="331" text-anchor="middle" font-family="Cascadia Mono,Consolas,monospace" font-size="24" font-weight="500">SHELL / SYSTEM SIGNAL</text>
+  <text class="descriptor" x="480" y="331" text-anchor="middle" font-family="Cascadia Mono,Consolas,monospace" font-size="24" font-weight="500">Shell</text>
 </svg>
