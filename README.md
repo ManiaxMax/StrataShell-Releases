@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/branding/strata-logo-banner.svg" alt="STRATA Shell" width="100%" />
+  <img src="assets/branding/strata-logo-banner.svg" alt="STRATA Shell" width="820" />
 </p>
 
 # STRATA Shell
@@ -11,12 +11,6 @@
 </p>
 
 *Wallpaper and theme showcase. Motion and colors depend on the selected wallpaper and settings.*
-
-<p align="center">
-  <img src="assets/showcase/strata-desktop.png" alt="STRATA desktop with widgets, dock, and a purple-blue glass wallpaper" width="100%" />
-</p>
-
-*STRATA desktop showcase.*
 
 ## Download and release status
 
