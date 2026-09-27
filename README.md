@@ -8,7 +8,7 @@ A wallpaper-driven Windows shell with its own desktop, widgets, application bar,
 
 STRATA provides two environments: **Floating** for freely movable, overlapping windows and **Tiled / Center Stage** for one or two arranged applications per workspace. Switch with `Super + Ctrl + D`. Both share the same applications, wallpaper-derived colors, controls and recovery system.
 
-**Development status:** Phase 5 covers code review, fresh-install defaults and documentation. The later local follow-up adds .NET 10, native power modes and battery history, hardware inventory, and stability/installer fixes; it has not been published in this pass. These pages describe current Preview development; published Stable packages may contain an earlier feature set. See [release and testing status](docs/STATUS.md) and each package's [release notes](https://github.com/ManiaxMax/StrataShell-Releases/releases). Documentation updates do not publish or install a new binary.
+**Release status:** [Stable 1.0.22](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/v1.0.22) is published with self-contained .NET 10 Setup and portable packages. Preview remains a lightweight update channel. See [release and testing status](docs/STATUS.md) for the source-versus-installed verification boundary and the [1.0.22 release notes](docs/RELEASE_NOTES_1.0.22.md) for the promoted changes.
 
 ## Get STRATA
 
@@ -18,7 +18,7 @@ STRATA is experimental Windows 11 x64 software. Read [installation and recovery]
 
 ## Fresh-install defaults
 
-The next release containing Phase 5 uses **Balanced quality** and **Floating mode** for a brand-new release installation.
+Stable 1.0.22 uses **Balanced quality** and **Floating mode** for a brand-new release installation.
 
 | Left column | Right column |
 |---|---|

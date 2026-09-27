@@ -31,7 +31,7 @@ Installation is an orchestration and validation pass, not a file copy:
 
 For a brand-new Phase 5 release installation, Setup and the portable installer seed Balanced quality, Floating mode and the [approved widget layout](SHIPPED_DEFAULTS.md), with Clock and YouTube locked expanded. Seeding happens only if no settings file exists. Updates, repairs and ordinary shell startup do not overwrite existing preferences. Explicit Reset Settings is separate.
 
-The active profile is `%LOCALAPPDATA%\StrataShell\settings.json`. `Recovery` contains installation/recovery records, not the active settings profile. A lightweight Preview update preserves the existing profile before checking fresh-install wallpaper requirements; it does not need the Stable wallpaper pair at the portable installer's default library path. A genuine fresh install still requires the complete Stable package. The Preview publishing gate tests this routing against the installer scripts copied into the candidate bundle.
+The active profile is `%LOCALAPPDATA%\StrataShell\settings.json`. `Recovery` contains installation/recovery records, not the active settings profile. A lightweight Preview update preserves the existing profile before checking fresh-install wallpaper requirements; it does not need the Stable wallpaper library at the portable installer's default path. A genuine fresh install still requires the complete Stable package. The Preview publishing gate tests this routing against the installer scripts copied into the candidate bundle.
 
 At first run, STRATA Shell discovers monitors, resolution, scale, orientation, panoramic layouts, battery presence, audio endpoints, network adapters, Bluetooth radios/devices, installed Win32 shortcuts, registered executables, packaged apps, startup registrations, and tray publishers. These are runtime discoveries so the same install adapts when hardware or applications change later.
 
@@ -74,7 +74,7 @@ Build a redistributable bundle:
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\Build-InstallerBundle.ps1
 ```
 
-The output is written beneath `artifacts\installer` as a folder and ZIP. It contains a self-contained payload, installer/recovery scripts, exactly the two approved Light/Dark wallpapers, and a root **Install STRATA Shell.cmd** entry. The target PC does not need the .NET SDK.
+The output is written beneath `artifacts\installer` as a folder and ZIP. It contains a self-contained payload, installer/recovery scripts, exactly the 24 approved 4K glass wallpapers, and a root **Install STRATA Shell.cmd** entry. The target PC does not need the .NET SDK.
 
 The self-contained desktop runtime includes Windows Forms and Drawing components required by the notification area. Shell and Launcher use the same runtime selection; package checks reject missing tray dependencies before installation.
 

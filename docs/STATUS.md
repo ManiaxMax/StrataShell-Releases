@@ -1,6 +1,12 @@
 # Release and testing status
 
-Updated September 5, 2026. This describes current local development. Published packages retain the features and runtime identified in their own release notes.
+Updated September 26, 2026. [Stable 1.0.22](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/v1.0.22) is published from private source commit `d0abada4af2a7dfc74b29c43a1ed89acef844296`. The self-contained Setup and portable ZIP include the .NET 10 Desktop runtime and exactly 24 approved 4K wallpapers. Preview updates remain runtime- and wallpaper-free.
+
+The 1.0.22 source passed four warning-free Release builds, 250/250 quiet checks, 601/601 isolated desktop checks, and 452/452 isolated app checks. The isolated installer test passed without changing the production shell or Explorer. All six public release assets were anonymously downloaded and checked against their hashes; the ZIP's signed inventory, runtime, wallpaper set, and required components passed. Physical installed-shell acceptance remains open: publication did not install, activate, or restart the running shell.
+
+## Historical September 5 development snapshot
+
+The following records a prior local candidate, not the current published Stable status.
 
 ## Current implementation
 
