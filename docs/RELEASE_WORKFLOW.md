@@ -17,7 +17,7 @@ STRATA Shell utilizes a dual-repository distribution architecture:
 ### 1.2 Public Distribution & Documentation Repository (`StrataShell-Releases`)
 - **Local Path**: `C:\Projects\StrataShell-Releases`
 - **Remote**: `https://github.com/ManiaxMax/StrataShell-Releases.git` (alias: `origin`)
-- **Contents**: Public product documentation (`docs/`), release notes (`docs/RELEASE_NOTES_*.md`), status reports (`docs/STATUS.md`), user manuals, branding assets (`assets/branding/`), and project governance files (`README.md`, `SECURITY.md`, `CONTRIBUTING.md`, `AGENTS.md`).
+- **Contents**: Public product documentation (`docs/`), release notes (`docs/RELEASE_NOTES_*.md`), status reports (`docs/STATUS.md`), user manuals, branding assets (`assets/branding/`), and repository guidance (`README.md`, `SECURITY.md`).
 - **Release Hosting**: GitHub Releases are published under this repository (`https://github.com/ManiaxMax/StrataShell-Releases/releases`).
 - **Access Rule**: Strictly public. Never copy internal application source code, private acceptance logs, or unreviewed development notes into this repository.
 

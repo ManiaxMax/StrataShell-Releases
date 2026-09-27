@@ -56,6 +56,6 @@ The top rail, saved desktop views, controls preference, resize behavior and tili
 
 ## Installed acceptance still required
 
-Coordinate installation/restart under AGENTS.md before interactive acceptance: physical keys and title/edge gestures; native app controls and transparency (including elevated apps); bottom appbar negotiation and maximized bounds on mixed-DPI monitors; empty-desktop clicks and widget hit testing; power/tray/native flyouts; repeated switching with the user's apps and pins. Source and isolated results do not certify the installed release.
+Coordinate installation and restart using [Installation and recovery](INSTALLATION.md) before interactive acceptance: physical keys and title/edge gestures; native app controls and transparency (including elevated apps); bottom appbar negotiation and maximized bounds on mixed-DPI monitors; empty-desktop clicks and widget hit testing; power/tray/native flyouts; repeated switching with the user's apps and pins. Source and isolated results do not certify the installed release.
 
 Windows that require opaque composition retain the existing opacity compatibility protection. Apps whose executable/package identity cannot be determined are shown but cannot be pinned until a reliable launch identity is available. Browser-hosted pages share their browser identity; a separately installed ChatGPT app can have its own pin.

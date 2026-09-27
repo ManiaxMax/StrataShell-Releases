@@ -57,6 +57,6 @@ Super is the Windows-logo key. Shortcuts can be changed in STRATA; the live keyb
 
 ## Documentation and repositories
 
-[Release status](docs/STATUS.md) · [Installation and recovery](docs/INSTALLATION.md) · [Features and limits](docs/FEATURES.md) · [Settings](docs/SETTINGS.md) · [Product](docs/PRODUCT.md) · [Architecture](docs/ARCHITECTURE.md) · [Development](docs/DEVELOPMENT.md) · [Contributing](CONTRIBUTING.md)
+[Release status](docs/STATUS.md) · [Installation and recovery](docs/INSTALLATION.md) · [Features and limits](docs/FEATURES.md) · [Settings](docs/SETTINGS.md) · [Product](docs/PRODUCT.md) · [Architecture](docs/ARCHITECTURE.md) · [Development](docs/DEVELOPMENT.md) · [Security reporting](SECURITY.md)
 
 The private [StrataShell source repository](https://github.com/ManiaxMax/StrataShell) contains application code and development evidence. The public [StrataShell-Releases repository](https://github.com/ManiaxMax/StrataShell-Releases) contains documentation, branding, and compiled release downloads. Documentation changes do not create a new application package or alter an installed shell.
