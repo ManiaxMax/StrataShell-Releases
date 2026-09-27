@@ -240,15 +240,11 @@ Downloaded archives must use the `StrataShell-*.zip` naming policy. Hardened cli
 - Inspect host, Windows build, the running Build identifier, stable-only Engine version, theme, uptime, CPU, GPU, memory, displays, architecture, and runtime at a glance. Preview publication changes Build but retains the latest Stable Engine version.
 - See whether the Explorer failsafe is installed and open project or recovery locations where available.
 
-## Settings schema
-
-`ShellSettings` has a versioned schema (`SchemaVersion 40`) and defaults. Schema 27 removes only overrides of the retired built-in panel/appearance chords while preserving user-created shortcuts that intentionally reuse those chords; it also normalizes missing custom-keybinding collections safely. Schema 28 adds global widget-title visibility and themed/normal weather-icon preferences, and removes stale overrides for replaced monitor and silent-workspace chords. Schema 29 selects normal weather icons as the default while retaining themed glyphs as an explicit choice. Schema 30 separates the global blur strength from independently persisted STRATA-surface and widget targets while preserving existing surface behavior. Schema 31 adds performance mode, wallpaper scaling, animation fps caps, and battery saver settings. Schema 32 originally added Windows background-process suppression; schema 38 retires that option and forces its legacy flag off. Schema 33 adds the wallpaper fit mode (`Fill`, `Fit`, `Stretch`) with aspect-ratio-aware decode resolution and DPI-aware monitor sizing. Schema 37 reduces the default Floating dock height from 50 to 48 DIPs while preserving customized heights. Schema 39 removes the CPU/power/Bluetooth bar flags and unused spring-motion, inactive-opacity and Do Not Disturb fields. Power is mandatory; retired Super + Escape built-in remaps are removed while other customizations are retained. Schema 40 adds launcher startup selections and configurable STRATA touchpad workspace swipes while preserving existing choices. Unknown or missing values fall back through the settings service rather than preventing shell startup. Local values include paths and machine preferences, so `settings.json` is intentionally ignored by Git.
-
-## Phase 2 performance behavior (local candidate)
+## Performance behavior
 
 Automatic Low Quality uses Energy Saver, Best power efficiency and low-charge state to reduce effects, scaling cost and frame rate without changing saved values. It also applies over a saved High preference; disabling Automatic Low Quality opts out. Selected frame caps apply to workspace/slot transitions and other animations. Sustained missed frame budgets can lower subsequent optional animation cadence outside High mode. See [current validation and limitations](STATUS.md).
 
-## Phase 4 app controls
+## App controls
 
 No shell settings-schema change. Text's encoding/newline button affects the current document on save. Browser's Site permissions control reviews the active profile and can reset an individual permission or all saved choices; reload open pages to stop existing access. Permission prompts distinguish one request from an explicitly remembered allow. Media honors Reduced Motion and uses the existing shared system-audio source. Terminal stores its isolated runtime data under `TerminalWebView` in the settings directory; Browser continues using `BrowserData` beside the settings files.
 
@@ -258,30 +254,26 @@ Both Network Settings and the rail Wi-Fi dropdown show **Automatically connect**
 
 This preference belongs to the Windows Wi-Fi profile, not STRATA settings, and does not require a STRATA schema change. Profile updates retain encrypted key material and use the existing per-user/all-user scope and permissions. Reference: [Microsoft WlanSetProfile](https://learn.microsoft.com/en-us/windows/win32/api/wlanapi/nf-wlanapi-wlansetprofile).
 
-## Wallpaper change animations (schema 41)
+## Wallpaper change animations
 
 In UI & Theme > Wallpaper, **Wallpaper Change Animation** selects Glow Sweep (the existing default), Crossfade, Slide, Wipe, Zoom, or None. The choice applies to the next wallpaper change on desktop and wallpaper-only monitor surfaces. Animation Speed controls duration; Reduced Motion or active Low effects bypass animation. None also switches the frosted wallpaper textures immediately. Other modes retain the synchronized frosted-texture crossfade while the main wallpaper uses the chosen transition.
 
 `WallpaperAnimation` is stored as 0–5 in the order above. Older profiles without this field retain Glow Sweep, customized values survive migration, and invalid enum values normalize to Glow Sweep. No existing wallpaper or layout choices are reset.
 
-## Withdrawn live backdrop prototype (schema 42)
-
-The experimental live Composition backdrop was withdrawn after the owner observed black bar and Settings surfaces. Its toggle and native rendering path are removed. STRATA uses wallpaper frost again. Saved ExperimentalLiveBackdrop opt-ins are cleared during settings loading; other preferences are preserved and no reset is required. API/lifecycle success did not establish that the native backdrop rendered correctly.
-
 Floating mode supports title-bar edge snapping: left/right for half-screen, corners for quarter-screen, and the top edge to maximize. Snaps use the monitor's app work area, leaving the bar and dock clear, and preserve app minimum sizes. Border resizing and Tiled mode do not activate STRATA snapping.
 
-## Bloom scope (schema 43)
+## Bloom scope
 
 In UI & Theme > Graphics & Performance > Color & Lighting, **Bloom Scope** selects **Text / Graphs / Icons** or **Text / Graphs / Icons / Windows / UI Elements / Widget Windows**. The first removes bloom effects from large surfaces, controls, widget panels, active borders and the screen surround while retaining colored text, graph and icon glow. The second preserves the existing full appearance and is the default. Bloom strength, ordinary shadows and frosted glass remain separate preferences. Scope changes apply to open surfaces without restarting.
 
-## Bloom quality (schema 44)
+## Bloom quality
 
 UI & Theme > Graphics & Performance > Color & Lighting now offers **Bloom Quality: Low / High** alongside scope and strength. High is the existing soft-blur appearance and remains the default for existing and new profiles. Low replaces large surface blur with layered frame strokes and live line-graph blur with two noninteractive stroke layers. Text and vector icons use tighter halos with bounded WPF bitmap caches (at most 128 small elements per window). Low/High changes apply live; switching back removes generated layers and only the caches owned by bloom. Scope and strength remain independent; zero strength clears the Low decorations. Ordinary shadows and frosted wallpaper are unchanged. Low approximates the glow rather than matching High pixel for pixel; hardware performance gains still need measurement in the installed shell.
 
 ## Manual system clock and automatic time
 Date + Time > Set Clock explicitly selects manual time: the elevated helper disables Windows network synchronization with the persistent NoSync mode before applying the entered local time. Its confirmation explains this change. Use Automatic Time reenables the existing network/domain sources without replacing server addresses; Sync Now requests an immediate update. Organization-enforced time policy is not overwritten. A failed clock write attempts to restore the previous synchronization mode. Select the correct time zone before entering a local time. No clock value is replayed at startup.
 
-## High performance preset (September 8)
+## High performance preset
 High now reproduces the captured installed-shell effect configuration: 50% bloom with Low bloom quality and full scope; surface/widget frosting enabled at 50% blur and 50% glass opacity; native animation frame rate, high-quality wallpaper scaling, full motion, full widget opacity, and both window/widget shadows disabled. Applying High selects these values explicitly. Existing saved profiles and the separate new-profile bloom-quality default are not migrated.
 
 **Sphered** is an additive enum value; existing Tiled/Floating values and saved preferences retain their identities. Each display owns a Sphere with tab groups and embedded rail status controls. Leaving the mode undocks apps to their current Sphere monitor. See [Sphered mode](SPHERED.md).

@@ -29,7 +29,7 @@ Installation is an orchestration and validation pass, not a file copy:
 7. Installs recovery scripts and Return to Explorer shortcuts outside the versioned payload.
 8. Activates STRATA Shell only after the executable, self-test, backup, and recovery route verify successfully.
 
-For a brand-new Phase 5 release installation, Setup and the portable installer seed Balanced quality, Floating mode and the [approved widget layout](SHIPPED_DEFAULTS.md), with Clock and YouTube locked expanded. Seeding happens only if no settings file exists. Updates, repairs and ordinary shell startup do not overwrite existing preferences. Explicit Reset Settings is separate.
+For a brand-new release installation, Setup and the portable installer seed Balanced quality, Floating mode and the [default widget layout](../README.md#fresh-install-defaults), with Clock and YouTube locked expanded. Seeding happens only if no settings file exists. Updates, repairs and ordinary shell startup do not overwrite existing preferences. Explicit Reset Settings is separate.
 
 The active profile is `%LOCALAPPDATA%\StrataShell\settings.json`. `Recovery` contains installation/recovery records, not the active settings profile. A lightweight Preview update preserves the existing profile before checking fresh-install wallpaper requirements; it does not need the Stable wallpaper library at the portable installer's default path. A genuine fresh install still requires the complete Stable package. The Preview publishing gate tests this routing against the installer scripts copied into the candidate bundle.
 
@@ -155,4 +155,4 @@ These files can contain local paths, account identifiers, application names, and
 
 ## Signed update transition
 
-Batch 1 embeds the verification key; testers need no signing setup. Existing 1.0.11/1.0.12 archive and installer-discovery checks accept the signed layout. Hardened clients reject unsigned automatic updates. Lightweight Preview reuses the Stable runtime; fresh users should install full Stable first. Windows publisher signing remains separate and is not configured yet. See [release signing and recovery](RELEASE_SIGNING.md).
+STRATA embeds its update verification key; users need no signing setup. Current clients reject unsigned automatic updates. Lightweight Preview reuses the Stable runtime; fresh users should install full Stable first. Downloaded executables do not yet have Windows Authenticode publisher signatures.

@@ -34,7 +34,7 @@ The desktop includes Clock/Calendar, Weather, Focus Timer, Notes, Performance, A
 
 ## Fresh-install defaults
 
-New installations start in **Floating** mode at **Balanced** quality, with five workspaces and Browser and Files pinned. The left widget column has Clock/Calendar, Weather, Focus Timer, and Notes; the right has YouTube, Audio Spectrum, Performance, and AI Command. Clock and YouTube begin locked expanded. Updates and repairs preserve existing preferences. [Shipped defaults](docs/SHIPPED_DEFAULTS.md).
+New installations start in **Floating** mode at **Balanced** quality, with five workspaces and Browser and Files pinned. The left widget column has Clock/Calendar, Weather, Focus Timer, and Notes; the right has YouTube, Audio Spectrum, Performance, and AI Command. Clock and YouTube begin locked expanded. Updates and repairs preserve existing preferences.
 
 ## Essential shortcuts
 
@@ -57,6 +57,6 @@ Super is the Windows-logo key. Shortcuts can be changed in STRATA; the live keyb
 
 ## Documentation and repositories
 
-[Release status](docs/STATUS.md) · [Installation and recovery](docs/INSTALLATION.md) · [Features and limits](docs/FEATURES.md) · [Settings](docs/SETTINGS.md) · [Product](docs/PRODUCT.md) · [Architecture](docs/ARCHITECTURE.md) · [Development](docs/DEVELOPMENT.md) · [Security reporting](SECURITY.md)
+[Release status](docs/STATUS.md) · [Installation and recovery](docs/INSTALLATION.md) · [Features and limits](docs/FEATURES.md) · [Settings](docs/SETTINGS.md) · [First-party apps](docs/FIRST_PARTY_APPS.md) · [Keybindings](docs/KEYBINDS.md) · [Security reporting](SECURITY.md)
 
 The private [StrataShell source repository](https://github.com/ManiaxMax/StrataShell) contains application code and development evidence. The public [StrataShell-Releases repository](https://github.com/ManiaxMax/StrataShell-Releases) contains documentation, branding, and compiled release downloads. Documentation changes do not create a new application package or alter an installed shell.

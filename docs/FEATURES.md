@@ -1,12 +1,12 @@
 # Implemented features and limitations
 
-This is an implementation inventory with platform and acceptance limits. See [release and testing status](STATUS.md) for published packages and installed-shell evidence.
+This guide describes STRATA's capabilities and platform limits. See [release and testing status](STATUS.md) for the current published packages and installed-shell evidence.
 
 ## Floating environment
 
 Sphered mode collects apps and web content into per-monitor Sphere windows with tabs and independent two-pane groups. Native hosting has compatibility limits; see [Sphered behavior and acceptance](SPHERED.md).
 
-`Super + Ctrl + D` switches the desktop environment (Desktop Mode: Tiled / Floating). Floating mode offers native title-bar movement and edge resize without modifiers, STRATA/native window controls, minimized-app recovery, grouped persistent dock pins, and an Alt + Tab selector. Workspace and monitor moves remain available without a two-window limit. The bottom bar replaces center context text with the launcher and dock; launcher, tray, power, audio and network panels open upward. Show Widgets / Hide Widgets replace the four tiled desktop views until Tiled mode returns. [Behavior, verification and limits](FLOATING_MODE.md).
+`Super + Ctrl + D` switches the desktop environment (Desktop Mode: Tiled / Floating). Floating mode offers native title-bar movement and edge resize without modifiers, STRATA/native window controls, minimized-app recovery, grouped persistent dock pins, and an Alt + Tab selector. Workspace and monitor moves remain available without a two-window limit. The bottom bar replaces center context text with the launcher and dock; launcher, tray, power, audio and network panels open upward. Show Widgets / Hide Widgets replace the four tiled desktop views until Tiled mode returns. [Floating and Tiled guide](FLOATING_MODE.md).
 
 ## Center Stage window management
 
@@ -142,7 +142,7 @@ STRATA Files is intentionally still a focused file manager. Windows shell extens
 
 - Output and microphone selection, levels/mute, per-app audio session mixer and media transport, with shared compact sound tray controls.
 - Native display arrangement, resolution, refresh, orientation, primary/enabled outputs and Extend/Duplicate, protected by a separate timed rollback helper. DPI remains read-only; brightness is available when the hardware exposes a supported interface.
-- Native mouse/keyboard and supported Precision Touchpad settings; launcher-selected shell startup apps; AC/battery power modes, installed power plans, timeouts, battery information and 14-day usage history; timezone, clock synchronization/manual time and a tray clock/calendar. See native controls and exact limits (private source record).
+- Native mouse/keyboard and supported Precision Touchpad settings; launcher-selected shell startup apps; AC/battery power modes, installed power plans, timeouts, battery information and 14-day usage history; timezone, clock synchronization/manual time and a tray clock/calendar. See [Settings](SETTINGS.md) for available controls.
 - Wi-Fi, wired-LAN, and offline link detection with distinct top-rail states.
 - Native Windows Wi-Fi lists, radio on/off, saved-profile removal, supported open/WPA2/WPA3 Personal/OWE connection, secret entry, cancellation and adapter-specific disconnect in the clickable network rail panel and Settings. Hidden/enterprise/unsupported enrollment uses Windows-managed profiles; permission denial is reported explicitly.
 - Streaming Bluetooth Classic/LE discovery cards, native custom pairing, connection requests, disconnect and removal in Settings and a dedicated Bluetooth rail button. Supported pairing ceremonies cover confirmation, keyboard PIN display, PIN entry and matching-code confirmation.
@@ -197,7 +197,6 @@ Tray Open restores an existing app window, including a minimized window on anoth
 ## Safety and recovery
 
 - Safe preview mode does not change the configured Windows shell.
-- The comprehensive self-test validates adaptive 720p–4K layout policy, core layout/frame-clearance policies, composition-synchronized mixed-window transitions, settled tiled crossfades, animation-time material suspension, coalesced non-showing floating placement, delayed active-window signal geometry, wallpaper/frost presentation handoff, palette-wide bloom, repeatable directional and current-workspace multi-monitor routing, dynamic per-monitor workspace safety, widget icon policies, floating-window occlusion/lifecycle, foreground-modal isolation, monitor-centered transient surfaces, STRATA Files operations/type selection/compact-height layout/Recycle Bin metadata, image fit policy, shared picker policy, Terminal persistence, Text encoding/atomic save, Snip capture/encoding, keybinding parser/customization, launcher priority, tray aggregation, Bluetooth physical-device grouping, Windows-edition activation, native caption theming, media compatibility, 60 Hz screensaver render budgeting, private-update safety, lock-screen synchronization, required files, and machine-dependent integrations.
 - Installer publishes immutable timestamped releases beneath `%LOCALAPPDATA%\Programs\StrataShell\releases`.
 - Windows 11 Home/Pro use a reversible current-user custom-shell policy. Supported Enterprise/Education/IoT editions use Windows Shell Launcher, retain `explorer.exe` as its default fallback, and assign STRATA Shell only to the current user SID.
 - Bootstrap starts a temporary Explorer session after three unexpected exits within ten minutes, preserving the selected next-login shell, and provides an independent, user-controlled warning for sustained UI hangs.
@@ -215,30 +214,8 @@ See [Installation and recovery](INSTALLATION.md) before enabling default-shell m
 - Microsoft Media Player is constrained to one primary stage surface and kept opaque for hardware-video compatibility; owned playback/control surfaces do not become separate workspace apps.
 - Secure Windows surfaces remain Windows-owned by design.
 - Multi-monitor routing and per-monitor view-state policy are implemented and covered by deterministic checks; physical acceptance on a multi-monitor machine remains pending.
-- The project is alpha software and does not currently ship Authenticode-signed executables; Batch 1 update archives have a separate mandatory STRATA signature. Automatic updates read the public binary-only release repository; source remains private.
-
-## Batch 1 safety and trust
-
-Signed update inventories, mandatory GitHub digests, verified CRX3 with native consent, an encrypted manual password vault with Windows Hello reveal/copy, safer files/archives, atomic image saves, correct display-rebuild close ownership, and honest missing-telemetry states are implemented in Preview source. See evidence and pending installed acceptance (private source record).
-
-## Phase 2 local candidate
-
-Shared background metrics and spectrum capture, bounded wallpaper/frost caches and image decoding, compact Paint undo history, asynchronous image operations, inactive-tab memory targets, explicit browser failure recovery, and bounded asynchronous diagnostics are implemented. The Phase 2 record (private source record) separates local checks from pending laptop and native browser validation.
-
-## Phase 4 app polish (local candidate)
-
-Interactive ConPTY terminal with bounded VT rendering; cancellable file copies and archive extraction; asynchronous/conflict-aware Text saves; Snip snapshot processing and unsaved-change protection; orientation-correct image loading/export; real shared audio visualization; per-site browser permission review; live download progress/cancellation; process identity checks; and compact/live-theme/accessibility corrections. Open/Save dialogs no longer retain the covered app's active highlight. Implementation and test boundaries are tracked in Phase 4 acceptance (private source record).
-
-Repeated workspace shortcuts preserve the selected monitor after Up/Down monitor navigation, including empty destinations in tiling mode. Task Manager connects Windows CPU clock, disk activity/transfer rates and per-adapter GPU engine/memory counters. NVIDIA driver temperatures and optional running CPU sensor providers supply real temperatures with source labels. Unsupported measurements remain explicit; no additional sensor driver is installed.
-
-## September 7 tiled input and launcher follow-up (source candidate)
-
-Tiled windows reject native caption/edge pointer movement before the native move loop, and managed STRATA windows reject native move/size commands while tiled. Super + Ctrl gestures retain the float/move/resize route. Client clicks and native window control buttons are preserved. Elevated/custom-chrome applications still require installed pointer acceptance.
-
-Launcher catalogs warm after shell surfaces appear. Concurrent requests for the same icon mode share one scan, and desktop and packaged application discovery run concurrently off the UI thread. Cold-start and warm-launch timings still require installed measurement.
-
-Workspace changes and window transfers now show the destination number in the existing notification popup on the destination monitor. First-party app headers omit decorative numbers; STRATA Notepad replaces the Text display name while retaining saved command and dock identities. Dock and launcher app icons share crisp outlines with a 24% secondary-theme fill.
+- The project is alpha software and does not currently ship Authenticode-signed executables; update archives have a separate mandatory STRATA signature. Automatic updates read the public binary-only release repository; source remains private.
 
 ## Sphered mode
 
-Sphered provides one Sphere space per monitor, multiple independent two-tab groups, monitor transfers, embedded live status controls and reversible docking. Native windows keep their own top-level handles and input queues; `SphereWindowRegistry` maps focus to the owning Sphere and excludes contained apps from outer layout/dock management. Web views retain their dedicated profile and no command bridge. See [behavior and compatibility](SPHERED.md).
+Sphered provides one Sphere space per monitor, multiple independent two-tab groups, monitor transfers, embedded live status controls and reversible docking. Native windows retain their input and rendering where compatible. See [Sphered behavior and compatibility](SPHERED.md).
