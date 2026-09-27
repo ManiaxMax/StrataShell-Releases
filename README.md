@@ -2,8 +2,6 @@
   <img src="assets/branding/strata-logo-banner.svg" alt="STRATA Shell" width="820" />
 </p>
 
-# STRATA Shell
-
 **A wallpaper-driven desktop shell for Windows 11.** STRATA brings workspaces, glass surfaces, widgets, first-party apps, and wallpaper-matched Light and Dark themes into one desktop environment. Windows continues to handle drivers, secure sign-in, UAC, and protected system functions.
 
 <p align="center">
