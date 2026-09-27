@@ -1,110 +1,70 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ManiaxMax/StrataShell-Releases/main/assets/branding/strata-logo.svg" alt="STRATA Shell" width="720" />
+  <img src="assets/branding/strata-logo-banner.svg" alt="STRATA Shell" width="100%" />
 </p>
 
 # STRATA Shell
 
-A wallpaper-driven Windows shell with its own desktop, widgets, application bar, workspaces and native settings.
+**A wallpaper-driven desktop shell for Windows 11.** STRATA brings workspaces, glass surfaces, widgets, first-party apps, and wallpaper-matched Light and Dark themes into one desktop environment. Windows continues to handle drivers, secure sign-in, UAC, and protected system functions.
 
-STRATA provides two environments: **Floating** for freely movable, overlapping windows and **Tiled / Center Stage** for one or two arranged applications per workspace. Switch with `Super + Ctrl + D`. Both share the same applications, wallpaper-derived colors, controls and recovery system.
+<p align="center">
+  <img src="assets/showcase/wallpaper-theme-cycle.gif" alt="STRATA wallpaper and theme cycle" width="100%" />
+</p>
 
-**Release status:** [Stable 1.0.23](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/v1.0.23) is published with self-contained .NET 10 Setup and portable packages. Preview remains a lightweight update channel. See [release and testing status](docs/STATUS.md) for the source-versus-installed verification boundary and the [1.0.23 release notes](docs/RELEASE_NOTES_1.0.23.md) for the promoted changes.
+*Wallpaper and theme showcase. Motion and colors depend on the selected wallpaper and settings.*
 
-## Get STRATA
+<p align="center">
+  <img src="assets/showcase/strata-desktop.png" alt="STRATA desktop with widgets, dock, and a purple-blue glass wallpaper" width="100%" />
+</p>
 
-Download the latest [Stable installer](https://github.com/ManiaxMax/StrataShell-Releases/releases/latest), or select **Preview** in STRATA Settings → Updates for available test releases. Fresh users should start with the complete Stable package; Preview updates are lightweight and reuse a compatible installed desktop runtime.
+*STRATA desktop showcase.*
 
-STRATA is experimental Windows 11 x64 software. Read [installation and recovery](docs/INSTALLATION.md) before making it your sign-in shell. Windows continues to own drivers, secure sign-in, UAC and protected system functions.
+## Download and release status
+
+- **Stable:** [1.0.23](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/v1.0.23) has a complete Windows 11 x64 Setup and portable ZIP with the .NET 10 Desktop runtime and 24 approved 4K wallpapers. [Release notes](docs/RELEASE_NOTES_1.0.23.md).
+- **Preview:** [20260927-182410](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20260927-182410) is a lightweight test update. Preview packages omit the runtime and wallpaper library and require a compatible Stable installation or registered runtime.
+
+For a fresh installation, start with [Stable](https://github.com/ManiaxMax/StrataShell-Releases/releases/latest). In STRATA, **Settings → Updates** selects Stable or Preview and installs available updates. The external STRATA Launcher checks Stable only. Read [installation and recovery](docs/INSTALLATION.md) before using STRATA as your sign-in shell. STRATA is experimental alpha software; source and package checks do not establish physical installed-shell acceptance. [Current verification status](docs/STATUS.md).
+
+## Explore STRATA
+
+| Surface | What it does |
+|---|---|
+| **Floating** | Move, resize, overlap, minimize, and switch ordinary application windows; use the dock and workspace controls. |
+| **Tiled / Center Stage** | Give one app the center lane or split it between two apps. Wide and Dynamic views offer other arrangements, with independent workspaces per monitor. |
+| **Sphered** | Collect apps, web pages, and settings into a Sphere window on each monitor. Tabs can form independent two-pane groups; supported native windows keep their own input and rendering. |
+| **Rail or Dock** | Switch between the connected application rail and separate glass dock while keeping the same desktop state. |
+
+The active wallpaper drives palette, accents, glass, and compatible window chrome. Choose **Auto**, **Light**, or **Dark** appearance; tune transparency, 3D Glass, blur, bloom, quality, interface typography, and Reduced Motion in Settings. The approved Stable wallpaper library contains 12 colors in both Light and Dark. [Features and limitations](docs/FEATURES.md) · [Sphered behavior](docs/SPHERED.md).
+
+The desktop includes Clock/Calendar, Weather, Focus Timer, Notes, Performance, Audio Spectrum, YouTube, and AI Command widgets. First-party apps include STRATA Browser, Files, Terminal, Text, Snip, Paint, Image Viewer, Media Player, Calendar, and Task Manager. Files can open Windows' native Security permissions page for physical files and folders. Browser, Files, Terminal, and other tabbed surfaces keep crowded tabs reachable with scrolling and selection reveal. Hardware and third-party app behavior still depend on Windows, drivers, and the app. [First-party app guide](docs/FIRST_PARTY_APPS.md).
+
+**Language:** Settings offers 25 language/region choices and Follow Windows, with live changes in Settings navigation and selected shared controls. Many app-specific screens, errors, Setup, and Launcher remain in English; native-speaker review is open. [Settings guide](docs/SETTINGS.md).
 
 ## Fresh-install defaults
 
-Stable 1.0.23 uses **Balanced quality** and **Floating mode** for a brand-new release installation.
-
-| Left column | Right column |
-|---|---|
-| Clock / Time — locked expanded | YouTube — locked expanded |
-| Weather | Audio Spectrum |
-| Focus Timer | Performance |
-| Notes | AI Command |
-
-Browser and Files are pinned initially. Five workspaces are configured, adjustable from one to ten. The template contains no personal notes, weather location, device identities, account data or selected startup apps.
-
-**These defaults are seeded only when installing without an existing settings file. Updates, repairs and shell startup preserve each user's quality, mode, layout and expansion locks.** An explicit Reset Settings action remains separate. [Default profile and privacy details](docs/SHIPPED_DEFAULTS.md).
-
-## What STRATA includes
-
-| Area | Current Preview implementation |
-|---|---|
-| Floating desktop | Native title-bar movement, resizing, maximize/minimize, Alt + Tab, grouped dock icons, pins, window previews and normal close requests |
-| Center Stage | One full-height or two split applications, per-monitor workspaces, overflow placement, directional movement and window exchange |
-| Theme | Wallpaper-derived Light/Dark/Auto palettes; coordinated wallpaper, frost and color transitions; transparency, optional blur/bloom, quality presets and Reduced Motion |
-| Widgets | Clock/calendar, Weather, Focus Timer, Notes, Performance, Audio Spectrum, YouTube and AI Command; configurable slots and expansion locks |
-| Sound | Output and microphone selection, levels, mute/unmute, application mixer and a speaker-button control popup |
-| Network and Bluetooth | Native Wi-Fi discovery/connect/disconnect/forget/radio controls; streaming Bluetooth discovery and supported pairing ceremonies |
-| Display and input | Monitor arrangement, resolution, refresh and orientation with timed rollback; mouse/keyboard controls, supported touchpad settings and keybind editing |
-| Startup, time and power | Launcher-based startup selections, timezone and clock controls, supported power-plan timeouts, battery information and calendar |
-| Applications and tray | App discovery, multi-window STRATA document apps and native publisher tray menus; Open restores existing windows or exposes the publisher's controls |
-| Recovery and updates | Immutable releases, validated update archives, Stable/Preview channels, bootstrap watchdog and independent Explorer recovery |
-
-Hardware support depends on Windows, drivers and devices. Native Windows power modes and aggregate battery history are available in current development. Per-monitor DPI changes, the immediate Energy Saver switch and Windows Update installation/scheduling use explicit Windows Settings routes; Updates also offers a temporary Explorer bridge. CPU temperature requires an available supported sensor provider. There is no universal tray command that creates every application's missing window. See [features and limitations](docs/FEATURES.md).
-
-## STRATA applications
-
-**STRATA Sphere** is a new separate native app in local development: unified app/settings/web search, persistent content tabs, compatible native-window hosting and launcher-child tabs. See [Sphere behavior and compatibility limits](docs/SPHERE.md). A future Sphere desktop mode is not part of this candidate.
-
-Browser, Files, Terminal, Text, Snip, Paint, Image Viewer, Media Player and Task Manager share STRATA's visual controls and theme. Browser, Files, Text, Paint, Images, Terminal and Media support independent document windows. Utility surfaces such as Settings remain single-instance tools. [Application guide](docs/FIRST_PARTY_APPS.md).
-
-![STRATA Shell in Tiled dark mode](docs/screenshots/strata-dark.png)
-
-The screenshot illustrates the Tiled composition. Fresh-install Floating defaults and newer controls are described above; it is not a screenshot of the Phase 5 candidate.
+New installations start in **Floating** mode at **Balanced** quality, with five workspaces and Browser and Files pinned. The left widget column has Clock/Calendar, Weather, Focus Timer, and Notes; the right has YouTube, Audio Spectrum, Performance, and AI Command. Clock and YouTube begin locked expanded. Updates and repairs preserve existing preferences. [Shipped defaults](docs/SHIPPED_DEFAULTS.md).
 
 ## Essential shortcuts
 
-`Super` means the Windows-logo key. The live list respects the active environment and any saved remapping.
+Super is the Windows-logo key. Shortcuts can be changed in STRATA; the live keybind viewer shows the active bindings.
 
 | Shortcut | Action |
 |---|---|
-| `Super + Space` | STRATA Command |
-| `Super + Ctrl + D` | Desktop Mode (Switch Floating / Tiled) |
-| `Super + Ctrl + S` | Toggle Strata Sphere |
-| `Super + Enter` | Terminal |
-| `Super + B` / `Super + F` | Browser / Files |
-| `Super + S` | Snip |
-| `Super + Alt + S` | Settings |
-| `Super + K` / `Super + Alt + K` | Keybind viewer / editor |
-| `Super + T` | Active-window transparency |
-| `Super + Q` / `Super + Arrow` | Close active app / directional focus in both modes |
-| `Super + \` | Floating fullscreen toggle; Tiled expansion cycle |
-| `Super + 1…0` | Workspace selection |
-| `Super + Ctrl + W` | Window Mode/Widgets (Floating: show/hide widgets; Tiled: change layout view) |
-| `Super + D` | Floating: minimize apps to show desktop |
-| `Super + L` | Lock system |
-| `Alt + Tab` | Floating app switcher |
-| `Ctrl + Alt + Shift + Delete` | Emergency Explorer recovery / exit Preview |
+| Super + Space | STRATA Command |
+| Super + Ctrl + D | Switch Floating / Tiled |
+| Super + Ctrl + S | Enter or leave Sphered mode |
+| Super + Ctrl + R | Switch Rail / Dock |
+| Super + Ctrl + W | Change the active window view or widget state |
+| Super + B / Super + F | Browser / Files |
+| Super + Enter | Terminal |
+| Super + 1…0 | Select workspace |
+| Super + T | Active-window transparency |
+| Ctrl + Alt + Shift + Delete | Emergency Explorer recovery |
 
-[Complete keybindings](docs/KEYBINDS.md). Every STRATA shortcut can be edited; saving or resetting blocks combinations already assigned elsewhere. The STRATA dock icon opens Applications; Super + Escape is retired. Power remains available in the bar.
+[Complete keybindings](docs/KEYBINDS.md).
 
-## Documentation
+## Documentation and repositories
 
-- [Release and testing status](docs/STATUS.md)
-- [Settings](docs/SETTINGS.md) · [Fresh-install defaults](docs/SHIPPED_DEFAULTS.md)
-- [Floating mode](docs/FLOATING_MODE.md) · [Features and limitations](docs/FEATURES.md)
-- [First-party applications](docs/FIRST_PARTY_APPS.md) · [Screensaver](docs/SCREENSAVER.md)
-- [Installation and recovery](docs/INSTALLATION.md) · [Safe shell mode](docs/SAFE_SHELL_MODE.md)
-- [Product contract](docs/PRODUCT.md) · [Architecture](docs/ARCHITECTURE.md)
-- [Development and verification](docs/DEVELOPMENT.md) · [Contributing](CONTRIBUTING.md)
+[Release status](docs/STATUS.md) · [Installation and recovery](docs/INSTALLATION.md) · [Features and limits](docs/FEATURES.md) · [Settings](docs/SETTINGS.md) · [Product](docs/PRODUCT.md) · [Architecture](docs/ARCHITECTURE.md) · [Development](docs/DEVELOPMENT.md) · [Contributing](CONTRIBUTING.md)
 
-## Development
-
-Source is maintained privately in `ManiaxMax/StrataShell`. The public `ManiaxMax/StrataShell-Releases` repository contains distribution assets and documentation, not application source. Contributors need access to the private repository.
-
-From an authorized source checkout, install the .NET 10 SDK and build:
-
-```powershell
-dotnet restore .\src\StrataShell\StrataShell.csproj
-dotnet build .\src\StrataShell\StrataShell.csproj -c Release --no-restore
-```
-
-Use `--preview` for coordinated interactive development; do not start a second shell over an active STRATA session. Browser, Terminal and the YouTube widget use the Microsoft Edge WebView2 Runtime. Full packages bundle the .NET desktop runtime; optional AI CLIs and hardware drivers are separate.
-
-Source changes are developed on `preview`; `main` remains the Stable source branch. Documentation can be updated independently and identifies unreleased work explicitly. No open-source license is granted by the public distribution repository; see [contribution and licensing guidance](CONTRIBUTING.md).
+The private [StrataShell source repository](https://github.com/ManiaxMax/StrataShell) contains application code and development evidence. The public [StrataShell-Releases repository](https://github.com/ManiaxMax/StrataShell-Releases) contains documentation, branding, and compiled release downloads. Documentation changes do not create a new application package or alter an installed shell.

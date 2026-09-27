@@ -34,7 +34,7 @@ STRATA Shell utilizes a dual-repository distribution architecture:
 | **Release Branches (`StrataShell-Releases`)** | `preview` | `main`, `stable` |
 | **GitHub Release Type** | Prerelease (`prerelease: true`) | Full Release (`prerelease: false`) |
 | **Runtime Packaging** | Lightweight (~15–25 MB). Reuses Stable-installed .NET runtime bridge or host system .NET 10 | Self-contained (~170–180 MB). Bundles full .NET 10 Windows x64 runtime (`coreclr.dll`, `hostfxr.dll`) |
-| **Wallpapers Included** | None (preserves existing installed wallpaper assets) | Approved pair: `STRATA_LOGO_LIGHT.jpg` and `STRATA_LOGO_DARK.jpg` |
+| **Wallpapers Included** | None (preserves installed wallpapers) | Exactly 24 approved STRATA 4K glass wallpapers (12 colors, Light and Dark) |
 | **Installer Executable** | None (portable archive + bootstrap updater) | Full standalone installer: `StrataShell-Setup-X.Y.Z-win-x64.exe` |
 | **Primary Automation Script** | `scripts/Publish-StrataPreviewRelease.ps1` | `scripts/Build-StrataInstaller.ps1`<br>`scripts/Test-StrataInstaller.ps1`<br>`scripts/Publish-StrataGitHubRelease.ps1` |
 
@@ -344,7 +344,7 @@ This will:
 1. Verify git checkout is clean and matches `origin/main`.
 2. Verify all 4 `.csproj` files match version `X.Y.Z`.
 3. Publish `StrataShell` and `StrataLauncher` with `--self-contained true` bundling .NET 10.
-4. Copy approved wallpaper assets (`STRATA_LOGO_LIGHT.jpg` and `STRATA_LOGO_DARK.jpg`).
+4. Copy exactly the 24 approved 4K glass wallpaper assets listed in the private source wallpaper inventory.
 5. Build `StrataShell-X.Y.Z.zip` and sign using the DPAPI private key.
 6. Compile the standalone setup executable: `StrataShell-Setup-X.Y.Z-win-x64.exe`.
 7. Output assets into `C:\Projects\StrataShell\artifacts\release\X.Y.Z\`.
@@ -454,4 +454,3 @@ Promote STRATA Shell to Stable version X.Y.Z and publish according to docs/RELEA
 10. Run scripts/Publish-StrataGitHubRelease.ps1 -Version X.Y.Z to upload installer, portable zip, checksums, and manifest to GitHub Releases.
 11. Report the published tag, installer checksum, and verified release URL.
 ```
-

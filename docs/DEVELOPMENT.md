@@ -183,7 +183,7 @@ The full suite renders all first-party app surfaces plus Files and Settings in L
 
 App acceptance also saves native browser/terminal captures, verifies Light/Dark text contrast, exercises all compact Task Manager destinations, and records real CPU clock/disk/GPU counters in `task-hardware.json`. Its live-hardware check requires those providers on the test host; an unsupported driver can fail that acceptance even when the app correctly reports Unavailable. Private desktop regression covers Up/Down monitor selection followed by repeated workspace Left/Right/Tab commands in Tiled and Floating modes, with empty/occupied destinations and a deliberately delayed prior focus request.
 
-The final Phase 4 evidence is linked in [the acceptance record](BATCH_4_APP_POLISH_ACCEPTANCE.md). The desktop runner allows ninety seconds for the expanded sequence. A private comparison copy with the old focus-routing behavior restored fails those sequences; it is a diagnostic comparison, not an installable candidate. Temperature coverage on this host verifies NVIDIA readings and an honest missing CPU-provider state; it does not validate physical CPU sensors on other machines.
+The final Phase 4 evidence is linked in the acceptance record (private source record). The desktop runner allows ninety seconds for the expanded sequence. A private comparison copy with the old focus-routing behavior restored fails those sequences; it is a diagnostic comparison, not an installable candidate. Temperature coverage on this host verifies NVIDIA readings and an honest missing CPU-provider state; it does not validate physical CPU sensors on other machines.
 
 ## Phase 5 preservation and maximize regression
 

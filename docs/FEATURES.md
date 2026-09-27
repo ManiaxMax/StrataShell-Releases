@@ -1,12 +1,12 @@
 # Implemented features and limitations
 
-This document describes current Preview development. Published Stable releases may predate these changes; see [release and testing status](STATUS.md). It is an implementation inventory, not a promise that every Windows workflow has already been replaced.
+This is an implementation inventory with platform and acceptance limits. See [release and testing status](STATUS.md) for published packages and installed-shell evidence.
 
 ## Floating environment
 
-The local STRATA Sphere candidate adds a separate app with unified search and tabs for web pages, settings, terminal commands and compatible native applications. Contained windows share Sphere's dock entry. Launcher-child adoption is verified with isolated processes, not certified for every Steam/game combination. [Sphere scope and acceptance](SPHERE.md).
+Sphered mode collects apps and web content into per-monitor Sphere windows with tabs and independent two-pane groups. Native hosting has compatibility limits; see [Sphered behavior and acceptance](SPHERED.md).
 
-`Super + Ctrl + D` switches the desktop environment (Desktop Mode: Tiled / Floating). Floating mode offers native title-bar movement and edge resize without modifiers, STRATA/native window controls, minimized-app recovery, grouped persistent dock pins, and an Alt + Tab selector. Workspace and monitor moves remain available without a two-window limit. The bottom bar replaces center context text with the launcher and dock; launcher, tray, power, audio and network panels open upward. Show Widgets / Hide Widgets replace the three tiled desktop views until Tiled mode returns. [Behavior, verification and limits](FLOATING_MODE.md).
+`Super + Ctrl + D` switches the desktop environment (Desktop Mode: Tiled / Floating). Floating mode offers native title-bar movement and edge resize without modifiers, STRATA/native window controls, minimized-app recovery, grouped persistent dock pins, and an Alt + Tab selector. Workspace and monitor moves remain available without a two-window limit. The bottom bar replaces center context text with the launcher and dock; launcher, tray, power, audio and network panels open upward. Show Widgets / Hide Widgets replace the four tiled desktop views until Tiled mode returns. [Behavior, verification and limits](FLOATING_MODE.md).
 
 ## Center Stage window management
 
@@ -73,7 +73,7 @@ These are logical STRATA workspaces, not Windows virtual desktops.
 ## Wallpaper and theme engine
 
 - Dark, light, and automatic appearance modes.
-- Separate `WallpapersDark` and `WallpapersLight` libraries.
+- One wallpaper library for every image, independent of Light and Dark mode.
 - Instant previous/next and collection switching with animated transitions. The active image plus three neighbors in each direction are prepared off-thread with wraparound, and image, palette, widget colors, and monitor frost commit together before the crossfade begins.
 - Palette extraction from the active wallpaper.
 - Automatic light/dark selection when Auto is enabled.
@@ -82,7 +82,7 @@ These are logical STRATA workspaces, not Windows virtual desktops.
 - Searchable, paginated wallpaper chooser with thumbnails and a large preview.
 - Wallpaper selection and themed confirmation dialogs center in the relevant monitor work area instead of inheriting top-rail or side-panel geometry; confirmations remain modal and above application windows.
 
-The official Stable installer bundles the two approved variants under `wallpapers/`: `WallpapersLight/STRATA_LOGO_LIGHT.jpg` and `WallpapersDark/STRATA_LOGO_DARK.jpg`, with `assets/wallpapers/strata-signal.png` as fallback. Lightweight Preview updates preserve the installed library and do not package wallpapers.
+The Stable installer bundles exactly 24 approved 4K glass wallpapers: 12 colors in Light and Dark. Lightweight Preview updates preserve the installed library and do not package wallpapers.
 
 ## Desktop widgets
 
@@ -142,7 +142,7 @@ STRATA Files is intentionally still a focused file manager. Windows shell extens
 
 - Output and microphone selection, levels/mute, per-app audio session mixer and media transport, with shared compact sound tray controls.
 - Native display arrangement, resolution, refresh, orientation, primary/enabled outputs and Extend/Duplicate, protected by a separate timed rollback helper. DPI remains read-only; brightness is available when the hardware exposes a supported interface.
-- Native mouse/keyboard and supported Precision Touchpad settings; launcher-selected shell startup apps; AC/battery power modes, installed power plans, timeouts, battery information and 14-day usage history; timezone, clock synchronization/manual time and a tray clock/calendar. See [native controls and exact limits](NATIVE_SETTINGS_ACCEPTANCE.md).
+- Native mouse/keyboard and supported Precision Touchpad settings; launcher-selected shell startup apps; AC/battery power modes, installed power plans, timeouts, battery information and 14-day usage history; timezone, clock synchronization/manual time and a tray clock/calendar. See native controls and exact limits (private source record).
 - Wi-Fi, wired-LAN, and offline link detection with distinct top-rail states.
 - Native Windows Wi-Fi lists, radio on/off, saved-profile removal, supported open/WPA2/WPA3 Personal/OWE connection, secret entry, cancellation and adapter-specific disconnect in the clickable network rail panel and Settings. Hidden/enterprise/unsupported enrollment uses Windows-managed profiles; permission denial is reported explicitly.
 - Streaming Bluetooth Classic/LE discovery cards, native custom pairing, connection requests, disconnect and removal in Settings and a dedicated Bluetooth rail button. Supported pairing ceremonies cover confirmation, keyboard PIN display, PIN entry and matching-code confirmation.
@@ -219,15 +219,15 @@ See [Installation and recovery](INSTALLATION.md) before enabling default-shell m
 
 ## Batch 1 safety and trust
 
-Signed update inventories, mandatory GitHub digests, verified CRX3 with native consent, an encrypted manual password vault with Windows Hello reveal/copy, safer files/archives, atomic image saves, correct display-rebuild close ownership, and honest missing-telemetry states are implemented in Preview source. See [evidence and pending installed acceptance](BATCH_1_SAFETY_ACCEPTANCE.md).
+Signed update inventories, mandatory GitHub digests, verified CRX3 with native consent, an encrypted manual password vault with Windows Hello reveal/copy, safer files/archives, atomic image saves, correct display-rebuild close ownership, and honest missing-telemetry states are implemented in Preview source. See evidence and pending installed acceptance (private source record).
 
 ## Phase 2 local candidate
 
-Shared background metrics and spectrum capture, bounded wallpaper/frost caches and image decoding, compact Paint undo history, asynchronous image operations, inactive-tab memory targets, explicit browser failure recovery, and bounded asynchronous diagnostics are implemented. The [Phase 2 record](BATCH_2_PERFORMANCE_ACCEPTANCE.md) separates local checks from pending laptop and native browser validation.
+Shared background metrics and spectrum capture, bounded wallpaper/frost caches and image decoding, compact Paint undo history, asynchronous image operations, inactive-tab memory targets, explicit browser failure recovery, and bounded asynchronous diagnostics are implemented. The Phase 2 record (private source record) separates local checks from pending laptop and native browser validation.
 
 ## Phase 4 app polish (local candidate)
 
-Interactive ConPTY terminal with bounded VT rendering; cancellable file copies and archive extraction; asynchronous/conflict-aware Text saves; Snip snapshot processing and unsaved-change protection; orientation-correct image loading/export; real shared audio visualization; per-site browser permission review; live download progress/cancellation; process identity checks; and compact/live-theme/accessibility corrections. Open/Save dialogs no longer retain the covered app's active highlight. Implementation and test boundaries are tracked in [Phase 4 acceptance](BATCH_4_APP_POLISH_ACCEPTANCE.md).
+Interactive ConPTY terminal with bounded VT rendering; cancellable file copies and archive extraction; asynchronous/conflict-aware Text saves; Snip snapshot processing and unsaved-change protection; orientation-correct image loading/export; real shared audio visualization; per-site browser permission review; live download progress/cancellation; process identity checks; and compact/live-theme/accessibility corrections. Open/Save dialogs no longer retain the covered app's active highlight. Implementation and test boundaries are tracked in Phase 4 acceptance (private source record).
 
 Repeated workspace shortcuts preserve the selected monitor after Up/Down monitor navigation, including empty destinations in tiling mode. Task Manager connects Windows CPU clock, disk activity/transfer rates and per-adapter GPU engine/memory counters. NVIDIA driver temperatures and optional running CPU sensor providers supply real temperatures with source labels. Unsupported measurements remain explicit; no additional sensor driver is installed.
 

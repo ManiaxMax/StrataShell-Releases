@@ -14,7 +14,7 @@ Press **Super + Ctrl + D**, or use **UI & Theme → Interface → Window Managem
 
 ## Floating behavior
 
-September 5 source follow-up: multiple document windows share one app icon with a window count. Hover for previews, click a group to choose a window, Shift-click to launch again, or right-click for Open new window, individual Close and Close all. Close sends the normal window message and respects unsaved-work cancellation. Live DWM thumbnails are paged and released on dismissal; minimized windows show a restore card. Windows minimize-target requests receive the visible icon's screen rectangle. STRATA minimize transitions use a bounded compositor thumbnail and preserve restore geometry. Fullscreen suppresses previews and transitions. See [current validation and physical acceptance](NATIVE_SETTINGS_ACCEPTANCE.md).
+September 5 source follow-up: multiple document windows share one app icon with a window count. Hover for previews, click a group to choose a window, Shift-click to launch again, or right-click for Open new window, individual Close and Close all. Close sends the normal window message and respects unsaved-work cancellation. Live DWM thumbnails are paged and released on dismissal; minimized windows show a restore card. Windows minimize-target requests receive the visible icon's screen rectangle. STRATA minimize transitions use a bounded compositor thumbnail and preserve restore geometry. Fullscreen suppresses previews and transitions. See current validation and physical acceptance (private source record).
 
 The X closes STRATA Files, Settings, Snip and Keybindings instead of hiding a live app. Files can reopen as a fresh window, cancelled document closes remain usable, and pending Settings saves are retained.
 
