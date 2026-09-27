@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="360" viewBox="0 0 960 360" role="img" aria-labelledby="title description">
   <title id="title">STRATA Shell</title>
-  <desc id="description">The screensaver-style STRATA three-bar mark above the wordmark and system-signal descriptor.</desc>
+  <desc id="description">The screensaver-style STRATA three-bar mark above the wordmark and Shell descriptor.</desc>
   <style>
     .wordmark { fill: #008095; }
     .descriptor { fill: #526d78; }

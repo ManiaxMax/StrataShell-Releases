@@ -145,7 +145,7 @@ All three volume controls can be remapped in the editor. Remapped volume shortcu
 
 The default recovery chord intentionally does not contain `Super`, so it remains available if the Windows-key state becomes unreliable. It can be remapped and reset like other STRATA bindings; the separate Explorer recovery shortcut and Settings recovery actions remain available.
 
-Show desktop is a one-way minimize action and does not depend on the desktop-click setting. Source build and 144 self-checks pass; installed fullscreen-game keyboard acceptance remains pending.
+Show desktop is a one-way minimize action and does not depend on the desktop-click setting. Installed fullscreen-game keyboard behavior remains subject to the limits in [release status](STATUS.md).
 
 ## Retired bindings
 

@@ -115,35 +115,17 @@ Hold `Super + Ctrl` and left-click/left-drag anywhere inside a window to float a
 
 The top rail follows a separate physical-overlap rule: any managed window crossing its bounds makes the rail fade out and stop intercepting pointer input. Moving the window clear restores it; touching the top edge temporarily reveals the rail while the overlap remains.
 
-## Batch 1 safety behavior
+## Safety and hardware limits
 
 Extensions require verified CRX3 identity and native permission consent; downloads never install automatically. Unpacked developer folders require explicit unsigned-code consent. Manual passwords are encrypted for the Windows account; reveal/copy requires Windows Hello. Unreadable vaults are preserved in read-only mode.
 
 Files captures transfer sources/destination, rejects link/junction ambiguity before recursive transfers and preserves sources after failed cross-volume copies. Archive opening shares bounded extraction and download-origin protection. Paint, Image Viewer and Snip use atomic, format-correct saves; Paint offers Save/Discard/Cancel.
 
-Batch 1 replaced invented Task Manager readings with explicit Unavailable states. Phase 4 subsequently connects Windows-reported CPU clock, logical-disk activity/read/write/latency, GPU engine load and dedicated/shared memory. Counters collect on a worker only while the visible, unpaused monitor is sampling. GPU identity uses DXGI LUIDs; the detail view lets users choose among adapters, with independent histories. GPU load uses the busiest engine after summing processes within that engine; summary disk activity shows the busiest fixed volume. Network history uses MB/s. Metric labels change with the selected hardware page.
+Task Manager reports Unavailable rather than inventing unsupported readings. It shows Windows-reported CPU clock, logical-disk activity/read/write/latency, GPU engine load and dedicated/shared memory when available. GPU details can be selected by adapter, and Network history uses MB/s. Metric labels change with the selected hardware page.
 
 NVIDIA GPU temperature uses the installed driver's NVML library from System32. CPU temperature uses an already-running Libre Hardware Monitor or Open Hardware Monitor WMI provider; STRATA does not install a driver or launch that software. Readings identify their source, and unsupported sensors remain unavailable. Identical physical NVIDIA cards with ambiguous model names do not receive an assigned temperature. Network totals exclude addressless Windows filter layers that repeat the parent interface's counters; totals across IP adapters can still include both VPN and underlying transport traffic.
 
-System Info and Performance now share cached Windows hardware inventory: motherboard manufacturer/product, BIOS version/date, physical/logical CPU counts, L2/L3 cache and RAM speed/form factor. Compact System Info cards keep aligned edges when stacked and restore their column spacing when widened. AMD/Intel GPU temperatures, power draw, per-core usage, memory pool accounting, per-process disk/network/GPU accounting and user-session accounting remain unsupported. Startup impact is explicitly not measured. Missing, denied and warming-up counters remain unavailable; they are not reported as idle. See Phase 4 acceptance (private source record) for the measured host and remaining scope.
-
-## Phase 4 shared polish (local candidate)
-
-Paste and dropped-file copies share within-file progress, cancellation, keep-both collision naming and a completion/failure report. Archive extraction uses the same cancellation control. Completed files remain after cancellation; an incomplete folder can contain completed files, and cross-volume moves preserve remaining sources. Windows I/O that is blocked on a disconnected device/share may not acknowledge cancellation immediately.
-
-Open/Save pickers and owned dialogs suppress the covered parent's active highlight, including delayed highlight callbacks, and restore the owner on dismissal. Generated controls promote known palette brush references to live resources and give tooltip-labelled buttons accessible names. Compact toolbars retain access to their actions through overflow or wrapping. See Phase 4 acceptance (private source record) for verified evidence and installed/hardware checks still outstanding.
-
-Task Manager collapses its navigation below 1100 DIPs, reflows dashboard cards and stacks system-information cards; graph labels follow the theme. Terminal ANSI colors and the browser start page use theme-matched backgrounds so Light mode remains readable. Settings descriptions follow live theme changes.
-
-## September 7 usability fixes (source candidate)
-
-- Paint offers preset color swatches and a More... color chooser with a hue strip, saturation/brightness field and preview. Eyedropper sets the current swatch and returns to painting. SELECT uses a black/white outline and corner handle: drag inside to move, drag the corner to resize, and use COPY/CUT/PASTE/DELETE or Ctrl+C/X/V and Delete. Pasted images remain selected and preserve the underlying image when moved. Escape deselects; edits support undo/redo.
-- Snip offers quick color swatches and the same More... chooser for pen/highlighter colors; existing strokes keep their chosen colors.
-- The Text FONT panel follows the familiar Notepad layout: labeled font family, Regular/Italic/Bold/Bold Italic style, size, a sample preview, and OK/Cancel. These are editor appearance choices; TXT/Markdown remain plain text.
-- Terminal's scrollbar follows the current terminal palette, including live theme updates.
-- Files keeps its footer at compact heights and scales its controls to the window width. Minimum floating dimensions are 640 × 360 DIPs. Single-file pickers use native single-selection behavior instead of starting a multi-selection marquee.
-
-Release build and automated checks are recorded in STRATA_BACKLOG.md. Installed pointer, Light/Dark/live-theme, minimum-size and launcher timing acceptance remain pending.
+System Info and Performance show Windows hardware inventory where available. AMD/Intel GPU temperatures, power draw, per-core usage, memory pool accounting, per-process disk/network/GPU accounting and user-session accounting remain unsupported. Startup impact is not measured. Missing, denied and warming-up counters remain unavailable rather than being reported as idle.
 
 ## USB safe removal
 
