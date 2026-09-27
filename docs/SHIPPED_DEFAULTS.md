@@ -1,6 +1,6 @@
 # Shipped STRATA Shell defaults and privacy scrub
 
-The next release containing Phase 5 seeds `installer/Defaults/settings.safe.json` only for a brand-new installation without an existing settings file. The profile uses **Balanced quality** and **Floating mode**, with Browser and Files pinned. Setup and portable installation preserve existing profiles; neither updates nor shell startup apply this new layout. Explicit Reset Settings is a separate user action. Schema 45 adds widget placements, module selection, AI controls and Snip auto-copy; the failed experimental live backdrop is withdrawn and saved opt-ins are cleared. Wallpaper animation selection remains unchanged and no layout migration runs at startup. The separate automatic Low quality preference defaults to enabled when absent and never overwrites the saved rendering preset.
+Stable 1.0.23 seeds its privacy-safe defaults only for a brand-new installation without an existing settings file. The profile uses **Balanced quality** and **Floating mode**, with Browser and Files pinned. Setup and portable installation preserve existing profiles; neither updates nor shell startup apply this new layout. Explicit Reset Settings is a separate user action. The current settings schema is 52. The separate automatic Low quality preference does not overwrite the saved rendering preset.
 
 | Slot | Left column | Right column |
 |---|---|---|
@@ -23,9 +23,9 @@ All eight widgets are enabled; hover expansion and widget titles are enabled. Fi
 
 ## Replaced with portable installer values
 
-- wallpaper library, active wallpaper, and last Light/Dark wallpaper paths point to the installer-owned per-user wallpaper library;
-- Stable packages include exactly `WallpapersLight/STRATA_LOGO_LIGHT.jpg` and `WallpapersDark/STRATA_LOGO_DARK.jpg`; Preview update packages omit wallpapers and preserve the installed library;
-- the portable default pair is `STRATA_LOGO_DARK.jpg` and `STRATA_LOGO_LIGHT.jpg`;
+- wallpaper library and active wallpaper point to the installer-owned per-user wallpaper library;
+- Stable 1.0.23 packages include exactly 24 approved `STRATA_<Dark|Light>_<color>_4K.png` images; Preview update packages omit wallpapers and preserve the installed library;
+- the fresh-install default is `STRATA_Dark_Blue_4K.png`;
 - wallpaper recents are an empty array;
 - the audio-spectrum source uses the portable Windows system mix rather than a machine-specific endpoint;
 - the timer reminder is the generic text `Focus session complete`;
@@ -45,6 +45,6 @@ The packaged visual baseline follows the Balanced desktop profile: 40% glass tra
 
 No current `settings.json`, log, cache, session database, browser data, or recovery backup is embedded in the installer. The allowlisted template is `installer/Defaults/settings.safe.json`.
 
-Schema 40 ships no selected startup apps (StartupApplicationIds is empty). STRATA touchpad workspace swipes are enabled with a threshold of 180. Native display, input, sound, power and clock values are read from Windows; installing STRATA does not apply new hardware defaults.
+The template ships no selected startup apps (`StartupApplicationIds` is empty). STRATA touchpad workspace swipes are enabled with a threshold of 180. Native display, input, sound, power and clock values are read from Windows; installing STRATA does not apply new hardware defaults.
 
 WallpaperAnimation defaults to 0 (Glow Sweep). Existing profiles missing this property retain the previous effect; saved alternatives are preserved.

@@ -1,5 +1,5 @@
 # STRATA repository branding
 
-`strata-logo.svg` is the transparent GitHub header. Its three polygons match the canonical STRATA mark; it uses no background rectangle, embedded raster, script, remote font or external resource. The wordmark and caption adapt to light/dark browser preferences. Both repository READMEs display it at 720 pixels wide, up from 640.
+The full-width README header uses strata-logo-banner.svg, a wide arrangement of the existing transparent three-stripe mark and STRATA wordmark. The original strata-logo.svg remains available for other placements. Both SVGs adapt wordmark and caption colors to light and dark browser preferences.
 
-`strata-logo.png` is the earlier opaque header, retained for existing references. Launcher icons remain unchanged. The retired raster under `assets/brand` is provenance only.
+strata-logo.png remains for historical release-note references. StrataLauncher.png is the launcher image. The GIF and still desktop showcases live in assets/showcase and are documentation images, not wallpapers included in update packages.
