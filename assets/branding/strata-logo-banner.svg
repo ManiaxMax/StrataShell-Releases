@@ -1,19 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="260" viewBox="0 0 1500 260" role="img" aria-labelledby="title description">
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="360" viewBox="0 0 960 360" role="img" aria-labelledby="title description">
   <title id="title">STRATA Shell</title>
-  <desc id="description">Wide STRATA three-stripe mark and wordmark on a transparent background.</desc>
+  <desc id="description">The screensaver-style STRATA three-bar mark above the wordmark and system-signal descriptor.</desc>
   <style>
     .wordmark { fill: #008095; }
-    .caption { fill: #526d78; }
+    .descriptor { fill: #526d78; }
     @media (prefers-color-scheme: dark) {
       .wordmark { fill: #00d9ed; }
-      .caption { fill: #91a8b2; }
+      .descriptor { fill: #91a8b2; }
     }
   </style>
-  <g transform="translate(42 67) scale(1.75)">
+  <g transform="translate(338 15) scale(2)">
     <polygon points="18,4 136,4 118,20 0,20" fill="#00d9ed" />
     <polygon points="0,27 118,27 136,43 18,43" fill="#8245ff" />
     <polygon points="18,50 136,50 118,66 0,66" fill="#ff9900" />
   </g>
-  <text class="wordmark" x="340" y="185" font-family="Segoe UI,Arial,sans-serif" font-size="204" font-weight="600" textLength="1110" lengthAdjust="spacingAndGlyphs">STRATA</text>
-  <text class="caption" x="348" y="227" font-family="Consolas,monospace" font-size="24" font-weight="600" letter-spacing="3">WINDOWS SHELL ENVIRONMENT</text>
+  <text class="wordmark" x="480" y="267" text-anchor="middle" font-family="Bahnschrift,Segoe UI,Arial,sans-serif" font-size="112" font-weight="600">STRATA</text>
+  <text class="descriptor" x="480" y="331" text-anchor="middle" font-family="Cascadia Mono,Consolas,monospace" font-size="24" font-weight="500">SHELL / SYSTEM SIGNAL</text>
 </svg>
