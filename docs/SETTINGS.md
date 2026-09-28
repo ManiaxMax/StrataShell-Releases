@@ -1,279 +1,38 @@
-# Settings reference
+# Settings guide
 
-Settings search is available above the page navigation, including compact layouts. Results open the relevant page and scroll to the matching control. Schema 45 preserves existing customization and migrates legacy performance toggles to the four-module picker.
+STRATA Settings saves preferences for the current Windows user, normally under `%LOCALAPPDATA%\StrataShell`. Search at the top of Settings opens the matching page and control. Updates and repairs preserve existing choices; **Reset Settings** is a separate action. See [release status](STATUS.md) for the packages these pages describe.
 
-STRATA Settings is a first-party themed surface. Changes are saved per user and most visual controls apply live. Theme-colored Fluent icons identify navigation categories, destinations, and direct actions; toggles and sliders remain visually quiet so the control state stays primary. Settings are stored beneath `%LOCALAPPDATA%\StrataShell`; generated state is not committed to Git.
+## Language
 
-Schema **36** adds `WindowManagementMode` (0 = Tiled, 1 = Floating, 2 = Sphered) and `DockPins`. Existing profiles migrate to Tiled with Browser and Files pinned; an intentionally empty pin list stays empty. The STRATA launcher is permanent and is not a removable pin. Desktop mode (Tiled / Floating) can be changed in **UI & Theme → Interface → Window Management Mode** or with `Super + Ctrl + D`; Strata Sphere is toggled with `Super + Ctrl + S`. All three window modes remain available, labeled Both modes, Floating Mode or Tiled Mode, and the title-bar-control preference is retained but overridden so Floating apps expose their controls.
-
-Floating customization in that section includes background transparency (`FloatingBackgroundOpacity`, fresh-install default 1.0 (0% background transparency), range 0.02–1), desktop-click selection clearing (`FloatingDesktopClickMinimizes`, retained for backward-compatible settings storage and defaulting to true), and dock height (`FloatingDockHeight`, default 48 DIPs, range 44–72). Background dimming applies only to inactive apps overlapped by the active app. It multiplies their configured opacity and restores the baseline on activation or when the active app moves away. Covered widgets become completely transparent. These preferences persist independently of tiled settings. Bar customization exposes both dock and rail controls with mode labels.
-
-Schema 36 changes the background-transparency default from 90% to 80%. Existing schema-35 profiles using the previous 0.10 opacity default migrate to 0.20; other saved customization is retained. Reduced Motion continues to disable workspace animation; with it off, both Tiled and Floating workspaces swipe horizontally.
-
-Schema 37 changes the Floating dock default from 50 to 48 DIPs. Existing profiles still using the former 50-DIP default migrate to 48; customized dock heights are preserved.
-
-
-Schema 38 adds `DisplayLayouts`, a bounded dictionary of SHA-256 display-identity keys holding the selected/previous workspace, view mode and widget visibility. It contains no window handles, app sessions or window contents. Existing appearance and app settings survive migration; fresh packages ship an empty dictionary. The legacy `DisableUnusedWindowsProcesses` flag is ignored and normalized to false. `ScreensaverWindowsIdleFloorSeconds` is compatibility data only and no longer changes Windows. Settings uses compact navigation below 920 DIPs and dialogs fit their current display work area.
+Choose one of 25 language/region options or **Follow Windows**. Settings navigation, search and selected shared controls change without restarting STRATA. Translation is partial: many app-specific screens, errors, Setup and Launcher remain in English. Changing STRATA's language does not change Windows or other applications.
 
 ## UI & Theme
 
-The visual controls are consolidated into one section with five focused panes. Sliders stay together for continuous values, while binary choices use theme-aware OFF/ON toggles. Window Layout is part of Interface so global scale, material, surround, and geometry can be tuned in one place.
+| Pane | Main controls |
+|---|---|
+| **Wallpaper** | Choose an image; set Auto, Light or Dark appearance; change fit, scaling, animation, palette and wallpaper grid. |
+| **Interface** | Adjust interface typography, glass, blur, bloom, contrast, transparency, motion and performance. |
+| **Window Layout** | Select Floating, Tiled or Sphered; configure workspace count, Tiled views, gaps and Floating behavior. |
+| **Rail & Dock** | Choose connected rail or separate dock, position, size and visible modules. |
+| **Widgets** | Assign widgets to slots and monitors, change titles, visibility and widget-specific options. |
+| **Screensaver** | Enable it, change idle delay, respect presentation mode and start a preview. |
 
-### Wallpaper
+New installations start in Floating mode with Balanced quality, five workspaces, Browser and Files pinned, and a five-minute screensaver delay. Existing profiles keep their saved choices. See [desktop modes](FLOATING_MODE.md) and [screensaver](SCREENSAVER.md).
 
-- Select Dark, Light, or Auto mode.
-- Browse the active wallpaper library or open the full wallpaper chooser.
-- Set **Wallpaper Scaling** to `High Quality` (Bicubic) or `Fast / Linear`.
-- Set **Wallpaper Fit** to `Fill (Crop)`, `Fit (Entire)`, or `Stretch (Full)`.
-- Toggle the optional wallpaper grid. Wallpaper-derived color tuning lives with the rest of the shared interface material controls.
-- Auto mode evaluates wallpaper luminance and selects the matching Windows and STRATA application mode.
-- Light and Dark collections preserve their most recently selected wallpaper independently.
+## Windows and device controls
 
-### Interface
+- **Notifications** shows STRATA alerts and recent activity.
+- **Display** exposes supported monitor arrangement, resolution, refresh, orientation and brightness controls. Some values are read-only when Windows, hardware or policy does not expose a setter.
+- **Sound + Mixer**, **Network** and **Bluetooth** use Windows devices and services. Wi-Fi connection and automatic-connect settings belong to Windows profiles; organization policy or missing permissions can limit changes.
+- **Input + Keybinds** shows supported mouse, touchpad and keyboard controls. Open the live shortcut list with **Super + K** and its editor with **Super + Alt + K**. See [keybindings](KEYBINDS.md).
+- **Date + Time** reads Windows time and time-zone settings. Manual clock changes require explicit confirmation and Windows elevation; organization-managed time policy remains in force.
+- **Startup + App Tray** manages selected startup applications and tray items. It can export a portable startup-app list for another installation.
+- **Power + Session** shows supported power and battery controls, lock, sign-out, restart and shutdown actions.
 
-The Interface pane is organized into focused thematic subjects:
+## Updates, recovery and profiles
 
-#### Graphics & Performance
-- Select **Performance Mode**: `High`, `Balanced`, `Low`, or `Custom`. `High` preserves full visual fidelity; `Balanced` keeps full-motion, monitor-aware animation and high-quality wallpaper scaling while disabling bloom, frost backdrops and shadows; `Low` also reduces motion, uses linear wallpaper scaling and caps frame rate at 60.
-- Set **Max Animation Frame Rate**: `Native / Uncapped`, `60 FPS Cap`, or `30 FPS Cap`.
-- Toggle **Automatic Low Quality** to temporarily reduce rendering workload during Energy Saver, Best power efficiency, or at 20% battery and below. Low battery clears on external power or at 25%; all saving conditions must end before saved quality returns. Preferences are never replaced with a Low preset.
-- Percentage controls place `50%` at their physical midpoint, and neutral scale/speed controls place `1.00×` at their midpoint even when the safety range is asymmetric.
+**Updates** selects Stable or Preview, checks the public release feed without a GitHub account, and verifies a package before installation. Preview is a smaller update and may require a compatible Stable installation or registered .NET 10 Desktop runtime. The running shell is not overwritten; the new release is used at the next sign-in. See [installation and recovery](INSTALLATION.md).
 
-#### Display & Scale
-- STRATA Shell detects the active workspace tier—720p, 1080p, 1440p, 3K, or 4K+—and highlights its recommended composition baseline.
-- Adjust display scale from 0.85× to 1.35× around that recommendation, or choose **Use Recommended** to return the adjustment to 1.00×. The displayed effective scale combines the recommendation and adjustment.
-- Display Scale changes both widget columns and the Center Stage envelope. One-app and two-app layouts remain aligned to the rendered top and bottom widget-card edges rather than a fixed screen percentage.
+**Recovery + Profiles** offers profile backup/import and recovery of unfinished Notepad, Paint and Snip work where available. **Windows Tweaks** includes the confirmed setting to restore Explorer permanently as the default shell. **Explorer Session** in Power + Session is temporary for the current login. Keep the external Explorer recovery shortcut available.
 
-#### Color & Lighting
-- Adjust wallpaper-derived **Vibrancy** (saturation range for interface elements).
-- Adjust **Bloom** (phosphor light spill around accent labels, active controls, and surround). Bloom is palette-wide rather than a single accent shadow: primary/secondary signals, warning/success/danger states, colored text and icons, borders, status dots, graphs, and other colored control graphics receive color-matched phosphor halos. Neutral body text and neutral surfaces remain crisp.
-- Configure themed workspace-surround **Intensity** and **Thickness**. A thickness of `0 px` turns the four-edge surround off completely.
-- Toggle **High Contrast** to increase visual separation while retaining the wallpaper palette identity.
-
-#### Glass, Blur & Transparency
-- Adjust **Glass Transparency** from `0%` (solid) through the `65%` readability limit for first-party surfaces. Existing saved opacity values are displayed through the inverse control without changing their visual result.
-- Adjust **Additional Widget Transparency** directly below the shared glass control.
-- Adjust **Frosted Glass Blur** continuously from clear through strong frost: STRATA builds one cached, wallpaper-aligned Gaussian frost beneath the existing tint layer while DWM remains clear.
-- Toggle **STRATA Surface Frosted Glass** and **Widget Frosted Glass** independently to choose which targets consume the global blur strength. Wallpaper, palette and monitor-sized frost prepare before publication; wallpaper and frost start together with the same crossfade duration/easing. Strong frost filters at half resolution before restoring the original texture dimensions; wallpaper resolution is unchanged.
-
-#### Depth & Shadows
-- Toggle native **Window Shadows** and **Widget Shadows** independently from glass transparency.
-
-#### Motion & Transitions
-- Toggle **Animate Window Moves Between Workspaces** to animate apps carried to another workspace. Enabled by default; turning it off leaves ordinary workspace navigation animated. Schema 43 adds this preference without replacing existing settings.
-- Adjust **Motion Speed** multiplier for transitions and workspace slides.
-- Toggle **Reduced Motion** to replace spatial transitions with immediate state changes.
-
-### TOP/BOTTOM RAIL
-
-- Adjust the active rail height, edge inset, and side inset. Reset Rail Size & Spacing resets only those dimensions.
-- Enable or disable workspaces, context, active-app information, network, audio, battery, application tray, Snip, and Settings modules. Tiled mode also exposes the Command launcher module.
-- Power is always visible. Bluetooth has its own working status/tray button beside Network. The CPU module and the old, unused Bluetooth visibility option remain removed.
-- In Floating mode, the STRATA dock icon opens Applications. Dock height is configured here.
-- The rail reflows automatically as modules are changed.
-- Each connected monitor receives its own top rail, independent local workspace indicator, active-app context, and reserved work area. The rail currently owning workspace hotkeys shows **Active Monitor** after its workspace numbers.
-- The application-tray control is a down-chevron at the left edge of the right-side status group, immediately before the ordinary connectivity/status controls.
-
-### Widgets
-
-- **Widgets on all monitors** appears in both modes. Enabling it reveals secondary widget slots; Ctrl + left-click drag moves or swaps widgets across monitors. Placements use display identities and fall back to the primary display when disconnected or disabled.
-- The master Widget Layer, Expand on Hover, title visibility, and expansion-delay controls are grouped above the individual modules.
-- Enable weather, clock, focus timer, performance, audio spectrum, notes, AI CLI, and YouTube widgets independently.
-- Hold Ctrl and drag to move or swap any of the 16 slots. Crowded columns scroll; holding a dragged card at a column edge scrolls to additional slots. Expanded controls retain their usable height. The lock button cycles expanded, collapsed, and unlocked.
-- Open the shared Fluent gear in the top-right of every widget for settings local to that surface.
-- Weather controls location, Fahrenheit/Celsius, normal/themed icons, manual refresh, and 5/12/30/60-minute refresh cadence. Recognizable normal weather icons are the default; the STRATA glyph treatment remains optional.
-- Time + Calendar controls 12/24-hour time, seconds, and Sunday/Monday week start. Event dates use the secondary palette color. Click a date for its appointments and Add appointment; upcoming events appear beneath the month. The rail clock also shows appointments and opens STRATA Calendar. Events are stored on this PC; calendar syncing and account connections are not offered.
-- Focus Timer controls default/custom duration, notifications, completion sound, and reminder text while the card exposes progress, remaining percentage, pause/reset, and a quick five-minute extension.
-- AI Command has separate model, speed, and reasoning-effort dropdowns for each provider. Codex choices come from its local model catalog; Refresh model list also discovers Antigravity models. Claude uses its model aliases. CLI default preserves the client's preference; unavailable controls are disabled. Antigravity has no separate speed control. Fast mode is offered for supported models and may increase usage. Working directory, conversation continuation, tool-activity visibility, and session reset remain available. Each provider has an explicit, default-off dangerously-skip-permissions toggle. Codex also disables its sandbox when enabled. Install / repair PATH actions use each provider's official Windows installer. Sign-in remains provider-owned.
-- Performance offers up to four selectable Task Manager metrics under Widgets and its gear: CPU, memory, disk, network, GPU, power, temperatures, processes, threads and uptime, plus discovered cores/adapters/drives. Unsupported readings show —. Cadence remains 1/2/5/10 seconds; the graph always tracks CPU and RAM. Reset defaults in the widget gear restores CPU, memory, network, processes and one-second updates.
-- Audio Spectrum controls system-mix or microphone capture, band/mirror/level rendering, and sensitivity. Samples remain in memory and are never saved.
-- YouTube controls account access through the default browser, result thumbnails, the home button, autoplay, preferred playback speed, and widget-local volume/mute controls (independent of Windows system mix). The card features an embedded volume slider (0–100%) and mute toggle button directly in the player status row, with preset choices in the widget gear. Home stops playback, cancels searches, and restores the widget's empty ready view. External browsing remains a separate action. Stream quality stays automatic because YouTube no longer exposes a working quality override.
-
-### Window Layout within Interface
-
-- Adjust the Center Stage width ratio and maximum width.
-- Adjust inner and outer gaps.
-- Adjust active-border thickness.
-- Enable the themed active-window border.
-- Native windows that meaningfully reject repeated tile placement are promoted to floating instead of being trapped in a resize loop. A floating window takes visual precedence: only the tiled windows and widgets it overlaps are hidden, then restored when the overlap ends or the float closes.
-
-`Super + Ctrl + W` cycles the active monitor independently through Center Stage, wide side-by-side, and wide top/bottom. Mixed native/STRATA transitions are driven from WPF's presented composition frames as one geometry batch; first-party frost and bloom work pauses during motion and resumes after the exact final tile, preventing STRATA apps from lagging behind native apps. `Super + Alt + 1…4` selects a monitor; `Super + Alt + Shift + 1…4` moves the active app into that monitor's currently visible workspace. Secondary displays initially use wide side-by-side without widgets, but retain their own top bar and dedicated workspace state. Old freeform and recursive tiling modes are not retained.
-
-### Screensaver
-
-- Open the full Screensaver controls from the UI & Theme route. The launcher and STRATA Files retain their own top-right gear controls instead of occupying a separate Settings pane.
-
-## Notifications
-
-- Enable or disable timer completion alerts and their configured sound. The timer widget also has its own Notify on Complete setting.
-- Critical hardware and shell-recovery signals remain separate from optional banners.
-- Windows per-application notification permissions remain app-owned. Use the Explorer companion route to open native notification settings.
-
-## Network
-
-- See whether the active route is Wi-Fi, wired LAN, another adapter, or offline.
-- Scan available networks with live signal, security, saved-profile, and connected state.
-- Connect saved networks with one click, enter a password for a new secured network, connect open networks, or disconnect—all inside STRATA Shell.
-- Use the radio toggle to enable/disable Wi-Fi, or expand Saved Connections to forget a profile after confirmation, including networks that are out of range. Organization-managed profiles cannot be removed here.
-- Click the network status icon to open the same native controls used by Settings. Saved/unsaved observations of one network are consolidated without mixing adapters or security types.
-
-STRATA Shell enrolls credentials directly in memory into the current user's Windows WLAN profile store. No temporary password file is created. Hidden/enterprise and unsupported enrollment types need an existing Windows profile; unknown authentication never becomes an open connection. Cancel stops the current attempt. Windows Location permissions or organization policy can deny network access; STRATA reports the reason and does not alter those permissions.
-
-## Bluetooth
-
-- Discover paired and nearby Classic/LE devices as live cards. Devices appear during scanning; names, pairing and connection state update in place.
-- Use Find Devices with a mouse, keyboard, headset, speaker or other peripheral in pairing mode. The list is shared by Settings and the Bluetooth tray button.
-- Toggle the Bluetooth radio, pair a device, request a connection, disconnect, or remove a pairing. Identical friendly names do not merge separate device identities.
-- STRATA handles confirmation-only, keyboard PIN display, PIN entry, and matching-code confirmation through Windows' supported custom-pairing API. Cancelling does not accept the ceremony.
-
-Normal Wi-Fi and Bluetooth workflows do not require starting Explorer. Windows still owns authentication, device drivers, hardware/policy restrictions, and any protected access prompt. A connection request is not reported as an observed connection; the device must be awake and its Windows profile/driver must support the requested use.
-
-## Sound + Mixer
-
-- Select playback and microphone devices; adjust each endpoint's level and mute state.
-- Adjust individual running audio sessions in the application mixer. An app appears after it creates a Windows audio session.
-- Clicking the speaker opens the sound tray panel: output/microphone selectors, separate percentage readings and Mute/Unmute buttons, and a link to the full mixer. It refreshes while visible and releases its polling timer when closed.
-- Device dropdowns show friendly names. Switching a sound device preserves keyboard focus, and refreshes leave unchanged controls in place. Tab advances from a volume slider directly to its mute button.
-
-## Display
- 
-- View each connected monitor's STRATA number, primary/extended role, physical resolution, current refresh rate, effective X/Y DPI, scale, and the combined virtual-desktop dimensions.
-- Workspace and Center Stage animation cadence is selected from the monitor that owns the transition, rather than a single global/primary refresh value.
-- Adjust display luminance slider when the display hardware exposes a supported software brightness channel.
-- Drag monitors on the arrangement map or enter exact X/Y positions. Select resolution, refresh rate, orientation, primary display and enabled outputs. Extend and Duplicate use Windows display topology directly.
-- Apply is a preview with **Keep** and **Restore**. A separate helper restores the previous configuration after 20 seconds or if the calling shell disconnects. Stale/hotplugged drafts are rejected. Changes become persistent only after Keep succeeds.
-- Windows per-monitor DPI is displayed honestly as read-only; there is no supported general setter in this implementation. STRATA's interface scale remains separately adjustable under UI & Theme.
- 
-## Input + Keybinds
-
-- The page offers separate **Open Keybinds** and **Open Keybind Editor** routes instead of an embedded shortcut dump.
-- Adjust native pointer speed/precision, primary mouse button, wheel scrolling, double-click interval and keyboard repeat settings.
-- Precision Touchpad controls appear when the OS and device expose the supported interface: scrolling, zoom, taps, pointer sensitivity and available haptic/force options. Device enable state is read-only. Older Windows builds and unsupported hardware display a capability explanation.
-- Enable STRATA workspace swipes and set their threshold independently of the hardware settings.
-- Open the complete searchable keybinding viewer (`Super + K`).
-- Open the keybinding editor (default `Super + Alt + K`) to remap or reset every built-in action, including volume controls and actions for either desktop mode, and add, edit, or delete custom STRATA commands or application shortcuts.
-- Use the per-row **Default** button to reset one built-in action without affecting other customizations.
-- Select/search the action through the STRATA Command catalog, and type either `SUPER` or `WIN` for the Windows-logo key in edit mode.
-- Reject duplicate or conflicting chords before saving or resetting, including occupied application shortcuts. Editor access, locking, app switching and emergency recovery can all be remapped; Windows-owned combinations remain reserved.
-- Confirm that the live list renders the Windows-logo icon where the chord uses `Super`.
-- Review the non-`Super` emergency recovery chords.
-
-Workspace Count accepts 1 through 10. `Super + -` decreases the same saved value only when the highest workspace is empty; `Super + +` increases it. The rail and an open Interface pane refresh from that setting.
-
-## Windows Tweaks
-
-- Hide native caption controls where the target window supports it.
-- Apply the themed active-window border.
-- Apply wallpaper-derived caption and title-text colors to compatible native DWM title bars; this reversible tweak is enabled by default.
-- Synchronize Windows light/dark application preference.
-- Synchronize each STRATA wallpaper change to the current user's Windows lock screen by default.
-- Enable or disable future lock/sign-in wallpaper synchronization independently; disabling preserves the current lock-screen image.
-- The protected sign-in background remains Windows-owned. The page explains this boundary alongside STRATA's lock-screen synchronization control.
-- Theme Command Prompt and PowerShell palettes.
-- Enable external theme adapters.
-- Toggle application-window transparency support.
-- Adjust **App Window Transparency** from `0%` (solid) through the `65%` readability limit for eligible third-party windows. `Super + T` retains the per-window toggle.
-- Make STRATA Shell the default shell or restore Explorer through the edition-aware route: current-user policy on Windows 11 Home/Pro, Shell Launcher on supported Enterprise/Education/IoT editions.
-
-Each compatibility tweak is saved independently and is designed to be reversible. Applications may ignore unsupported DWM or chrome operations.
-
-## Startup + App Tray
-
-- Browse/search the application launcher catalog and select apps to start with the installed STRATA shell. Selections use stable catalog identities; missing apps remain removable and cannot inject arbitrary commands. Preview and test modes do not launch them. These selections run at each shell startup, including a shell restart.
-- Review startup registrations discovered from the supported per-user and machine startup locations.
-- Use the top-rail tray dropdown for app-published controls such as Tailscale's own menu instead of adding one icon per application to the rail.
-- Published tray entries retain their real application icon and expose separate Open and Menu actions.
-- Open (or the application row) restores the most recently used tracked window across workspaces. When no window exists, it opens the publisher's native menu; choose the app's own Open action to create a window. Tray-only applications expose their controls there. Click-only publishers receive one activation fallback if no menu/window appears. Menu always requests the publisher's menu. No process is relaunched or terminated.
-- Registrations are grouped into one base row per product/company; distinct publisher controls remain available from that row's submenu, and shell hardware pseudo-icons are excluded.
-- Export or import a portable startup manifest. First run reconciles a supplied manifest once, preserves existing choices, rebases registered executable paths where possible, and skips missing/unsafe entries.
-- An application that closes its visible window into the tray is removed from Center Stage without terminating its background process.
-- Background applications without a published tray entry expose Show and a separately confirmed Exit action when STRATA Shell can identify their process.
-
-## Power + Session
-
-- Adjust separate plugged-in and battery screen-off/sleep timeouts for the active Windows power plan. Managed settings and unsupported options report their limitation.
-- The battery/power bar button opens charge, charging/on-battery status and native Windows power modes. Choose separate plugged-in/on-battery efficiency, Balanced or performance modes where available, or an installed power plan. Configure the automatic Energy Saver threshold, inspect capacity/rate, and read active battery/plugged-in usage history from Windows. The immediate Energy Saver switch uses Windows Settings; the history report has no per-app attribution.
-- Use the aligned two-column icon grid for clear session and power actions.
-- Lock immediately.
-- Sleep or hibernate.
-- Sign out.
-- Restart or shut down.
-- Restart STRATA Shell or open a temporary Explorer Session when running as the shell. Explorer Session closes STRATA Shell and starts the normal Windows desktop for the current login without changing the configured default shell; STRATA Shell returns after sign-out or restart.
-- Permanently restore Explorer only from **Windows Tweaks → Default Shell**. The setting explains that it changes future sign-ins, requests confirmation, and uses the edition-appropriate elevated Shell Launcher or per-user-policy recovery route.
-
-Actions that end or replace the current session—including Explorer Session—require confirmation; lock does not. The emergency `Ctrl + Alt + Shift + Delete` recovery chord remains a permanent Explorer restore rather than a temporary session switch.
-
-## Date + Time
-
-- Select the Windows time zone and its daylight-saving behavior, request synchronization with the configured Windows time source, or set the local date and time. Invalid and ambiguous DST times are rejected. Privileged clock changes use a narrowly scoped helper and Windows elevation only after an explicit action.
-- The bar clock opens the live clock/calendar; browse months or return to Today. Polling stops when the panel closes.
-
-## Native settings boundaries
-
-Windows Update offers native availability/history plus **Open Windows Update** for installation and restart scheduling. **Start Explorer for Updates** keeps STRATA running and leaves default-shell policy unchanged; **Stop Temporary Explorer** closes only the Explorer session that bridge started. Existing Explorer sessions are preserved. Windows DPI and immediate Energy Saver also have explicit Windows Settings routes; ordinary device controls remain native. The separate Power + Session recovery action still closes STRATA for the current login.
-
-## Screensaver
-
-- Enable or disable automatic idle activation.
-- Choose an idle delay from 1 to 60 minutes; the shipped default is 5 minutes.
-- Defer automatic activation during a visible fullscreen application, Windows presentation mode or full-screen Direct3D activity. The generic Windows "busy" notification state does not block an otherwise idle five-minute launch.
-- Start the real full-screen surface from this pane or STRATA Command, provided no visible fullscreen application is active.
-- Inspect the live STRATA state and read-only Windows timeout status. Windows sleep, display-off and lock choices take precedence.
-
-The screensaver uses the active wallpaper theme—including a contrast-preserving light field and deep dark field—and the global High Contrast and Reduced Motion choices. Its shared uppercase STRATA vector mark, CRT scan treatment, heavy phosphor bloom, and adaptive particles stay crisp through 4K while 30 distinct effects rotate through smooth 1.6-second full-scene crossfades. Every monitor shares one animation timeline; the complete WPF vector scene is rebuilt at a stable maximum of 60 Hz while DWM presents at each display's native cadence. Any mouse movement, click, wheel action, touch/stylus input, or keyboard key dismisses it without leaving the global hotkey router's modifier state stuck.
-
-## Updates
-
-- Choose Stable for finished releases or Preview for the newest available release, including prereleases.
-- Check the public binary-only STRATA Shell release feed without connecting a GitHub account.
-- Check for updates without downloading anything, then use Update Now to download, validate, self-test, and install the selected immutable release.
-- The running shell is not replaced in place. An activated installation begins using the new release at the next sign-in, preserving the existing Explorer recovery path.
-- Update Control reports **Running Build** and **Installed Release** separately. When they differ, Settings states whether the installed release is ready for the next sign-in or is present but not active.
-- Preview packages are lightweight and framework-dependent; they omit the .NET runtime, full Setup executable, wallpaper library, and Stable-only extras. Full self-contained packaging is reserved for an approved Stable promotion.
-- The same page queries native Windows software-update availability and recent history. Open Windows Update handles installation, pause and restart scheduling in Windows Settings, with the explicit temporary Explorer bridge if needed.
-
-Downloaded archives must use the `StrataShell-*.zip` naming policy. Hardened clients require GitHub's SHA-256 digest and a release-bound manifest signed by the trusted STRATA update key. STRATA enforces compressed/expanded limits, rejects traversal paths, checks the complete payload and runs its self-test before installation. Windows publisher signing is separate and remains deferred.
-
-## About
-
-- View a theme-reactive STRATA logo and fetch-style system summary.
-- Inspect host, Windows build, the running Build identifier, stable-only Engine version, theme, uptime, CPU, GPU, memory, displays, architecture, and runtime at a glance. Preview publication changes Build but retains the latest Stable Engine version.
-- See whether the Explorer failsafe is installed and open project or recovery locations where available.
-
-## Performance behavior
-
-Automatic Low Quality uses Energy Saver, Best power efficiency and low-charge state to reduce effects, scaling cost and frame rate without changing saved values. It also applies over a saved High preference; disabling Automatic Low Quality opts out. Selected frame caps apply to workspace/slot transitions and other animations. Sustained missed frame budgets can lower subsequent optional animation cadence outside High mode. See [current validation and limitations](STATUS.md).
-
-## App controls
-
-No shell settings-schema change. Text's encoding/newline button affects the current document on save. Browser's Site permissions control reviews the active profile and can reset an individual permission or all saved choices; reload open pages to stop existing access. Permission prompts distinguish one request from an explicitly remembered allow. Media honors Reduced Motion and uses the existing shared system-audio source. Terminal stores its isolated runtime data under `TerminalWebView` in the settings directory; Browser continues using `BrowserData` beside the settings files.
-
-## Wi-Fi automatic connection
-
-Both Network Settings and the rail Wi-Fi dropdown show **Automatically connect** for each network and in Saved Connections. For a new network, select the checkbox before Connect; the choice is stored when Windows enrolls the profile. For a saved network, toggling it updates that adapter's Windows profile immediately and verifies the saved value. Turning it off does not explicitly disconnect the current connection. Organization-managed profiles and unreadable preferences are disabled.
-
-This preference belongs to the Windows Wi-Fi profile, not STRATA settings, and does not require a STRATA schema change. Profile updates retain encrypted key material and use the existing per-user/all-user scope and permissions. Reference: [Microsoft WlanSetProfile](https://learn.microsoft.com/en-us/windows/win32/api/wlanapi/nf-wlanapi-wlansetprofile).
-
-## Wallpaper change animations
-
-In UI & Theme > Wallpaper, **Wallpaper Change Animation** selects Glow Sweep (the existing default), Crossfade, Slide, Wipe, Zoom, or None. The choice applies to the next wallpaper change on desktop and wallpaper-only monitor surfaces. Animation Speed controls duration; Reduced Motion or active Low effects bypass animation. None also switches the frosted wallpaper textures immediately. Other modes retain the synchronized frosted-texture crossfade while the main wallpaper uses the chosen transition.
-
-`WallpaperAnimation` is stored as 0–5 in the order above. Older profiles without this field retain Glow Sweep, customized values survive migration, and invalid enum values normalize to Glow Sweep. No existing wallpaper or layout choices are reset.
-
-Floating mode supports title-bar edge snapping: left/right for half-screen, corners for quarter-screen, and the top edge to maximize. Snaps use the monitor's app work area, leaving the bar and dock clear, and preserve app minimum sizes. Border resizing and Tiled mode do not activate STRATA snapping.
-
-## Bloom scope
-
-In UI & Theme > Graphics & Performance > Color & Lighting, **Bloom Scope** selects **Text / Graphs / Icons** or **Text / Graphs / Icons / Windows / UI Elements / Widget Windows**. The first removes bloom effects from large surfaces, controls, widget panels, active borders and the screen surround while retaining colored text, graph and icon glow. The second preserves the existing full appearance and is the default. Bloom strength, ordinary shadows and frosted glass remain separate preferences. Scope changes apply to open surfaces without restarting.
-
-## Bloom quality
-
-UI & Theme > Graphics & Performance > Color & Lighting now offers **Bloom Quality: Low / High** alongside scope and strength. High is the existing soft-blur appearance and remains the default for existing and new profiles. Low replaces large surface blur with layered frame strokes and live line-graph blur with two noninteractive stroke layers. Text and vector icons use tighter halos with bounded WPF bitmap caches (at most 128 small elements per window). Low/High changes apply live; switching back removes generated layers and only the caches owned by bloom. Scope and strength remain independent; zero strength clears the Low decorations. Ordinary shadows and frosted wallpaper are unchanged. Low approximates the glow rather than matching High pixel for pixel; hardware performance gains still need measurement in the installed shell.
-
-## Manual system clock and automatic time
-Date + Time > Set Clock explicitly selects manual time: the elevated helper disables Windows network synchronization with the persistent NoSync mode before applying the entered local time. Its confirmation explains this change. Use Automatic Time reenables the existing network/domain sources without replacing server addresses; Sync Now requests an immediate update. Organization-enforced time policy is not overwritten. A failed clock write attempts to restore the previous synchronization mode. Select the correct time zone before entering a local time. No clock value is replayed at startup.
-
-## High performance preset
-High now reproduces the captured installed-shell effect configuration: 50% bloom with Low bloom quality and full scope; surface/widget frosting enabled at 50% blur and 50% glass opacity; native animation frame rate, high-quality wallpaper scaling, full motion, full widget opacity, and both window/widget shadows disabled. Applying High selects these values explicitly. Existing saved profiles and the separate new-profile bloom-quality default are not migrated.
-
-**Sphered** is an additive enum value; existing Tiled/Floating values and saved preferences retain their identities. Each display owns a Sphere with tab groups and embedded rail status controls. Leaving the mode undocks apps to their current Sphere monitor. See [Sphered mode](SPHERED.md).
+STRATA controls its own desktop surfaces and delegates protected operations to Windows. A setting marked unavailable or read-only reflects a Windows, device, driver or policy limit; it is not silently applied by STRATA.

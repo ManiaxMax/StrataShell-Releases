@@ -13,7 +13,7 @@ New installations start in Floating mode. Existing profiles retain their chosen 
 
 ## Tiled
 
-Tiled mode arranges apps in Center Stage. One app can use the center lane, or two apps can share it. Workspace and monitor controls remain available. Hold **Super + Ctrl** while dragging inside a window to temporarily float and move it, or drag its border to resize it. **Super + Ctrl** plus right-click returns a floating window to the tiled layout.
+Tiled mode arranges one or two apps in Center Stage. Wide side-by-side, wide top/bottom and Dynamic views provide other layouts; Dynamic can arrange additional tiled apps. Workspace and monitor controls remain available. Hold **Super + Ctrl** while dragging inside a window to temporarily float and move it, or drag its border to resize it. **Super + Ctrl** plus right-click returns a floating window to the tiled layout.
 
 Switching back from Floating restores the top rail and tiled views. STRATA distributes open apps among workspaces and asks you to move or close some if the configured capacity would be exceeded; it does not discard windows.
 
