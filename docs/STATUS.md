@@ -9,3 +9,7 @@ The 1.0.23 publication record reports four warning-free Release builds, 280/280 
 Fresh installations use the [default layout](../README.md#fresh-install-defaults); updates and repairs preserve existing preferences. [Features and limitations](FEATURES.md) identifies hardware and Windows-owned boundaries. Downloaded executables do not yet have Windows Authenticode publisher signatures. [Installation and recovery](INSTALLATION.md) describes the bootstrap watchdog, emergency Explorer chord, and external recovery shortcut.
 
 Developer evidence stays in the private source repository. A documentation update does not create a new application package or alter an installed shell.
+
+## Beta channel name
+
+The prerelease channel is now **Beta** and both repositories use the `beta` branch. Older installed builds still display **Preview** until updated; saved channel selections carry over. The safe `--preview` development mode is unchanged. This documentation update does not rename existing release tags or rebuild their packages.
