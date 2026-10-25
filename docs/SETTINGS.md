@@ -31,7 +31,9 @@ New installations start in Floating mode with Balanced quality, five workspaces,
 
 ## Updates, recovery and profiles
 
-**Updates** selects Stable or Preview, checks the public release feed without a GitHub account, and verifies a package before installation. Preview is a smaller update and may require a compatible Stable installation or registered .NET 10 Desktop runtime. The running shell is not overwritten; the new release is used at the next sign-in. See [installation and recovery](INSTALLATION.md).
+The prerelease channel is now **Beta** and both repositories use the `beta` branch. Older installed builds still display **Preview** until updated; saved channel selections carry over. The safe `--preview` development mode is unchanged.
+
+**Updates** selects Stable or Beta, checks the public release feed without a GitHub account, and verifies a package before installation. Beta is a smaller update and may require a compatible Stable installation or registered .NET 10 Desktop runtime. The running shell is not overwritten; the new release is used at the next sign-in. See [installation and recovery](INSTALLATION.md).
 
 **Recovery + Profiles** offers profile backup/import and recovery of unfinished Notepad, Paint and Snip work where available. **Windows Tweaks** includes the confirmed setting to restore Explorer permanently as the default shell. **Explorer Session** in Power + Session is temporary for the current login. Keep the external Explorer recovery shortcut available.
 
