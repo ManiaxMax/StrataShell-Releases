@@ -1,6 +1,6 @@
 # Features and limits
 
-This guide describes the current published STRATA Shell packages. See [release status](STATUS.md) for the exact Stable and Preview versions and what has been verified. STRATA is an experimental Windows 11 desktop shell; an automated package check is not the same as acceptance on an installed desktop.
+This guide describes the current published STRATA Shell packages. See [release status](STATUS.md) for the exact Stable and Beta versions and what has been verified. STRATA is an experimental Windows 11 desktop shell; an automated package check is not the same as acceptance on an installed desktop.
 
 ## Desktop modes
 
@@ -14,7 +14,7 @@ Each monitor has its own active workspace and layout state. A fresh installation
 
 ## Wallpaper and appearance
 
-The active wallpaper supplies STRATA's color palette. Choose Auto, Light or Dark appearance and adjust glass, blur, bloom, transparency, motion and rendering quality in Settings. Stable 1.0.23 includes 24 approved 4K wallpapers: 12 colors in Light and Dark. Preview updates do not include the wallpaper library. The screensaver uses the same theme palette; see [screensaver behavior](SCREENSAVER.md).
+The active wallpaper supplies STRATA's color palette. Choose Auto, Light or Dark appearance and adjust glass, blur, bloom, transparency, motion and rendering quality in Settings. Stable 1.0.23 includes 24 approved 4K wallpapers: 12 colors in Light and Dark. Beta updates do not include the wallpaper library. The screensaver uses the same theme palette; see [screensaver behavior](SCREENSAVER.md).
 
 Eligible third-party applications receive whole-window opacity and compatible chrome changes. STRATA cannot turn their internal controls into glass. Reduced Motion and High Contrast change visual effects. Some fullscreen games suppress shell overlays and keep their own rendering.
 
