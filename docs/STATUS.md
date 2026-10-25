@@ -1,15 +1,17 @@
-# Release and testing status
+# Current release status
 
-Updated September 27, 2026. [Stable 1.0.23](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/v1.0.23) and [Beta 20260927-182410](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20260927-182410) are the current published packages. The private source repository has no GitHub Releases.
+Updated October 25, 2026 for [Stable 1.0.25](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/v1.0.25). The [release feed](https://github.com/ManiaxMax/StrataShell-Releases/releases) confirms public availability.
 
-Stable 1.0.23 offers self-contained Windows 11 x64 Setup and portable packages with the .NET 10 Desktop runtime and exactly 24 approved 4K glass wallpapers. Beta is a lightweight update without a bundled runtime or wallpaper library; it needs a compatible Stable installation or registered .NET 10 Desktop runtime. See [the 1.0.23 notes](RELEASE_NOTES_1.0.23.md) and the selected Beta release for exact contents.
+Stable 1.0.25 promotes Beta 20261025-162236. It offers self-contained Windows 11 x64 Setup and portable packages with matching Shell, Launcher, Maintenance and Setup versions, the .NET 10 Desktop runtime, safe defaults and exactly 24 approved 4K glass wallpapers. See the [1.0.25 release notes](RELEASE_NOTES_1.0.25.md) for changes and limits.
 
-The 1.0.23 publication record reports four warning-free Release builds, 280/280 quiet checks, 36/36 wallpaper packaging checks, 46/46 safe-default checks, 6/6 installer-profile checks, 30/30 release-safety checks, and 9/9 runtime-lifecycle checks. An isolated installer test passed without changing the production shell or Explorer. These are source and package checks, not physical installed-shell acceptance. Publication did not install, activate, or restart STRATA on the owner machine.
+The prerelease channel is **Beta**, formerly Preview. Older installed builds retain the Preview label until updated; saved selections remain compatible. The [October 25 Beta](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261025-185858) is a lightweight update requiring a compatible Stable installation or registered .NET runtime. The external STRATA Launcher checks Stable only.
 
-Fresh installations use the [default layout](../README.md#fresh-install-defaults); updates and repairs preserve existing preferences. [Features and limitations](FEATURES.md) identifies hardware and Windows-owned boundaries. Downloaded executables do not yet have Windows Authenticode publisher signatures. [Installation and recovery](INSTALLATION.md) describes the bootstrap watchdog, emergency Explorer chord, and external recovery shortcut.
+Optional automatic Stable update checks default off, offer Every Launch or Weekly on Sunday, and never automatically download or install. Existing installation terms and explicit acceptance remain required.
 
-Developer evidence stays in the private source repository. A documentation update does not create a new application package or alter an installed shell.
+STRATA remains experimental alpha software. Source, package and isolated checks do not establish installed physical acceptance. Multi-monitor input/DPI, hardware/GPU paths, screen-reader behavior and native-speaker translation review remain open. Publishing an update does not install, activate or restart the running shell. Update archives require STRATA signatures; Windows publisher signing is not configured.
 
-## Beta channel name
+## October 25 Beta launch-review update
 
-The prerelease channel is now **Beta** and both repositories use the `beta` branch. Older installed builds still display **Preview** until updated; saved channel selections carry over. The safe `--preview` development mode is unchanged. This documentation update does not rename existing release tags or rebuild their packages.
+Beta 20261025-185858 adds Launcher, Setup and Uninstall localization across 25 catalogs; bounded update requests, complete runtime-bridge receipt checks and validated startup imports; wallpaper preparation and Focus Timer refinements; and private Browser Light-theme correction. It also strengthens acceptance-report validation. Engine remains 1.0.25. Setup changes are source-tested here and will ship with a separately approved full Stable package; Beta contains only the lightweight update unit.
+
+The source builds and 313 quiet self-tests pass. The broader launch review retains an unresolved Sphere frame-rendering test on an inactive private desktop; physical installed rendering acceptance remains open. Publication does not repair activation policy, install, activate or restart STRATA.
