@@ -5,7 +5,7 @@ STRATA Shell can run as a preview without changing Windows sign-in, or as the cu
 ## Choose a package
 
 - **Stable 1.0.23** provides Windows 11 x64 Setup and a portable ZIP. Both include the .NET 10 Desktop runtime and 24 approved 4K wallpapers. It is the route for a fresh installation.
-- **Preview 20260927-182410** is a smaller update ZIP. It omits Setup, the runtime and wallpapers. It needs a compatible Stable installation or a registered .NET 10 Desktop runtime and preserves the installed wallpaper library.
+- **Beta 20260927-182410** is a smaller update ZIP. It omits Setup, the runtime and wallpapers. It needs a compatible Stable installation or a registered .NET 10 Desktop runtime and preserves the installed wallpaper library.
 
 Use the downloads on the [Stable release page](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/v1.0.23) or select a channel in **Settings → Updates**. Downloaded executables do not yet have Windows Authenticode publisher signatures, so Windows may show Unknown Publisher. STRATA update archives use a separate signed manifest and checksums.
 
