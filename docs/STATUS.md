@@ -16,8 +16,14 @@ Beta 20261025-185858 adds Launcher, Setup and Uninstall localization across 25 c
 
 The source builds and 313 quiet self-tests pass. The broader launch review retains an unresolved Sphere frame-rendering test on an inactive private desktop; physical installed rendering acceptance remains open. Publication does not repair activation policy, install, activate or restart STRATA.
 
-## Latest Beta: workspace motion, screensaver pacing and Task Manager
+## October 25 Beta: workspace motion, screensaver pacing and Task Manager
 
 Beta 20261025-235549 includes every pending workspace-return, screensaver and Task Manager change. Returning app windows remain visible through intermediate slide frames, including recovery from a delayed hide. Screensaver scheduling follows each display's reported refresh rate and the composition callbacks actually available, preserving all 30 animations and particle density. Task Manager uses a simpler process column list and opens executable locations in STRATA Files.
 
 These changes have source and isolated-test coverage. Actual GPU frame rate, physical workspace presentation and installed input remain separate acceptance. Publishing this lightweight Beta leaves the running installation and Stable channel unchanged.
+
+## Latest Beta: wallpaper effects, clock format and widget controls
+
+Beta 20261026-203751 adds eight cinematic wallpaper effects for still and live wallpapers, cached Wallpaper Studio browsing, and protected Recycle Bin deletion. Date + Time shares a 12/24-hour preference with the widget, bar and calendar panel. Settings exposes global and individual widget appearance controls. Audio Spectrum adds smoother attack/release, capture-buffer ownership protection and wider radial rendering.
+
+Engine remains 1.0.25. The update contains Shell, Launcher, Maintenance, safe defaults and installer support, with no bundled runtime, wallpaper library or full Setup. Source, localization and isolated UI checks cover this candidate; installed GPU/DWM, codec presentation, mixed-DPI and physical input/playback acceptance remain pending. Publication does not install, activate or restart the running shell.
