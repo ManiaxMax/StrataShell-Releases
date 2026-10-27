@@ -22,8 +22,14 @@ Beta 20261025-235549 includes every pending workspace-return, screensaver and Ta
 
 These changes have source and isolated-test coverage. Actual GPU frame rate, physical workspace presentation and installed input remain separate acceptance. Publishing this lightweight Beta leaves the running installation and Stable channel unchanged.
 
-## Latest Beta: wallpaper effects, clock format and widget controls
+## October 26 Beta: wallpaper effects, clock format and widget controls
 
 Beta 20261026-203751 adds eight cinematic wallpaper effects for still and live wallpapers, cached Wallpaper Studio browsing, and protected Recycle Bin deletion. Date + Time shares a 12/24-hour preference with the widget, bar and calendar panel. Settings exposes global and individual widget appearance controls. Audio Spectrum adds smoother attack/release, capture-buffer ownership protection and wider radial rendering.
 
 Engine remains 1.0.25. The update contains Shell, Launcher, Maintenance, safe defaults and installer support, with no bundled runtime, wallpaper library or full Setup. Source, localization and isolated UI checks cover this candidate; installed GPU/DWM, codec presentation, mixed-DPI and physical input/playback acceptance remain pending. Publication does not install, activate or restart the running shell.
+
+## Latest Beta: widget caching during wallpaper transitions
+
+Beta 20261026-220019 temporarily caches the widget content above animated frost during wallpaper transitions, reducing repeated redraw work while preserving effects, timing, full image quality and live control/theme updates. The hardware-gated caches follow scale, visibility and transition lifetime, respect external cache ownership, and release at rest or close. Existing live-video caching remains in place.
+
+Engine remains 1.0.25. Source and isolated checks cover cache ownership and cleanup, Light/Dark changes, all eight cinematic effects and related wallpaper regressions. Physical installed GPU/DWM smoothness and mixed-monitor frame pacing remain pending. This lightweight Beta omits runtime binaries, wallpapers and full Setup; publication does not install, activate or restart the running shell.
