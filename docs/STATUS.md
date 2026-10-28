@@ -40,10 +40,18 @@ Beta 20261028-101152 corrects a shared glass timing defect: Windows moved the wi
 
 Source and isolated checks cover Files, Browser and Settings in Light/Dark, immediate crop alignment, full-refresh limits, shell drag commits, hide/close cleanup, live playback and disabled blur. Physical installed GPU/DWM smoothness and mixed-DPI monitor transfer remain pending. Engine remains 1.0.25; the lightweight update contains no runtime binaries, wallpaper library or full Setup. Publication does not install, activate or restart the running shell.
 
-## Latest Beta: title-bar movement pacing candidate
+## October 28 Beta: title-bar movement pacing candidate
 
 The owner reports that glass jitter persisted on another PC after the preceding crop-timing update. Beta 20261028-113224 is a follow-up candidate for still wallpaper and ordinary title-bar dragging of blurred STRATA apps in Floating mode; the reported issue remains open.
 
 Native movement proposals now share a frame-paced window-placement and wallpaper-crop commit. The newest proposal wins, release flushes before edge snapping, and cancellation, sizing, hide/close and display migration remove pending placement. Blur-off and third-party movement retain their existing paths; blur quality is unchanged.
 
 Source and private-desktop checks cover Files, Browser and Settings in Light/Dark, direction reversals, release/cancel cleanup and real native movement-loop progress. WPF callback timing does not prove displayed frame continuity. Physical dragging, Escape, edge snapping and mixed-DPI acceptance on the affected PC remain pending. Engine remains 1.0.25, and this lightweight Beta contains no runtime binaries, wallpaper library or full Setup. Publication does not install, activate or restart the running shell.
+
+## Latest Beta: native dragging rollback and stationary glass candidate
+
+The owner rejected Beta 20261028-113224 after blurred STRATA windows resisted title-bar dragging. Beta 20261028-162332 removes its movement scheduler and rectangle rewrite, restoring unchanged native movement proposals. It also presents the existing blurred wallpaper through a stationary, nonactivating, click-through native surface immediately beneath the moving app. Only that surface's clip follows movement; the bitmap stays anchored at the monitor origin.
+
+The shared material owner handles release, cancellation, blur-disable, hide/close, monitor and texture changes, and fallback. Blur quality, tint and asymmetric corners are retained. Source and isolated checks cover Files, Browser and Settings in Light/Dark, proposal reversals, surface lifetime and clipping at representative scales and negative monitor origins. These checks do not establish physical DWM pixels, pointer smoothness or mixed-monitor handoff; the reported issue remains open pending installed acceptance.
+
+Engine remains 1.0.25. The lightweight update omits runtime binaries, wallpapers and full Setup. Publication does not install, activate or restart the running shell.
