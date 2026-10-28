@@ -34,8 +34,16 @@ Beta 20261026-220019 temporarily caches the widget content above animated frost 
 
 Engine remains 1.0.25. Source and isolated checks cover cache ownership and cleanup, Light/Dark changes, all eight cinematic effects and related wallpaper regressions. Physical installed GPU/DWM smoothness and mixed-monitor frame pacing remain pending. This lightweight Beta omits runtime binaries, wallpapers and full Setup; publication does not install, activate or restart the running shell.
 
-## Latest Beta: glass alignment during window movement
+## October 28 Beta: glass alignment during window movement
 
 Beta 20261028-101152 corrects a shared glass timing defect: Windows moved the window before the wallpaper crop updated on a later rendering callback. Native move/resize notifications now update the existing texture crop immediately while full monitor/texture refreshes remain coalesced. Monitor changes refresh immediately, and closed or suspended materials skip movement updates. Blur quality and texture reuse are preserved.
 
 Source and isolated checks cover Files, Browser and Settings in Light/Dark, immediate crop alignment, full-refresh limits, shell drag commits, hide/close cleanup, live playback and disabled blur. Physical installed GPU/DWM smoothness and mixed-DPI monitor transfer remain pending. Engine remains 1.0.25; the lightweight update contains no runtime binaries, wallpaper library or full Setup. Publication does not install, activate or restart the running shell.
+
+## Latest Beta: title-bar movement pacing candidate
+
+The owner reports that glass jitter persisted on another PC after the preceding crop-timing update. Beta 20261028-113224 is a follow-up candidate for still wallpaper and ordinary title-bar dragging of blurred STRATA apps in Floating mode; the reported issue remains open.
+
+Native movement proposals now share a frame-paced window-placement and wallpaper-crop commit. The newest proposal wins, release flushes before edge snapping, and cancellation, sizing, hide/close and display migration remove pending placement. Blur-off and third-party movement retain their existing paths; blur quality is unchanged.
+
+Source and private-desktop checks cover Files, Browser and Settings in Light/Dark, direction reversals, release/cancel cleanup and real native movement-loop progress. WPF callback timing does not prove displayed frame continuity. Physical dragging, Escape, edge snapping and mixed-DPI acceptance on the affected PC remain pending. Engine remains 1.0.25, and this lightweight Beta contains no runtime binaries, wallpaper library or full Setup. Publication does not install, activate or restart the running shell.
