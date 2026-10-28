@@ -48,10 +48,18 @@ Native movement proposals now share a frame-paced window-placement and wallpaper
 
 Source and private-desktop checks cover Files, Browser and Settings in Light/Dark, direction reversals, release/cancel cleanup and real native movement-loop progress. WPF callback timing does not prove displayed frame continuity. Physical dragging, Escape, edge snapping and mixed-DPI acceptance on the affected PC remain pending. Engine remains 1.0.25, and this lightweight Beta contains no runtime binaries, wallpaper library or full Setup. Publication does not install, activate or restart the running shell.
 
-## Latest Beta: native dragging rollback and stationary glass candidate
+## October 28 Beta: native dragging rollback and stationary glass candidate
 
 The owner rejected Beta 20261028-113224 after blurred STRATA windows resisted title-bar dragging. Beta 20261028-162332 removes its movement scheduler and rectangle rewrite, restoring unchanged native movement proposals. It also presents the existing blurred wallpaper through a stationary, nonactivating, click-through native surface immediately beneath the moving app. Only that surface's clip follows movement; the bitmap stays anchored at the monitor origin.
 
 The shared material owner handles release, cancellation, blur-disable, hide/close, monitor and texture changes, and fallback. Blur quality, tint and asymmetric corners are retained. Source and isolated checks cover Files, Browser and Settings in Light/Dark, proposal reversals, surface lifetime and clipping at representative scales and negative monitor origins. These checks do not establish physical DWM pixels, pointer smoothness or mixed-monitor handoff; the reported issue remains open pending installed acceptance.
 
 Engine remains 1.0.25. The lightweight update omits runtime binaries, wallpapers and full Setup. Publication does not install, activate or restart the running shell.
+
+## Latest Beta: constructor-time glass startup correction
+
+Beta 20261028-162332 had a confirmed Rail/Dock startup regression: native backdrop setup attempted to access an HWND before WPF had created it, producing “Hwnd of zero is not valid.” Beta 20261028-171628 defers native hook attachment until SourceInitialized, avoids duplicate attachment or forced handle creation, and cleans up deferred callbacks when an unshown window closes.
+
+Constructor-time material setup and cleanup now run in the quiet release/install self-test. Private-desktop checks exercise repeated pre-HWND material application, combined/Rail/Dock construction and Show in Light/Dark, deferred native dragging and close-before-show, alongside existing glass regressions. Actual installed startup, physical drag smoothness and mixed-monitor acceptance remain pending.
+
+Engine remains 1.0.25. This signed lightweight update contains no runtime binaries, wallpaper library or full Setup. Publication does not install, activate or restart the shell.
