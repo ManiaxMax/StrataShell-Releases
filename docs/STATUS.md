@@ -64,10 +64,18 @@ Constructor-time material setup and cleanup now run in the quiet release/install
 
 Engine remains 1.0.25. This signed lightweight update contains no runtime binaries, wallpaper library or full Setup. Publication does not install, activate or restart the shell.
 
-## November 8 Beta
+## November 8 Beta 20261108-165419
 
 Beta 20261108-165419 builds on the October 28 rollback, 20261028-182220. Windows now clip the covered portion of desktop widgets, leaving the exposed portion visible and interactive. The screensaver requires an input-ready desktop and resets its idle countdown after dismissal or desktop transitions.
 
 Wallpaper reveals and glass crossfades reuse drawing resources and follow display cadence while preserving visual quality. Dock and Rail reserve space from their resting edges, and window layout clears stale insets from prior positions. Docked widget columns use balanced margins. The Active Monitor caption aligns with the workspace digits, and Stylish Audio Spectrum honors the selected Bands mode.
 
 Isolated tests cover these changes. Cold-boot PIN entry, physical input, lower-powered hardware and mixed-monitor presentation need installed testing. The signed lightweight update uses Engine 1.0.25.
+
+## November 8 Beta 20261108-181448
+
+Departing windows keep their original opacity through the workspace slide in Floating and Tiled modes. STRATA hides them at the offscreen endpoint, then resets their source positions while hidden. Regression guards cover the outgoing and returning paths.
+
+Glass follows native window movement immediately by updating the cached wallpaper crop. Cinematic wallpaper effects skip drawing work where an opaque, device-aligned layer fully covers it. The release records composition timing separately from delivered updates.
+
+Private-desktop checks cover native workspace routes, glass alignment, and wallpaper rendering. Physical testing on the installed desktop is pending for external apps, pointer movement, and mixed displays. The signed lightweight update uses Engine 1.0.25.
