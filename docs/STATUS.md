@@ -56,10 +56,18 @@ The shared material owner handles release, cancellation, blur-disable, hide/clos
 
 Engine remains 1.0.25. The lightweight update omits runtime binaries, wallpapers and full Setup. Publication does not install, activate or restart the running shell.
 
-## Latest Beta: constructor-time glass startup correction
+## October 28 Beta: constructor-time glass startup correction
 
 Beta 20261028-162332 had a confirmed Rail/Dock startup regression: native backdrop setup attempted to access an HWND before WPF had created it, producing “Hwnd of zero is not valid.” Beta 20261028-171628 defers native hook attachment until SourceInitialized, avoids duplicate attachment or forced handle creation, and cleans up deferred callbacks when an unshown window closes.
 
 Constructor-time material setup and cleanup now run in the quiet release/install self-test. Private-desktop checks exercise repeated pre-HWND material application, combined/Rail/Dock construction and Show in Light/Dark, deferred native dragging and close-before-show, alongside existing glass regressions. Actual installed startup, physical drag smoothness and mixed-monitor acceptance remain pending.
 
 Engine remains 1.0.25. This signed lightweight update contains no runtime binaries, wallpaper library or full Setup. Publication does not install, activate or restart the shell.
+
+## November 8 Beta
+
+Beta 20261108-165419 builds on the October 28 rollback, 20261028-182220. Windows now clip the covered portion of desktop widgets, leaving the exposed portion visible and interactive. The screensaver requires an input-ready desktop and resets its idle countdown after dismissal or desktop transitions.
+
+Wallpaper reveals and glass crossfades reuse drawing resources and follow display cadence while preserving visual quality. Dock and Rail reserve space from their resting edges, and window layout clears stale insets from prior positions. Docked widget columns use balanced margins. The Active Monitor caption aligns with the workspace digits, and Stylish Audio Spectrum honors the selected Bands mode.
+
+Isolated tests cover these changes. Cold-boot PIN entry, physical input, lower-powered hardware and mixed-monitor presentation need installed testing. The signed lightweight update uses Engine 1.0.25.
