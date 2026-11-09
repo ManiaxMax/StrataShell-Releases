@@ -119,3 +119,9 @@ The custom Super + Ctrl resize path places managed windows after the active rend
 This documentation update records continued wallpaper drag lag in Files and Browser and progress on an isolated native presentation prototype. The signed package carries the production code from Beta 20261109-112728 and uses Engine 1.0.25.
 
 The prototype is still in isolated testing. Displayed drag timing, corner-resize repaint, and physical mixed-DPI behavior remain open.
+
+## November 9 Beta 20261109-133719
+
+Rail status icons now center their painted artwork, including on narrow side rails. Desktop, widget, and Dock menus align their icons and labels in compact rows.
+
+The desktop reuses widget clip geometry during window movement. Frost fades share one rendering callback per UI thread and keep their own timing and frame limits. Private-desktop checks cover placement, menus, clipping, and fade completion. Installed drag smoothness, corner-resize repaint, and physical mixed-DPI behavior remain open. The signed lightweight update uses Engine 1.0.25.
