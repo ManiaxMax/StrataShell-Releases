@@ -95,3 +95,9 @@ STRATA keeps its composition clock active while a visible, blurred window is bei
 The app catalog shows Antigravity when Windows discovers it or its executable is present in a supported per-user install location.
 
 Private-desktop checks cover the drag lifecycle, widget clipping, and workspace motion. Physical drag cadence and clean-PC app discovery need installed testing. The signed lightweight update uses Engine 1.0.25.
+
+## November 8 Beta 20261108-220637
+
+During eligible window drags, STRATA copies the latest wallpaper crop into a reusable bitmap. The existing brush handles resizing, monitor-edge crossings, and other fallback cases.
+
+Private-desktop checks cover crop freshness, brush restoration, widget clipping, and workspace transitions. Physical drag smoothness on the installed build remains open. The signed lightweight update uses Engine 1.0.25.
