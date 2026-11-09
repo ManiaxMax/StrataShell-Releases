@@ -87,3 +87,11 @@ STRATA prepares the saved wallpaper, palette, and glass textures before the Dock
 While a window moves, widget clipping samples the newest bounds once per composition frame. Exposed widget content stays interactive, and the blur retains its configured quality.
 
 Private-desktop checks cover the first rendered frame, widget clipping, and native movement. First sign-in and physical drag testing on the installed build are pending. The signed lightweight update uses Engine 1.0.25.
+
+## November 8 Beta 20261108-204642
+
+STRATA keeps its composition clock active while a visible, blurred window is being dragged. Native movement still updates the cached wallpaper crop, and the clock stops when the gesture ends.
+
+The app catalog shows Antigravity when Windows discovers it or its executable is present in a supported per-user install location.
+
+Private-desktop checks cover the drag lifecycle, widget clipping, and workspace motion. Physical drag cadence and clean-PC app discovery need installed testing. The signed lightweight update uses Engine 1.0.25.
