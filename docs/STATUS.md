@@ -79,3 +79,11 @@ Departing windows keep their original opacity through the workspace slide in Flo
 Glass follows native window movement immediately by updating the cached wallpaper crop. Cinematic wallpaper effects skip drawing work where an opaque, device-aligned layer fully covers it. The release records composition timing separately from delivered updates.
 
 Private-desktop checks cover native workspace routes, glass alignment, and wallpaper rendering. Physical testing on the installed desktop is pending for external apps, pointer movement, and mixed displays. The signed lightweight update uses Engine 1.0.25.
+
+## November 8 Beta 20261108-192155
+
+STRATA prepares the saved wallpaper, palette, and glass textures before the Dock, Rail, and widgets first render. This addresses the temporary background visible at sign-in.
+
+While a window moves, widget clipping samples the newest bounds once per composition frame. Exposed widget content stays interactive, and the blur retains its configured quality.
+
+Private-desktop checks cover the first rendered frame, widget clipping, and native movement. First sign-in and physical drag testing on the installed build are pending. The signed lightweight update uses Engine 1.0.25.
