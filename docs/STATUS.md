@@ -113,3 +113,9 @@ Private-desktop checks cover matching Light and Dark pixels, content updates, an
 Wallpaper crop copies retry only when the bitmap is busy. Audio Spectrum stops requesting frames after its animation settles to silence and wakes when sound returns.
 
 The custom Super + Ctrl resize path places managed windows after the active render pass and uses the latest requested bounds. Private-desktop checks cover these paths, widget response and workspace transitions. The reported wallpaper lag and ordinary corner-resize artifacts still require installed verification. The signed lightweight update uses Engine 1.0.25.
+
+## November 9 Beta 20261109-123658
+
+This documentation update records continued wallpaper drag lag in Files and Browser and progress on an isolated native presentation prototype. The signed package carries the production code from Beta 20261109-112728 and uses Engine 1.0.25.
+
+The prototype is still in isolated testing. Displayed drag timing, corner-resize repaint, and physical mixed-DPI behavior remain open.
