@@ -13,7 +13,7 @@
 ## Download and release status
 
 - **Stable:** [1.0.25](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/v1.0.25) has a complete Windows 11 x64 Setup and portable ZIP with the .NET 10 Desktop runtime and 24 approved 4K wallpapers. [Release notes](docs/RELEASE_NOTES_1.0.25.md).
-- **Beta:** [20261109-133719](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261109-133719) centers Rail status icons, tightens context menu spacing, and reduces widget clipping and wallpaper fade work. The lightweight update requires a compatible Stable installation or registered runtime. Installed drag smoothness and mixed-DPI behavior still need verification.
+- **Beta:** [20261109-150031](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261109-150031) skips redundant backdrop refreshes during steady same-monitor drags and reuses one coordinate transform per widget clipping update. The lightweight update requires a compatible Stable installation or registered runtime. Installed drag smoothness and corner-resize repaint still need verification.
 
 For a fresh installation, start with [Stable](https://github.com/ManiaxMax/StrataShell-Releases/releases/latest). In STRATA, **Settings → Updates** selects Stable or Beta and installs available updates. The external STRATA Launcher checks Stable only. Beta was previously named Preview; older installed builds retain that label until updated, and saved channel preferences carry over. Read [installation and recovery](docs/INSTALLATION.md) before using STRATA as your sign-in shell. STRATA is experimental alpha software; source and package checks do not establish physical installed-shell acceptance. [Current verification status](docs/STATUS.md).
 

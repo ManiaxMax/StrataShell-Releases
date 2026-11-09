@@ -125,3 +125,9 @@ The prototype is still in isolated testing. Displayed drag timing, corner-resize
 Rail status icons now center their painted artwork, including on narrow side rails. Desktop, widget, and Dock menus align their icons and labels in compact rows.
 
 The desktop reuses widget clip geometry during window movement. Frost fades share one rendering callback per UI thread and keep their own timing and frame limits. Private-desktop checks cover placement, menus, clipping, and fade completion. Installed drag smoothness, corner-resize repaint, and physical mixed-DPI behavior remain open. The signed lightweight update uses Engine 1.0.25.
+
+## November 9 Beta 20261109-150031
+
+A same-monitor drag updates the wallpaper crop immediately and skips an extra geometry refresh when the backdrop is current. Resizing and display changes still trigger reconciliation.
+
+Widget clipping uses one screen-to-layer coordinate transform per update, with the standard WPF conversion for fractional coordinates or unsupported transforms. Private-desktop checks cover crop accuracy, resize handling, and exposed widget pixels and hit testing. Physical drag smoothness, mixed-DPI behavior, and corner-resize repaint remain open. The signed lightweight update uses Engine 1.0.25.
