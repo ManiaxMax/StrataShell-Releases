@@ -101,3 +101,9 @@ Private-desktop checks cover the drag lifecycle, widget clipping, and workspace 
 During eligible window drags, STRATA copies the latest wallpaper crop into a reusable bitmap. The existing brush handles resizing, monitor-edge crossings, and other fallback cases.
 
 Private-desktop checks cover crop freshness, brush restoration, widget clipping, and workspace transitions. Physical drag smoothness on the installed build remains open. The signed lightweight update uses Engine 1.0.25.
+
+## November 9 Beta 20261109-092645
+
+During eligible blurred window drags, STRATA reuses the rendered foreground and keeps the wallpaper layer live. Text and theme changes still refresh the foreground. Windows with native child surfaces and unsupported display configurations use the standard renderer.
+
+Private-desktop checks cover matching Light and Dark pixels, content updates, and cache cleanup. Physical drag smoothness, mixed-DPI behavior, and the reported Browser delay still need installed testing. The signed lightweight update uses Engine 1.0.25.
