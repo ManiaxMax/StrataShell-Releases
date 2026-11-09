@@ -107,3 +107,9 @@ Private-desktop checks cover crop freshness, brush restoration, widget clipping,
 During eligible blurred window drags, STRATA reuses the rendered foreground and keeps the wallpaper layer live. Text and theme changes still refresh the foreground. Windows with native child surfaces and unsupported display configurations use the standard renderer.
 
 Private-desktop checks cover matching Light and Dark pixels, content updates, and cache cleanup. Physical drag smoothness, mixed-DPI behavior, and the reported Browser delay still need installed testing. The signed lightweight update uses Engine 1.0.25.
+
+## November 9 Beta 20261109-112728
+
+Wallpaper crop copies retry only when the bitmap is busy. Audio Spectrum stops requesting frames after its animation settles to silence and wakes when sound returns.
+
+The custom Super + Ctrl resize path places managed windows after the active render pass and uses the latest requested bounds. Private-desktop checks cover these paths, widget response and workspace transitions. The reported wallpaper lag and ordinary corner-resize artifacts still require installed verification. The signed lightweight update uses Engine 1.0.25.
