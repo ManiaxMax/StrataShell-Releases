@@ -131,3 +131,9 @@ The desktop reuses widget clip geometry during window movement. Frost fades shar
 A same-monitor drag updates the wallpaper crop immediately and skips an extra geometry refresh when the backdrop is current. Resizing and display changes still trigger reconciliation.
 
 Widget clipping uses one screen-to-layer coordinate transform per update, with the standard WPF conversion for fractional coordinates or unsupported transforms. Private-desktop checks cover crop accuracy, resize handling, and exposed widget pixels and hit testing. Physical drag smoothness, mixed-DPI behavior, and corner-resize repaint remain open. The signed lightweight update uses Engine 1.0.25.
+
+## November 9 Beta 20261109-151715
+
+When the wallpaper bitmap is busy during a drag, STRATA uses the live blur crop at the current window position. It retries the bitmap copy without blocking the drag and reuses the completed crop when the window returns to those bounds.
+
+Private-desktop checks cover the fallback, recovery, and matching Light and Dark pixels. Installed drag smoothness and corner-resize repaint remain open. The signed lightweight update uses Engine 1.0.25.
