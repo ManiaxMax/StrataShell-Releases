@@ -137,3 +137,11 @@ Widget clipping uses one screen-to-layer coordinate transform per update, with t
 When the wallpaper bitmap is busy during a drag, STRATA uses the live blur crop at the current window position. It retries the bitmap copy without blocking the drag and reuses the completed crop when the window returns to those bounds.
 
 Private-desktop checks cover the fallback, recovery, and matching Light and Dark pixels. Installed drag smoothness and corner-resize repaint remain open. The signed lightweight update uses Engine 1.0.25.
+
+## November 11 Beta 20261111-113849
+
+Repeated live wallpaper paths share one player across the desktop, Sphere, and Studio. Playback requests pause and release independently. Widget frost and shadows skip repeated coordinate work when layout is stable, and telemetry updates its selected values directly.
+
+Text fields align hints, carets, and typed text through the shared templates. Zen Browser and Medal join the optional application icon set, and desktop menu actions gain distinct icons.
+
+A busy drag bitmap keeps the live crop selected until a new native position requests another copy. Private-desktop tests cover playback sharing, pixels, input geometry, widget layout, and icons. Installed GPU load, physical input, mixed-DPI behavior, wallpaper drag smoothness, and corner-resize repaint remain open. The signed lightweight update uses Engine 1.0.25.
