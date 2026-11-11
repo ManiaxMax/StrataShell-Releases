@@ -145,3 +145,9 @@ Repeated live wallpaper paths share one player across the desktop, Sphere, and S
 Text fields align hints, carets, and typed text through the shared templates. Zen Browser and Medal join the optional application icon set, and desktop menu actions gain distinct icons.
 
 A busy drag bitmap keeps the live crop selected until a new native position requests another copy. Private-desktop tests cover playback sharing, pixels, input geometry, widget layout, and icons. Installed GPU load, physical input, mixed-DPI behavior, wallpaper drag smoothness, and corner-resize repaint remain open. The signed lightweight update uses Engine 1.0.25.
+
+## November 11 Beta 20261111-143211
+
+Widget shadows retain bounded output separately from text, frost, and live video. Spectrum drawing resources and standard telemetry definitions are reused, and identical rendered levels skip redundant updates.
+
+Private-desktop tests compare pixels, resource ownership, live theme changes, playback, and lifecycle cleanup. Allocation and CPU work measurements describe the tested scenes. Installed responsiveness and physical GPU frame pacing remain open. The signed lightweight update uses Engine 1.0.25.
