@@ -151,3 +151,9 @@ A busy drag bitmap keeps the live crop selected until a new native position requ
 Widget shadows retain bounded output separately from text, frost, and live video. Spectrum drawing resources and standard telemetry definitions are reused, and identical rendered levels skip redundant updates.
 
 Private-desktop tests compare pixels, resource ownership, live theme changes, playback, and lifecycle cleanup. Allocation and CPU work measurements describe the tested scenes. Installed responsiveness and physical GPU frame pacing remain open. The signed lightweight update uses Engine 1.0.25.
+
+## November 11 Beta 20261111-191018
+
+Widget shadows retain their final composition, including blur, exclusion masks, and viewport clipping. Text, frost, live video, column opacity, and application clipping continue through their existing rendering paths.
+
+Private-desktop checks compare native pixels, effects, content changes, fallback cases, and resource cleanup. A local replay comparison did not reproduce the reported stall; acceptance with the original expensive live file and affected compositor remains open. The signed lightweight update uses Engine 1.0.25.
