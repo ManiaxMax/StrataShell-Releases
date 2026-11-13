@@ -157,3 +157,9 @@ Private-desktop tests compare pixels, resource ownership, live theme changes, pl
 Widget shadows retain their final composition, including blur, exclusion masks, and viewport clipping. Text, frost, live video, column opacity, and application clipping continue through their existing rendering paths.
 
 Private-desktop checks compare native pixels, effects, content changes, fallback cases, and resource cleanup. A local replay comparison did not reproduce the reported stall; acceptance with the original expensive live file and affected compositor remains open. The signed lightweight update uses Engine 1.0.25.
+
+## November 12 Beta 20261112-185902
+
+Widget blur and final shadow caches can now retain their output when the shadow plane starts at a fractional screen coordinate. Texture bounds align to physical pixels, with compensation inside each tile to preserve the original geometry and shadow phase.
+
+Private-desktop tests cover the reported laptop origin and scale, Light/Dark, viewport scrolling, reuse, fallbacks and lifecycle cleanup. The original video and widget-on/off comparison still need repeating on the affected laptop. Wallpaper-switch stalls remain a separate investigation. The signed lightweight update uses Engine 1.0.25.
