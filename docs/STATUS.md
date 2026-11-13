@@ -163,3 +163,9 @@ Private-desktop checks compare native pixels, effects, content changes, fallback
 Widget blur and final shadow caches can now retain their output when the shadow plane starts at a fractional screen coordinate. Texture bounds align to physical pixels, with compensation inside each tile to preserve the original geometry and shadow phase.
 
 Private-desktop tests cover the reported laptop origin and scale, Light/Dark, viewport scrolling, reuse, fallbacks and lifecycle cleanup. The original video and widget-on/off comparison still need repeating on the affected laptop. Wallpaper-switch stalls remain a separate investigation. The signed lightweight update uses Engine 1.0.25.
+
+## November 12 Beta 20261112-193947
+
+Overlapping applications no longer disable the final widget shadow caches. Application exclusion clips stay above the retained native-pixel output, allowing moving windows to reuse unchanged shadow resources.
+
+Private-desktop checks compare exact pixels under rectangular, rounded and elliptical fractional clips, translucent columns and the shared application-exclusion geometry. Affected-laptop playback and compositor acceptance remain open. The signed lightweight update uses Engine 1.0.25.
