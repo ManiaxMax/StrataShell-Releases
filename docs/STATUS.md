@@ -169,3 +169,9 @@ Private-desktop tests cover the reported laptop origin and scale, Light/Dark, vi
 Overlapping applications no longer disable the final widget shadow caches. Application exclusion clips stay above the retained native-pixel output, allowing moving windows to reuse unchanged shadow resources.
 
 Private-desktop checks compare exact pixels under rectangular, rounded and elliptical fractional clips, translucent columns and the shared application-exclusion geometry. Affected-laptop playback and compositor acceptance remain open. The signed lightweight update uses Engine 1.0.25.
+
+## November 13 Beta 20261113-132634
+
+High-mode widgets now retain native-resolution composition after card clips and effects, including application occlusion when the complete layer fits. Larger layers use bounded column caches or the original renderer. The original content raster scales, controls, effects and animation timing remain intact.
+
+The affected-laptop diagnostic comparison supports this controlled Beta trial. Pixel checks permit at most one 8-bit channel level of final alpha rounding; existing shadow comparisons remain byte-identical. Installed playback, wallpaper switching, app blur and mixed-DPI acceptance remain open. The signed lightweight update uses Engine 1.0.25.

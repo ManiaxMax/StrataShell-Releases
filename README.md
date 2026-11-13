@@ -13,7 +13,7 @@
 ## Download and release status
 
 - **Stable:** [1.0.25](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/v1.0.25) has a complete Windows 11 x64 Setup and portable ZIP with the .NET 10 Desktop runtime and 24 approved 4K wallpapers. [Release notes](docs/RELEASE_NOTES_1.0.25.md).
-- **Beta:** [20261112-193947](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261112-193947) preserves widget shadow caches while overlapping applications clip their output. The lightweight update requires a compatible Stable installation or registered runtime. Acceptance on the affected laptop remains open.
+- **Beta:** [20261113-132634](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261113-132634) retains native-resolution widget composition to reduce clipped-layer copies over live wallpaper. The lightweight update requires a compatible Stable installation or registered runtime. Installed-shell acceptance remains open.
 
 For a fresh installation, start with [Stable](https://github.com/ManiaxMax/StrataShell-Releases/releases/latest). In STRATA, **Settings → Updates** selects Stable or Beta and installs available updates. The external STRATA Launcher checks Stable only. Beta was previously named Preview; older installed builds retain that label until updated, and saved channel preferences carry over. Read [installation and recovery](docs/INSTALLATION.md) before using STRATA as your sign-in shell. STRATA is experimental alpha software; source and package checks do not establish physical installed-shell acceptance. [Current verification status](docs/STATUS.md).
 
