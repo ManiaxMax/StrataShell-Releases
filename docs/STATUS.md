@@ -175,3 +175,9 @@ Private-desktop checks compare exact pixels under rectangular, rounded and ellip
 High-mode widgets now retain native-resolution composition after card clips and effects, including application occlusion when the complete layer fits. Larger layers use bounded column caches or the original renderer. The original content raster scales, controls, effects and animation timing remain intact.
 
 The affected-laptop diagnostic comparison supports this controlled Beta trial. Pixel checks permit at most one 8-bit channel level of final alpha rounding; existing shadow comparisons remain byte-identical. Installed playback, wallpaper switching, app blur and mixed-DPI acceptance remain open. The signed lightweight update uses Engine 1.0.25.
+
+## November 13 Beta 20261113-143446
+
+Balanced mode now retains clipping outside the existing card caches. Eligible composite textures reserve bounded native-height storage for the viewport and shadow outsets, allowing widget expansion to update pixels without resizing texture storage on every step. Excessive preferred storage falls back to eligible ink dimensions without downscaling.
+
+Deterministic checks cover High/Balanced in Light/Dark, intermediate expansion pixels and final clipping retention. Installed expansion smoothness and Balanced frame pacing remain open. The signed lightweight update uses Engine 1.0.25.
