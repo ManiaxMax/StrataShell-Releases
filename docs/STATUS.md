@@ -181,3 +181,9 @@ The affected-laptop diagnostic comparison supports this controlled Beta trial. P
 Balanced mode now retains clipping outside the existing card caches. Eligible composite textures reserve bounded native-height storage for the viewport and shadow outsets, allowing widget expansion to update pixels without resizing texture storage on every step. Excessive preferred storage falls back to eligible ink dimensions without downscaling.
 
 Deterministic checks cover High/Balanced in Light/Dark, intermediate expansion pixels and final clipping retention. Installed expansion smoothness and Balanced frame pacing remain open. The signed lightweight update uses Engine 1.0.25.
+
+## November 16 Beta 20261116-120248
+
+Static-wallpaper widgets at scales up to one now retain native-pixel column composition below changing application occlusion. Static card text retains its original sampling. Enlarged widgets, Low effects, High Contrast and unsupported geometry preserve the original renderer; live-video and transition policies remain intact.
+
+Private checks cover High/Balanced, Light/Dark and live theme changes, application cutouts, pixels, hit targets, cache ownership and lifecycle fallbacks. Physical drag performance and installed acceptance remain open. The signed lightweight update uses Engine 1.0.25.
