@@ -187,3 +187,9 @@ Deterministic checks cover High/Balanced in Light/Dark, intermediate expansion p
 Static-wallpaper widgets at scales up to one now retain native-pixel column composition below changing application occlusion. Static card text retains its original sampling. Enlarged widgets, Low effects, High Contrast and unsupported geometry preserve the original renderer; live-video and transition policies remain intact.
 
 Private checks cover High/Balanced, Light/Dark and live theme changes, application cutouts, pixels, hit targets, cache ownership and lifecycle fallbacks. Physical drag performance and installed acceptance remain open. The signed lightweight update uses Engine 1.0.25.
+
+## November 16 Beta 20261116-204050
+
+Outgoing frost snapshots share immutable textures while retaining independent brush placement. Identical frost textures share one cache budget entry, speculative preloading yields to active motion, and theme refreshes preserve unchanged resources while avoiding preference feedback. Supported High-mode horizontal primary rail/dock foregrounds retain native-pixel composition with their original controls and effects.
+
+Bar retention is guarded to compatible 100%-DPI hardware paths within the existing texture limit. Other layouts, displays and accessibility modes preserve the original renderer. Private checks cover live themes, pixels, input, ownership, cache capacity and wallpaper/Studio lifecycle. Residual publication/priming hitches and installed physical performance acceptance remain open. The signed lightweight update uses Engine 1.0.25.
