@@ -193,3 +193,9 @@ Private checks cover High/Balanced, Light/Dark and live theme changes, applicati
 Outgoing frost snapshots share immutable textures while retaining independent brush placement. Identical frost textures share one cache budget entry, speculative preloading yields to active motion, and theme refreshes preserve unchanged resources while avoiding preference feedback. Supported High-mode horizontal primary rail/dock foregrounds retain native-pixel composition with their original controls and effects.
 
 Bar retention is guarded to compatible 100%-DPI hardware paths within the existing texture limit. Other layouts, displays and accessibility modes preserve the original renderer. Private checks cover live themes, pixels, input, ownership, cache capacity and wallpaper/Studio lifecycle. Residual publication/priming hitches and installed physical performance acceptance remain open. The signed lightweight update uses Engine 1.0.25.
+
+## November 17 Beta 20261117-003948
+
+Live wallpapers now use Windows frame-server playback on a shared full-resolution GPU surface, avoiding the legacy WPF player path. Matching file paths share playback; independent pause/close requests and final-consumer teardown retain their existing ownership. The companion image remains visible until a real frame arrives, and contended compositor updates skip writes without leaving unmatched locks.
+
+Private checks cover source-pixel fidelity across Fit/Fill/Stretch and multiple shapes/scales, shared playback, looping, failure/teardown, static widgets, frost/bar themes and wallpaper/Studio lifecycle. Installed-shell and other-hardware acceptance remain open. The signed lightweight update uses Engine 1.0.25.
