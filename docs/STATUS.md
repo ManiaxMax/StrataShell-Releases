@@ -199,3 +199,9 @@ Bar retention is guarded to compatible 100%-DPI hardware paths within the existi
 Live wallpapers now use Windows frame-server playback on a shared full-resolution GPU surface, avoiding the legacy WPF player path. Matching file paths share playback; independent pause/close requests and final-consumer teardown retain their existing ownership. The companion image remains visible until a real frame arrives, and contended compositor updates skip writes without leaving unmatched locks.
 
 Private checks cover source-pixel fidelity across Fit/Fill/Stretch and multiple shapes/scales, shared playback, looping, failure/teardown, static widgets, frost/bar themes and wallpaper/Studio lifecycle. Installed-shell and other-hardware acceptance remain open. The signed lightweight update uses Engine 1.0.25.
+
+## November 18 Beta 20261118-145250
+
+Live-to-still handoff retains the outgoing GPU image through its transition and releases the decoder afterward. First-party captions coalesce live-wallpaper moves through the existing floating/snap lifecycle. Retained rendering, clear-glass shadow framing and eligible Balanced rail composition receive related corrections.
+
+GPU live blur and widget pixel pacing remain opt-in. Source/private checks cover playback lifetime, native motion, animated shadows, glass, static widgets and frost/bar themes. Clock expansion stutter, the 60 FPS goal, physical caption behavior and installed/hardware acceptance remain open. The signed lightweight update uses Engine 1.0.25.
