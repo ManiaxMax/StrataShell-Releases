@@ -2,9 +2,9 @@
 
 Beta [20261118-160030](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261118-160030) includes Files Open With, directional slot entry and ordinary High shared live frost. [Release notes and remaining acceptance](RELEASE_NOTES_BETA_20261118.md). Widget expansion stutter and the 60 FPS goal remain open. Source, isolated and package validation are separate from installed-shell acceptance.
 
-Updated October 25, 2026 for [Stable 1.0.25](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/v1.0.25). The [release feed](https://github.com/ManiaxMax/StrataShell-Releases/releases) confirms public availability.
+Updated November 18, 2026 for [Stable 1.0.26](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/v1.0.26). The [release feed](https://github.com/ManiaxMax/StrataShell-Releases/releases) confirms public availability.
 
-Stable 1.0.25 promotes Beta 20261025-162236. It offers self-contained Windows 11 x64 Setup and portable packages with matching Shell, Launcher, Maintenance and Setup versions, the .NET 10 Desktop runtime, safe defaults and exactly 24 approved 4K glass wallpapers. See the [1.0.25 release notes](RELEASE_NOTES_1.0.25.md) for changes and limits.
+Stable 1.0.26 promotes Beta 20261118-160030, including Files Open With, directional slot entry, shared live playback and High live frost. Matching self-contained Setup and portable packages include safe defaults, the .NET 10 Desktop runtime and exactly 24 approved wallpapers. See the [1.0.26 release notes](RELEASE_NOTES_1.0.26.md). Clock expansion stutter and installed/hardware acceptance remain open.
 
 The prerelease channel is **Beta**, formerly Preview. Older installed builds retain the Preview label until updated; saved selections remain compatible. The [October 25 Beta](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261025-235549) is a lightweight update requiring a compatible Stable installation or registered .NET runtime. The external STRATA Launcher checks Stable only.
 
