@@ -1,6 +1,6 @@
 # Current release status
 
-Beta [20261119-074523](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261119-074523) aligns the lightweight channel with Stable 1.0.26. Production source matches the tested Stable candidate. [Changes and remaining acceptance](RELEASE_NOTES_1.0.26.md). The Beta package includes no runtime or wallpaper assets; publication does not install or restart the shell.
+Beta [20261119-080901](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261119-080901) includes the live-frost aspect-ratio patch: shared GPU blur follows the desktop Fill crop, Fit bands and Stretch on mismatched displays. The Beta package contains no runtime or wallpaper assets. Installed laptop acceptance remains pending; publication does not install or restart the shell.
 
 Updated November 18, 2026 for [Stable 1.0.26](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/v1.0.26). The [release feed](https://github.com/ManiaxMax/StrataShell-Releases/releases) confirms public availability.
 
