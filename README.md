@@ -13,7 +13,7 @@
 ## Download and release status
 
 - **Stable:** [1.0.26](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/v1.0.26) has a complete Windows 11 x64 Setup and portable ZIP with the .NET 10 Desktop runtime and 24 approved 4K wallpapers. [Release notes](docs/RELEASE_NOTES_1.0.26.md).
-- **Beta:** [20261119-154402](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261119-154402) keeps shared moving frost active when 3D Glass is turned off in an eligible Custom profile, and retains the aspect-ratio fix. The lightweight update requires a compatible Stable installation or registered runtime. Installed laptop acceptance and Clock expansion pacing remain open.
+- **Beta:** [20261119-182857](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261119-182857) adds independent Dock, Rail and Window Border visibility controls with Settings/context-menu parity and portable Appearance support. The 3D Glass and aspect-ratio moving-frost fixes remain included. The lightweight update requires a compatible Stable installation or registered runtime. Installed acceptance remains pending.
 
 For a fresh installation, start with [Stable](https://github.com/ManiaxMax/StrataShell-Releases/releases/latest). In STRATA, **Settings → Updates** selects Stable or Beta and installs available updates. The external STRATA Launcher checks Stable only. Beta was previously named Preview; older installed builds retain that label until updated, and saved channel preferences carry over. Read [installation and recovery](docs/INSTALLATION.md) before using STRATA as your sign-in shell. STRATA is experimental alpha software; source and package checks do not establish physical installed-shell acceptance. [Current verification status](docs/STATUS.md).
 

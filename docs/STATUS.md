@@ -1,6 +1,6 @@
 # Current release status
 
-Beta [20261119-154402](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261119-154402) includes the 3D Glass toggle fix: eligible hardware-accelerated Custom profiles retain shared moving window and widget frost. The earlier Fill/Fit/Stretch aspect-ratio fix remains included. The Beta package contains no runtime or wallpaper assets. Installed laptop acceptance is pending; publication does not install or restart the shell.
+Beta [20261119-182857](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261119-182857) adds Dock, Rail and Window Border visibility controls, compatible defaults and portable Appearance support, including all 25 translations. The previous 3D Glass and aspect-ratio moving-frost fixes remain included. The Beta package contains no runtime or wallpaper assets. Installed acceptance remains pending; publication does not install or restart the shell.
 
 Updated November 18, 2026 for [Stable 1.0.26](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/v1.0.26). The [release feed](https://github.com/ManiaxMax/StrataShell-Releases/releases) confirms public availability.
 
