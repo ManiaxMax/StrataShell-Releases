@@ -1,6 +1,6 @@
 # Current release status
 
-Beta [20261118-160030](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261118-160030) includes Files Open With, directional slot entry and ordinary High shared live frost. [Release notes and remaining acceptance](RELEASE_NOTES_BETA_20261118.md). Widget expansion stutter and the 60 FPS goal remain open. Source, isolated and package validation are separate from installed-shell acceptance.
+Beta [20261119-074523](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261119-074523) aligns the lightweight channel with Stable 1.0.26. Production source matches the tested Stable candidate. [Changes and remaining acceptance](RELEASE_NOTES_1.0.26.md). The Beta package includes no runtime or wallpaper assets; publication does not install or restart the shell.
 
 Updated November 18, 2026 for [Stable 1.0.26](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/v1.0.26). The [release feed](https://github.com/ManiaxMax/StrataShell-Releases/releases) confirms public availability.
 
