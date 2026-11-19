@@ -1,6 +1,6 @@
 # Current release status
 
-Beta [20261119-080901](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261119-080901) includes the live-frost aspect-ratio patch: shared GPU blur follows the desktop Fill crop, Fit bands and Stretch on mismatched displays. The Beta package contains no runtime or wallpaper assets. Installed laptop acceptance remains pending; publication does not install or restart the shell.
+Beta [20261119-154402](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261119-154402) includes the 3D Glass toggle fix: eligible hardware-accelerated Custom profiles retain shared moving window and widget frost. The earlier Fill/Fit/Stretch aspect-ratio fix remains included. The Beta package contains no runtime or wallpaper assets. Installed laptop acceptance is pending; publication does not install or restart the shell.
 
 Updated November 18, 2026 for [Stable 1.0.26](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/v1.0.26). The [release feed](https://github.com/ManiaxMax/StrataShell-Releases/releases) confirms public availability.
 
