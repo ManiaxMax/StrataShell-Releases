@@ -1,6 +1,6 @@
 # Current release status
 
-Beta [20261120-141700](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261120-141700) includes the live-caption widget clipping fix for moves and reversals across either widget column. Cutouts use committed HWND placement with visible frame insets. Previous live-frost settings, glass, border-color and aspect-ratio changes remain included. No runtime or wallpaper assets are bundled. Installed physical-drag acceptance is pending; publication does not install or restart the shell.
+Beta [20261120-150516](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261120-150516) keeps exposed widgets painted during live-wallpaper caption drags when the moving window has fully covering GPU frost. Fit and other cases that need a cutout retain normal clipping, and releasing the window restores its cutout. Installed physical-drag verification remains pending. The package contains no runtime or wallpaper assets.
 
 Updated November 18, 2026 for [Stable 1.0.26](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/v1.0.26). The [release feed](https://github.com/ManiaxMax/StrataShell-Releases/releases) confirms public availability.
 
