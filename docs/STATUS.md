@@ -1,6 +1,6 @@
 # Current release status
 
-Beta [20261119-200101](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261119-200101) includes Global Border Color (Palette/Standard), refined directional 3D glass and reflections on enabled backgrounds with hidden borders. Window, widget, Dock and Rail colors update live. Previous border visibility and moving-frost fixes remain included. The Beta package contains no runtime or wallpaper assets. Installed acceptance is pending; publication does not install or restart the shell.
+Beta [20261119-224039](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261119-224039) includes the live-frost settings fix: nonzero blur changes update the shared GPU image, resized targets swap after a frame, and zero/restore preserves desktop playback. Appearance settings and independent window/widget frost toggles retain moving frost. All previous glass, border-color and aspect-ratio changes remain included. No runtime or wallpaper assets are bundled. Installed acceptance is pending; publication does not install or restart the shell.
 
 Updated November 18, 2026 for [Stable 1.0.26](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/v1.0.26). The [release feed](https://github.com/ManiaxMax/StrataShell-Releases/releases) confirms public availability.
 
