@@ -1,6 +1,6 @@
 # Current release status
 
-Beta [20261120-150516](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261120-150516) keeps exposed widgets painted during live-wallpaper caption drags when the moving window has fully covering GPU frost. Fit and other cases that need a cutout retain normal clipping, and releasing the window restores its cutout. Installed physical-drag verification remains pending. The package contains no runtime or wallpaper assets.
+Beta [20261120-200836](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261120-200836) uses a one-pixel native shadow frame on supported Windows systems to preserve rounded glass corners. Hiding window borders keeps the themed focus outline for tiled apps when enabled and hides it for floating apps. Installed verification of native corner pixels remains pending. The package contains no runtime or wallpaper assets.
 
 Updated November 18, 2026 for [Stable 1.0.26](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/v1.0.26). The [release feed](https://github.com/ManiaxMax/StrataShell-Releases/releases) confirms public availability.
 
