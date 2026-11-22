@@ -1,6 +1,6 @@
 # Current release status
 
-Beta [20261122-091855](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261122-091855) keeps the Rail and Dock anchored to their configured edges during workspace slides, keeps frosted windows aligned with their wallpaper, and queues rapid workspace switches for a continuous transition. Installed first- and last-frame continuity and physical presentation cadence still need verification.
+Beta [20261122-130139](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261122-130139) keeps Rail and Dock in their own native windows during workspace slides. The bars share the wallpaper motion and retain their configured edges and work-area reservations. Installed first- and last-frame continuity still needs verification.
 
 Updated November 18, 2026 for [Stable 1.0.26](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/v1.0.26). The [release feed](https://github.com/ManiaxMax/StrataShell-Releases/releases) confirms public availability.
 
