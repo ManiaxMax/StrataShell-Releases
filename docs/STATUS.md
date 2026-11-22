@@ -1,6 +1,6 @@
 # Current release status
 
-Beta [20261120-200836](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261120-200836) uses a one-pixel native shadow frame on supported Windows systems to preserve rounded glass corners. Hiding window borders keeps the themed focus outline for tiled apps when enabled and hides it for floating apps. Installed verification of native corner pixels remains pending. The package contains no runtime or wallpaper assets.
+Beta [20261121-185942](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261121-185942) brings shared glass transparency and wallpaper frost to context menus and submenus. The desktop Windows menu groups Window Manager modes, layout choices, and border visibility. Installed pointer, mixed-DPI, and moving-wallpaper menu rendering still need verification.
 
 Updated November 18, 2026 for [Stable 1.0.26](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/v1.0.26). The [release feed](https://github.com/ManiaxMax/StrataShell-Releases/releases) confirms public availability.
 
