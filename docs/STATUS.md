@@ -1,6 +1,6 @@
 # Current release status
 
-Beta [20261121-185942](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261121-185942) brings shared glass transparency and wallpaper frost to context menus and submenus. The desktop Windows menu groups Window Manager modes, layout choices, and border visibility. Installed pointer, mixed-DPI, and moving-wallpaper menu rendering still need verification.
+Beta [20261122-083056](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261122-083056) slides the wallpaper, widgets, Rail, Dock, and surround with workspace windows in both directions, including between empty workspaces. Reduced Motion keeps instant switching. Installed motion on mixed-DPI and high-refresh displays still needs verification.
 
 Updated November 18, 2026 for [Stable 1.0.26](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/v1.0.26). The [release feed](https://github.com/ManiaxMax/StrataShell-Releases/releases) confirms public availability.
 
