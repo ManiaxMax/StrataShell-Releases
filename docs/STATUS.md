@@ -1,6 +1,6 @@
 # Current release status
 
-Beta [20261122-135225](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261122-135225) uses composition timestamps to pace workspace slides. Windows and shell visuals share the same pixel offsets, and app opacity is preserved during travel. Installed presentation cadence still needs verification.
+Beta [20261122-150148](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261122-150148) adds a 600 ms workspace glide with a gentler launch. Widgets, Rail, Dock, and the surround fade with the slide while application opacity and wallpaper frost are preserved. Installed presentation cadence still needs verification.
 
 Updated November 18, 2026 for [Stable 1.0.26](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/v1.0.26). The [release feed](https://github.com/ManiaxMax/StrataShell-Releases/releases) confirms public availability.
 
