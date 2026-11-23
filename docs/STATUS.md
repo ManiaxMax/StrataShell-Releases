@@ -1,6 +1,6 @@
 # Current release status
 
-Beta [20261122-222939](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261122-222939) keeps the wallpaper behind moving apps so incoming windows stay visible during workspace switches. Installed verification of Files and Browser during workspace switches remains pending. Existing AppData installations keep their location during normal updates.
+Beta [20261123-054657](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261123-054657) fixes a Windows handle leak during workspace switches and moves the keyboard watchdog off Windows UI timers. Installed verification of repeated switches and the sign-out confirmation remains pending. Existing AppData installations keep their location during normal updates.
 
 Updated November 18, 2026 for [Stable 1.0.26](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/v1.0.26). The [release feed](https://github.com/ManiaxMax/StrataShell-Releases/releases) confirms public availability.
 
