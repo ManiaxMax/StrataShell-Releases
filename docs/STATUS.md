@@ -1,6 +1,6 @@
 # Current release status
 
-Beta [20261123-081247](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261123-081247) adds six workspace switch animations, including 3D Cube. Glide remains the default and handles switches where the cube cannot capture all visible content. Installed compositor pacing and handoff remain pending. Existing AppData installations keep their location during normal updates.
+Beta [20261123-172612](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261123-172612) adds regular STRATA Browser tabs and STRATA Terminal to 3D Cube. Live wallpaper can hold the displayed frame during a turn and resume on the same player. Installed compositor pacing and handoff remain pending. Existing AppData installations keep their location during normal updates.
 
 Updated November 18, 2026 for [Stable 1.0.26](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/v1.0.26). The [release feed](https://github.com/ManiaxMax/StrataShell-Releases/releases) confirms public availability.
 
