@@ -1,6 +1,6 @@
 # Current release status
 
-Beta [20261123-172612](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261123-172612) adds regular STRATA Browser tabs and STRATA Terminal to 3D Cube. Live wallpaper can hold the displayed frame during a turn and resume on the same player. Installed compositor pacing and handoff remain pending. Existing AppData installations keep their location during normal updates.
+Beta [20261126-191111](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261126-191111) extends 3D Cube to compatible Windows apps such as ChatGPT. It uses temporary in-memory frames and falls back to Glide when a window cannot be captured. Installed Cube testing with ChatGPT remains pending. Existing AppData installations keep their location during normal updates.
 
 Updated November 18, 2026 for [Stable 1.0.26](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/v1.0.26). The [release feed](https://github.com/ManiaxMax/StrataShell-Releases/releases) confirms public availability.
 
