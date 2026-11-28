@@ -1,6 +1,6 @@
 # Current release status
 
-Beta [20261127-212934](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261127-212934) improves wallpaper loading, workspace layout performance, and floating widget placement. It also adds network share browsing in Files, administrator launch actions, and Browser history suggestions. Installed input, administrator launch, and compositor verification remain pending. Existing AppData installations keep their location during normal updates.
+Beta [20261128-092555](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/20261128-092555) reduces work during workspace switches, reuses Cube and Rail and Dock rendering resources, and improves responsiveness in Files, Browser, Settings, and the media equalizer. Sustained presentation at 60 FPS on physical displays and installed verification remain pending. Existing AppData installations keep their location during normal updates.
 
 Updated November 18, 2026 for [Stable 1.0.26](https://github.com/ManiaxMax/StrataShell-Releases/releases/tag/v1.0.26). The [release feed](https://github.com/ManiaxMax/StrataShell-Releases/releases) confirms public availability.
 
